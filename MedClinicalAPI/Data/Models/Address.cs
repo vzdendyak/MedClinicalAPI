@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace MedClinicalAPI.Data.Models
 {
@@ -11,7 +8,9 @@ namespace MedClinicalAPI.Data.Models
         public string Region { get; set; }
         public string City { get; set; }
         public string Street { get; set; }
-        public string HouseNumber { get; set; }
+        public int HouseNumber { get; set; }
+
+        // nav props
         public virtual ICollection<Department> Departments { get; set; }
     }
 }
