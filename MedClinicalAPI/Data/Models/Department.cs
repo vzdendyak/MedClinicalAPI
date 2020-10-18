@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MedClinicalAPI.Data.Models
 {
+    [Table("Departments")]
     public class Department
     {
         public int Id { get; set; }
         public string DepartmentName { get; set; }
         public string Description { get; set; }
-        public int AdressId { get; set; }
+        public int AddressId { get; set; }
         public int ScheduleId { get; set; }
 
         // nav props
@@ -15,5 +17,6 @@ namespace MedClinicalAPI.Data.Models
 
         public Address Address { get; set; }
         public virtual ICollection<Service> Services { get; set; }
+        public virtual ICollection<User> Doctors { get; set; }
     }
 }

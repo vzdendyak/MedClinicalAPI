@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MedClinicalAPI.Data.Models
 {
+    [Table("Addresses")]
     public class Address
     {
         public int Id { get; set; }

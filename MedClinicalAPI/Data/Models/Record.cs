@@ -1,7 +1,9 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MedClinicalAPI.Data.Models
 {
+    [Table("Records")]
     public class Record
     {
         public int Id { get; set; }
@@ -11,5 +13,8 @@ namespace MedClinicalAPI.Data.Models
         public DateTime DateOfMeeting { get; set; }
 
         // nav props
+        public User Doctor { get; set; }
+
+        public User Patient { get; set; }
     }
 }
