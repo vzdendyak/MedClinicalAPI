@@ -15,5 +15,6 @@ namespace MedClinicalAPI.Data.Models
         public Department Department { get; set; }
 
         public virtual ICollection<Record> Records { get; set; }
+        public virtual ICollection<Record> Visits { get; set; }
     }
 }
