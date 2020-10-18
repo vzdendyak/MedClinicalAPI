@@ -11,5 +11,6 @@ namespace MedClinicalAPI.Data.Models
         public int StartHour { get; set; }
         public int EndHour { get; set; }
         public bool IsSaturdayWork{ get; set; }
+        public virtual ICollection<Department> Departments { get; set; }
     }
 }

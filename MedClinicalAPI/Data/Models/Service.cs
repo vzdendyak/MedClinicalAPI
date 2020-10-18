@@ -11,5 +11,6 @@ namespace MedClinicalAPI.Data.Models
         public int DepartamentId { get; set; }
         public int Price { get; set; }
         public string Name { get; set; }
+        public Department Department { get; set; }
     }
 }
