@@ -10,11 +10,11 @@ namespace MedClinicalAPI.Controllers
 {
     [Route("api/[servicess]")]
     [ApiController]
-    public class SeviceController : ControllerBase
+    public class ServiceController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public SeviceController(IMediator mediator)
+        public ServiceController(IMediator mediator)
         {
             _mediator = mediator;
         }
