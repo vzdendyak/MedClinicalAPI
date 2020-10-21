@@ -48,6 +48,17 @@ namespace MedClinicalAPI.Features.Queries.DepartmentCRUD
                             LastName = doc.LastName,
                             PhoneNumber = doc.PhoneNumber
                         }).ToList(),
+                        DepartmentServices = dep.DepartmentServices.Select(ds => new DepartmentService
+                        {
+                            ServiceId = ds.ServiceId,
+                            Service = new Service
+                            {
+                                Id = ds.Service.Id,
+                                Name = ds.Service.Name,
+                                Price = ds.Service.Price,
+                                Description = ds.Service.Description
+                            }
+                        }).ToList(),
                         ScheduleId = dep.ScheduleId
                     }).ToListAsync();
                 return departments;

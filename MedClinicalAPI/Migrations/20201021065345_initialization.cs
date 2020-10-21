@@ -53,6 +53,21 @@ namespace MedClinicalAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Services",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Price = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Services", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -139,22 +154,25 @@ namespace MedClinicalAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Services",
+                name: "DepartmentServices",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
                     DepartmentId = table.Column<int>(nullable: false),
-                    Price = table.Column<int>(nullable: false),
-                    Name = table.Column<string>(nullable: true)
+                    ServiceId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Services", x => x.Id);
+                    table.PrimaryKey("PK_DepartmentServices", x => new { x.DepartmentId, x.ServiceId });
                     table.ForeignKey(
-                        name: "FK_Services_Departments_DepartmentId",
+                        name: "FK_DepartmentServices_Departments_DepartmentId",
                         column: x => x.DepartmentId,
                         principalTable: "Departments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_DepartmentServices_Services_ServiceId",
+                        column: x => x.ServiceId,
+                        principalTable: "Services",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -327,6 +345,11 @@ namespace MedClinicalAPI.Migrations
                 column: "ScheduleId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_DepartmentServices_ServiceId",
+                table: "DepartmentServices",
+                column: "ServiceId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Records_DoctorId",
                 table: "Records",
                 column: "DoctorId");
@@ -335,11 +358,6 @@ namespace MedClinicalAPI.Migrations
                 name: "IX_Records_PatientId",
                 table: "Records",
                 column: "PatientId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Services_DepartmentId",
-                table: "Services",
-                column: "DepartmentId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -360,13 +378,16 @@ namespace MedClinicalAPI.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "DepartmentServices");
+
+            migrationBuilder.DropTable(
                 name: "Records");
 
             migrationBuilder.DropTable(
-                name: "Services");
+                name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetRoles");
+                name: "Services");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MedClinicalAPI.Data.Models
 {
@@ -6,11 +8,11 @@ namespace MedClinicalAPI.Data.Models
     public class Service
     {
         public int Id { get; set; }
-        public int DepartmentId { get; set; }
         public int Price { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
 
         // nav props
-        public Department Department { get; set; }
+        public virtual ICollection<DepartmentService> DepartmentServices { get; set; }
     }
 }
