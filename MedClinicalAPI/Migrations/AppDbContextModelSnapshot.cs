@@ -71,6 +71,21 @@ namespace MedClinicalAPI.Migrations
                     b.ToTable("Departments");
                 });
 
+            modelBuilder.Entity("MedClinicalAPI.Data.Models.DepartmentService", b =>
+                {
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ServiceId")
+                        .HasColumnType("int");
+
+                    b.HasKey("DepartmentId", "ServiceId");
+
+                    b.HasIndex("ServiceId");
+
+                    b.ToTable("DepartmentServices");
+                });
+
             modelBuilder.Entity("MedClinicalAPI.Data.Models.Record", b =>
                 {
                     b.Property<int>("Id")
@@ -127,8 +142,8 @@ namespace MedClinicalAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("DepartmentId")
-                        .HasColumnType("int");
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -137,8 +152,6 @@ namespace MedClinicalAPI.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DepartmentId");
 
                     b.ToTable("Services");
                 });
@@ -384,6 +397,21 @@ namespace MedClinicalAPI.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MedClinicalAPI.Data.Models.DepartmentService", b =>
+                {
+                    b.HasOne("MedClinicalAPI.Data.Models.Department", "Department")
+                        .WithMany("DepartmentServices")
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MedClinicalAPI.Data.Models.Service", "Service")
+                        .WithMany("DepartmentServices")
+                        .HasForeignKey("ServiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("MedClinicalAPI.Data.Models.Record", b =>
                 {
                     b.HasOne("MedClinicalAPI.Data.Models.User", "Doctor")
@@ -393,15 +421,6 @@ namespace MedClinicalAPI.Migrations
                     b.HasOne("MedClinicalAPI.Data.Models.User", "Patient")
                         .WithMany("Visits")
                         .HasForeignKey("PatientId");
-                });
-
-            modelBuilder.Entity("MedClinicalAPI.Data.Models.Service", b =>
-                {
-                    b.HasOne("MedClinicalAPI.Data.Models.Department", "Department")
-                        .WithMany("Services")
-                        .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

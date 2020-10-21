@@ -16,7 +16,7 @@ namespace MedClinicalAPI.Data.Models
         public Schedule Schedule { get; set; }
 
         public Address Address { get; set; }
-        public virtual ICollection<Service> Services { get; set; }
+        public virtual ICollection<DepartmentService> DepartmentServices { get; set; }
         public virtual ICollection<User> Doctors { get; set; }
     }
 }

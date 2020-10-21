@@ -33,12 +33,9 @@ namespace MedClinicalAPI.Features.Queries.ServiceCRUD.GetServicesById
             {
                 var services = await _context.Services.Where(d => d.Id == request.Id).Select(serv => new Service
                 {
-
                     Id = serv.Id,
-                    DepartmentId = serv.DepartmentId,
                     Price = serv.Price,
                     Name = serv.Name
-
                 }).FirstOrDefaultAsync();
                 return services;
             }

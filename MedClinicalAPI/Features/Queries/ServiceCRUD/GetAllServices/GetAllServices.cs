@@ -30,10 +30,8 @@ namespace MedClinicalAPI.Features.Queries.ServiceCRUD.GetAllServices
                     .Select(serv => new Service
                     {
                         Id = serv.Id,
-                        DepartmentId = serv.DepartmentId,
                         Price = serv.Price,
                         Name = serv.Name
-
                     }).ToListAsync();
                 return services;
             }
