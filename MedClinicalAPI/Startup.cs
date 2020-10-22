@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System;
 using System.Collections.Generic;
 
 namespace MedClinicalAPI
@@ -26,7 +27,13 @@ namespace MedClinicalAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = Configuration.GetConnectionString("LocalDb");
+            var connectionString = "";
+            var mName = Environment.MachineName;
+            if (mName == "DESKTOP-QRMC7LQ")
+                connectionString = Configuration.GetConnectionString("IgorLocalDb");
+            else if (mName == "DESKTOP-V1GMI6E")
+                connectionString = Configuration.GetConnectionString("VasylLocalDb");
+
             services.AddEntityFrameworkSqlServer().AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(connectionString);
