@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MedClinicalAPI.Controllers
 {
-    [Route("api/[servicess]")]
+    [Route("api/services")]
     [ApiController]
     public class ServiceController : ControllerBase
     {
