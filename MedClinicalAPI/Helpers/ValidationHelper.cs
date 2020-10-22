@@ -1,5 +1,6 @@
 ﻿using MedClinicalAPI.Data;
 using MedClinicalAPI.Data.Models;
+using MedClinicalAPI.Exceptions;
 using System;
 using System.Linq;
 
@@ -11,7 +12,7 @@ namespace MedClinicalAPI.Helpers
         {
             var isDepartment = _context.Departments.Any(d => d.DepartmentName == department.DepartmentName && d.AddressId == department.AddressId);
             if (isDepartment)
-                throw new Exception("Department with the same name is exist at this address.");
+                throw new BadRequestException("Department with the same name is exist at this address.");
         }
     }
 }
