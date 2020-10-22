@@ -1,4 +1,5 @@
 ﻿using MedClinicalAPI.Data.Models;
+using MedClinicalAPI.Features.Commands.DepartmentCRUD.CreateDepartment;
 using MedClinicalAPI.Features.Queries.DepartmentCRUD;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -37,7 +38,9 @@ namespace MedClinicalAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAsync([FromBody] Department department)
         {
-            throw new NotImplementedException();
+            var createCommand = new CreateDepartment.Command(department);
+            var res = await _mediator.Send(createCommand);
+            return Ok(res);
         }
 
         [HttpPut("{id}")]
