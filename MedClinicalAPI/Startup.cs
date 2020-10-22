@@ -1,5 +1,6 @@
 using MedClinicalAPI.Data;
 using MedClinicalAPI.Data.Models;
+using MedClinicalAPI.Middlewares;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -74,6 +75,7 @@ namespace MedClinicalAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseMiddleware<ErrorHandlingMiddleware>();
 
             app.UseAuthorization();
 
