@@ -1,0 +1,261 @@
+html, body {
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+
+}
+
+.header:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  //background-color: #3f424d;
+  z-index: 2;
+  background: linear-gradient(102deg, rgb(43 108 60 / 87%) 0%, rgba(8, 173, 138, 0.9928019662921348) 100%);
+}
+.header-body {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  align-items: center;
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0px auto;
+  padding: 0px 10px;
+
+}
+
+
+.menu-points-list {
+  display: flex;
+  position: relative;
+  z-index: 2;
+  margin: 0;
+}
+
+.menu-points-list li {
+  padding: 0 25px;
+
+}
+
+.header-link {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  color: #fff;
+
+  &:hover {
+    color: #ffbc00;
+  }
+}
+
+.logo-text {
+  //font-size: 40px;
+  //color: #dd7272;
+  max-width: 100%;
+  z-index: 3;
+  flex: 0 0 200px;
+  //font-family: 'Kaushan Script', cursive;
+  overflow: hidden
+}
+
+.logo-text img {
+  width: 100%;
+  border-radius: 8%;
+}
+
+.content {
+  padding: 100px 0 0 0;
+}
+
+.content-text {
+  //font-size: 18px;
+  //line-height: 25px;
+}
+
+.content-text p {
+  margin: 0 0 20px 0;
+}
+
+@media (max-width: 910px) {
+  .menu-points-list li {
+    padding: 0 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-burger {
+    display: block;
+    position: absolute;
+    width: 30px;
+    z-index: 3;
+    right: 0;
+    height: 20px;
+  }
+  .header-body {
+    height: 50px;
+  }
+  .logo-text {
+    font-size: 30px;
+  }
+  .header-burger span {
+    position: absolute;
+    background-color: #fff;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    top: 9px;
+    transition: all 0.3s ease 0s;
+  }
+
+  .header-burger:before,
+  .header-burger:after {
+    content: '';
+    background-color: #fff;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    left: 0;
+    transition: all 0.3s ease 0s;
+
+  }
+  .header-burger:before {
+    top: 0;
+  }
+  .header-burger:after {
+    bottom: 0;
+  }
+  .header-menu {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    overflow: auto;
+    height: 100%;
+    //background-color: #3f424df2;
+    background: linear-gradient(102deg, rgb(43 108 60 / 87%) 0%, rgba(8, 173, 138, 0.9928019662921348) 100%);
+    backdrop-filter: blur(3px);
+    padding: 70px 10px 20px 10px;
+    transition: all 0.2s ease 0s;
+
+  }
+  .menu-points-list {
+    display: block;
+    text-align: center;
+    height: 90%;
+
+  }
+  .menu-points-list li {
+    margin: 20px auto;
+    padding: 15px 5px;
+
+    .header-link:hover {
+      color: #ffd100;
+    }
+  }
+  .header-link {
+    font-size: 23px;
+  }
+  .header-menu.active {
+    top: 0;
+  }
+  .content {
+    padding: 65px 0 0 0;
+
+  }
+
+  .search-form {
+    left: 0;
+    margin-right: 50px;
+  }
+}
+
+// for js
+.header-burger.active:before {
+  transform: rotate(90deg);
+  top: 9px;
+  left: -10px;
+
+}
+
+.header-burger.active:after {
+  transform: rotate(90deg);
+  left: 10px;
+  bottom: 9px;
+}
+
+.header-burger.active span {
+  transform: rotate(90deg);
+  //right: 10px;
+}
+
+// SECOND FILE
+
+
+.search-form {
+  z-index: 5;
+}
+
+.search-form {
+  position: relative;
+  //width: 300px;
+  //margin: 0 auto;
+}
+
+.input-form {
+  width: 100%;
+  height: 35px;
+  padding-left: 10px;
+  border: 2px solid #45847e;
+  border-radius: 5px;
+  outline: none;
+  background: #F9F0DA;
+  color: #9E9C9C;
+}
+
+.button-icon {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  width: 35px;
+  height: 35px;
+  border: none;
+  background: #45847e;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+.button-icon:before {
+  content: "\f002";
+  font-family: FontAwesome;
+  font-size: 16px;
+  color: #F9F0DA;
+}
+
+@media (max-width: 320px) {
+  .logo-text img {
+    width: 80%;
+  }
+  .logo-text {
+    width: 70%;
+    flex: auto;
+  }
+  .input-form {
+    height: 30px;
+    width: 120px;
+    font-size: 10px;
+  }
+  .button-icon {
+    height: 30px;
+  }
+}
