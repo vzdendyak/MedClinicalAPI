@@ -9,6 +9,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from './material/material.module';
 import { HeaderComponent } from './navigation/header/header.component';
 import { FooterComponent } from './navigation/footer/footer.component';
+import { LoginComponent } from './account/login/login.component';
+import {LoginModule} from './account/login.module';
 
 @NgModule({
   declarations: [
@@ -20,9 +22,11 @@ import { FooterComponent } from './navigation/footer/footer.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    LoginModule,
     RouterModule.forRoot(
       [
-    ]),
+        {path: 'account/login', component: LoginComponent},
+      ]),
     FormsModule,
     ReactiveFormsModule,
     MaterialModule
