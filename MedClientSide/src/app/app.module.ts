@@ -11,6 +11,7 @@ import { HeaderComponent } from './navigation/header/header.component';
 import { FooterComponent } from './navigation/footer/footer.component';
 import { LoginComponent } from './account/login/login.component';
 import {LoginModule} from './account/login.module';
+import {RegistrationComponent} from './account/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {LoginModule} from './account/login.module';
     RouterModule.forRoot(
       [
         {path: 'account/login', component: LoginComponent},
+        {path: 'account/registration', component: RegistrationComponent},
       ]),
     FormsModule,
     ReactiveFormsModule,
