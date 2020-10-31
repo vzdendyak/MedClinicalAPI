@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {LoginRequest} from '../../data/models/login-request';
+import {LoginRequest} from '../../data/models/auth/login-request';
+import {DepartmentService} from '../../services/department.service';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
   }
+
   //
   // get emailGet(): any {
   //   return this.loginForm.get('email');
@@ -33,6 +35,6 @@ export class LoginComponent implements OnInit {
   }
 
   loginSubmit() {
-    const model: LoginRequest = {email: this.loginForm.get('email').value, password: this.loginForm.get('password').value };
+    const model: LoginRequest = {email: this.loginForm.get('email').value, password: this.loginForm.get('password').value};
   }
 }
