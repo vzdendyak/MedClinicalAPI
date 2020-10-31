@@ -8,9 +8,6 @@ on:
 
 jobs:
   build:
-    defaults:
-      run:
-        working-directory: WebApi
     runs-on: ubuntu-latest
     
     steps:
@@ -21,7 +18,11 @@ jobs:
         dotnet-version: 3.1.301
     - name: Install dependencies
       run: dotnet restore
+      working-directory: WebApi
+
     - name: Build
       run: dotnet build --configuration Release --no-restore
+      working-directory: WebApi
     - name: Test
       run: dotnet test --no-restore --verbosity normal
+      working-directory: WebApi
