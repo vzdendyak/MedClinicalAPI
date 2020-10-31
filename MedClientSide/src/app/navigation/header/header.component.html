@@ -1,0 +1,35 @@
+<header class="header">
+  <div class="container">
+    <div class="header-body" [ngClass]="{'active' : burgerActive}">
+      <a href="#" class="logo-text">
+        <img src="../../../assets/logo3.png" class="logo-image" alt="">
+      </a>
+      <div class="header-burger" [ngClass]="{'active': burgerActive}" (click)="burgerClick()">
+        <span></span>
+      </div>
+
+      <nav class="header-menu" [ngClass]="{'active': burgerActive}">
+        <ul class="menu-points-list">
+          <li>
+            <a class="header-link">Головна</a>
+          </li>
+          <li>
+            <a [routerLink]="['vocabulary/4']" class="header-link">Послуги</a>
+          </li>
+          <li>
+            <a href="#" class="header-link">Ціни</a>
+          </li>
+          <li>
+            <a href="#" class="header-link">Лікарі</a>
+          </li>
+          <li>
+            <a href="#" class="header-link">Контакти</a>
+          </li>
+          <li>
+            <a href="#" class="header-link">Про нас</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
