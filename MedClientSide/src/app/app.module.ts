@@ -1,3 +1,4 @@
+import { DepartmentComponent } from './department/department/department.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -17,7 +18,8 @@ import {RegistrationComponent} from './account/registration/registration.compone
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    DepartmentComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +30,7 @@ import {RegistrationComponent} from './account/registration/registration.compone
       [
         {path: 'account/login', component: LoginComponent},
         {path: 'account/registration', component: RegistrationComponent},
+        {path: 'department', component: DepartmentComponent}
       ]),
     FormsModule,
     ReactiveFormsModule,
