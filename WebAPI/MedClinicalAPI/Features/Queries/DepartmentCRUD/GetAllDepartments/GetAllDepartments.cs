@@ -1,4 +1,5 @@
-﻿using MedClinicalAPI.Data;
+﻿using MedClinical.API.Data.DTOs;
+using MedClinicalAPI.Data;
 using MedClinicalAPI.Data.Models;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -11,11 +12,11 @@ namespace MedClinicalAPI.Features.Queries.DepartmentCRUD
 {
     public class GetAllDepartments
     {
-        public class Query : IRequest<IEnumerable<Department>>
+        public class Query : IRequest<IEnumerable<DepartmentDto>>
         {
         }
 
-        public class Handler : IRequestHandler<GetAllDepartments.Query, IEnumerable<Department>>
+        public class Handler : IRequestHandler<GetAllDepartments.Query, IEnumerable<DepartmentDto>>
         {
             private readonly AppDbContext _context;
 
@@ -24,10 +25,10 @@ namespace MedClinicalAPI.Features.Queries.DepartmentCRUD
                 _context = context;
             }
 
-            public async Task<IEnumerable<Department>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<IEnumerable<DepartmentDto>> Handle(Query request, CancellationToken cancellationToken)
             {
                 var departments = await _context.Departments
-                    .Select(dep => new Department
+                    .Select(dep => new DepartmentDto
                     {
                         Id = dep.Id,
                         DepartmentName = dep.DepartmentName,
@@ -41,23 +42,19 @@ namespace MedClinicalAPI.Features.Queries.DepartmentCRUD
                         },
                         AddressId = dep.AddressId,
                         Description = dep.Description,
-                        Doctors = dep.Doctors.Select(doc => new User
+                        Doctors = dep.Doctors.Select(doc => new UserDto
                         {
                             Id = doc.Id,
+                            DepartmentId = doc.DepartmentId,
+                            UserName = doc.UserName,
+                            Email = doc.Email,
                             FirstName = doc.FirstName,
-                            LastName = doc.LastName,
-                            PhoneNumber = doc.PhoneNumber
+                            LastName = doc.LastName
                         }).ToList(),
                         DepartmentServices = dep.DepartmentServices.Select(ds => new DepartmentService
                         {
                             ServiceId = ds.ServiceId,
-                            Service = new Service
-                            {
-                                Id = ds.Service.Id,
-                                Name = ds.Service.Name,
-                                Price = ds.Service.Price,
-                                Description = ds.Service.Description
-                            }
+                            Service = ds.Service
                         }).ToList(),
                         ScheduleId = dep.ScheduleId
                     }).ToListAsync();
