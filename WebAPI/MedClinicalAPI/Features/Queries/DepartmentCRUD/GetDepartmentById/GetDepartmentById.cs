@@ -25,14 +25,18 @@ namespace MedClinicalAPI.Features.Queries.DepartmentCRUD
         public class Handler : IRequestHandler<GetDepartmentById.Query, DepartmentDto>
         {
             private readonly AppDbContext _context;
+            private readonly UserManager<User> _userManager;
 
-            public Handler(AppDbContext context)
+            public Handler(AppDbContext context, UserManager<User> userManager)
             {
                 _context = context;
+                _userManager = userManager;
             }
 
             public async Task<DepartmentDto> Handle(Query request, CancellationToken cancellationToken)
             {
+                //await _userManager.CreateAsync(new User { UserName = "test-doctor", Email = "testdoctor@gmail.com" });
+                //await _userManager.CreateAsync(new User { UserName = "test-patient", Email = "testpatient@gmail.com" });
                 var department = await _context.Departments.Where(d => d.Id == request.Id).Select(dep => new DepartmentDto
                 {
                     Id = dep.Id,

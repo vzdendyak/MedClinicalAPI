@@ -1,4 +1,6 @@
 ﻿using MedClinical.API.Features.Commands.RecordCRUD.CreateRecord;
+using MedClinical.API.Features.Queries.RecordCRUD.GetDoctorRecord;
+using MedClinical.API.Features.Queries.RecordCRUD.GetPatientRecord;
 using MedClinicalAPI.Data.Models;
 using MediatR;
 using Microsoft.AspNetCore.Cors;
@@ -7,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MedClinical.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/records")]
     [ApiController]
     public class RecordController : ControllerBase
     {
@@ -26,12 +28,20 @@ namespace MedClinical.API.Controllers
             return Ok(res);
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> GetAsync()
-        //{
-        //    var getQuery = new GetAllDepartments.Query();
-        //    var res = await _mediator.Send(getQuery);
-        //    return Ok(res);
-        //}
+        [HttpGet("doctor")]
+        public async Task<IActionResult> GetByDoctorAsync(string id)
+        {
+            var getQuery = new GetDoctorRecords.Query(id);
+            var res = await _mediator.Send(getQuery);
+            return Ok(res);
+        }
+
+        [HttpGet("patient")]
+        public async Task<IActionResult> GetByPatientAsync(string id)
+        {
+            var getQuery = new GetPatientRecords.Query(id);
+            var res = await _mediator.Send(getQuery);
+            return Ok(res);
+        }
     }
 }
