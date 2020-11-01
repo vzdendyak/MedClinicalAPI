@@ -30,7 +30,8 @@ import {RegistrationComponent} from './account/registration/registration.compone
       [
         {path: 'account/login', component: LoginComponent},
         {path: 'account/registration', component: RegistrationComponent},
-        {path: 'department', component: DepartmentComponent}
+        {path: 'department', component: DepartmentComponent},
+        {path: '',  component: DepartmentComponent}
       ]),
     FormsModule,
     ReactiveFormsModule,
