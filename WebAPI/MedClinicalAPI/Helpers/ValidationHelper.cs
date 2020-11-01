@@ -14,5 +14,12 @@ namespace MedClinicalAPI.Helpers
             if (isDepartment)
                 throw new BadRequestException("Department with the same name is exist at this address.");
         }
+
+        internal static void IsRecordExist(Record record, AppDbContext context)
+        {
+            var isRecord = context.Records.Any(rec => rec.DateOfMeeting == record.DateOfMeeting && rec.PatientId == record.PatientId && rec.DoctorId == record.DoctorId);
+            if (isRecord)
+                throw new BadRequestException($"Record for this patient and this doctor scheduled for {record.DateOfMeeting.ToString("g")} is exist.");
+        }
     }
 }
