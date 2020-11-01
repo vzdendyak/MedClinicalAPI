@@ -1,0 +1,178 @@
+html, body {
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  z-index: 50;
+  background: linear-gradient(102deg, rgb(43 108 60 / 87%) 0%, rgba(8, 173, 138, 0.9928019662921348) 100%);
+
+}
+.footer-menu{
+  margin: 0 auto;
+}
+.footer:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  //background-color: #3f424d;
+  z-index: 2;
+}
+.footer-body {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  height: 90px;
+  align-items: center;
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0px auto;
+  padding: 0px 10px;
+
+}
+
+
+.menu-points-list {
+  display: flex;
+  position: relative;
+  z-index: 2;
+  margin: 0;
+}
+
+.menu-points-list li {
+  padding: 0 25px;
+
+}
+
+.footer-link {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  color: #fff;
+
+  &:hover {
+    color: #ffbc00;
+  }
+}
+
+.logo-text {
+  //font-size: 40px;
+  //color: #dd7272;
+  max-width: 100%;
+  z-index: 3;
+  flex: 0 0 200px;
+  //font-family: 'Kaushan Script', cursive;
+  overflow: hidden
+}
+
+.logo-text img {
+  width: 100%;
+  border-radius: 8%;
+}
+
+.content {
+  padding: 100px 0 0 0;
+}
+
+.content-text {
+  //font-size: 18px;
+  //line-height: 25px;
+}
+
+.content-text p {
+  margin: 0 0 20px 0;
+}
+
+@media (max-width: 910px) {
+  .menu-points-list li {
+    padding: 0 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-body {
+    height: 50px;
+  }
+  .logo-text {
+    font-size: 30px;
+  }
+
+  .footer-menu {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    overflow: auto;
+    height: 100%;
+    //background-color: #3f424df2;
+    background: linear-gradient(238deg, #44818f -20%, #3f424d 70%);
+    backdrop-filter: blur(3px);
+    padding: 70px 10px 20px 10px;
+    transition: all 0.2s ease 0s;
+
+  }
+  .menu-points-list {
+    display: block;
+    text-align: center;
+    height: 90%;
+
+  }
+  .menu-points-list li {
+    margin: 20px auto;
+    padding: 15px 5px;
+
+    .footer-link:hover {
+      color: #ffd100;
+    }
+  }
+  .footer-link {
+    font-size: 23px;
+  }
+  .footer-menu.active {
+    top: 0;
+  }
+  .content {
+    padding: 65px 0 0 0;
+
+  }
+
+  .search-form {
+    left: 0;
+    margin-right: 50px;
+  }
+}
+
+// for js
+
+
+@media (max-width: 320px) {
+  .logo-text img {
+    width: 80%;
+  }
+  .logo-text {
+    width: 70%;
+    flex: auto;
+  }
+  .input-form {
+    height: 30px;
+    width: 120px;
+    font-size: 10px;
+  }
+  .button-icon {
+    height: 30px;
+  }
+}
+html{
+  background-color: black;
+}
+#copyright-text{
+  text-align: center;
+color: white;
+  font-size: 16px;
+}
