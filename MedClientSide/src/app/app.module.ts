@@ -13,13 +13,15 @@ import { FooterComponent } from './navigation/footer/footer.component';
 import { LoginComponent } from './account/login/login.component';
 import {LoginModule} from './account/login.module';
 import {RegistrationComponent} from './account/registration/registration.component';
+import { MainPageComponent } from './department/main-page/main-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    DepartmentComponent
+    DepartmentComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,
@@ -31,8 +33,8 @@ import {RegistrationComponent} from './account/registration/registration.compone
         {path: 'account/login', component: LoginComponent},
         {path: 'account/registration', component: RegistrationComponent},
         {path: 'department', component: DepartmentComponent},
-        {path: '',  component: DepartmentComponent}
-      ]),
+        {path: 'main',  component: MainPageComponent}
+        ]),
     FormsModule,
     ReactiveFormsModule,
     MaterialModule
