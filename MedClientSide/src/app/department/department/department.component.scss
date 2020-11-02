@@ -7,7 +7,7 @@ body {
 div {
   box-sizing: border-box;
 
-  width: 100%;
+
   padding-right: 0;
   padding-left: 0;
 }
@@ -18,17 +18,20 @@ div {
   border: 10px;
   margin: 0 auto;
 }
-.gastroenterology{
- // margin-bottom: 100px;
+
+.gastroenterology {
+  // margin-bottom: 100px;
   margin-top: 200px;
 }
+
 .services {
   margin-top: 50px;
   display: flex;
   flex-flow: column nowrap;
-  align-items:flex-end;
+  align-items: flex-end;
   margin-top: -462.5px;
 }
+
 .services__item h3 {
   font-size: 20px;
   text-align: center;
@@ -46,11 +49,9 @@ div {
 }
 
 #services {
-
-
-//padding-left: 1000px;
-  padding-bottom: 120px;
-  padding-top: 115px;
+  //padding-left: 1000px;
+  padding-bottom: 220px;
+  // padding-top: 115px;
 }
 
 .services__item {
@@ -64,21 +65,24 @@ div {
 .bggreen {
   background: #006400;
 }
+
 .bgred {
   background: #FFA500;
 }
+
 hr {
   border: none;
   color: white; /* Цвет линии для остальных браузеров */
   background-color: white;
   height: 2px; /* Толщина линии */
 }
+
 .button {
   background: #82B1FF;
   color: #484543;
   border-radius: 3px;
   display: block;
-  width: 240px;
+  width: 200px;
   padding: 20px 0;
   margin: 0 auto;
   text-decoration: none;
@@ -94,19 +98,20 @@ h2 {
   font-size: 30px;
   font-weight: normal;
   text-align: Left;
-
   margin-top: -180px;
 }
-strong{
+
+strong {
   font-weight: 700;
 
 }
-.text{
+
+.text {
   font-size: 16px;
 }
 
-.sp-page-title {
-  margin-bottom: 50px;
+#sp-page-title {
+  margin-top: 80px;
   padding: 60px;
   background-position: center;
   background-repeat: no-repeat;
@@ -115,10 +120,97 @@ strong{
   padding-left: 0;
 
 }
-li{
+
+li {
   padding-left: 5px;
 }
 
-h4{
+h4 {
+  font-family: Lato, sans-serif;
+  font-weight: 700;
   font-size: 24px;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  padding: .75rem 1rem;
+  margin-bottom: 1rem;
+  list-style: none;
+  background-color: #e9ecef;
+  border-radius: .25rem;
+}
+
+.title h4 {
+  margin-top: 75px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 30px;
+  margin-bottom: -100px;
+}
+
+
+h5{
+  margin-top: 75px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 30px;
+  margin-bottom: 40px;
+}
+
+//
+//  .sppb-divider-border {
+//    margin-top: 30px;
+//    margin-bottom: 30px;
+//    border-bottom-width: 1px;
+//    border-bottom-style: solid;
+//    border-bottom-color: #567b24;
+//
+//}
+//.sppb-addon-accordion {
+//  margin-bottom: 10px;
+//  border: 1px solid #ddd;
+//}
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.sppb-toggle-direction {
+  color: #ccc;
+
+}
+.sppb-panel{
+
+  justify-content: center;
+  //align-items:center;
+  //display: flex;
+  margin-left: 300px;
+  margin-right: 300px;
+  border-width: 1px;
+  border-color: rgba(228, 228, 228, 1);
+  border-style: solid;
+  background: #f9f9f9;
+  color: #3f424d;
+  padding: 10px 30px 10px 15px;
+  cursor: pointer;
+  position: relative;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: normal;
+
+ }
+
+.sppb-toggle-direction {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  -webkit-transform: translateY(-50%) rotate(0);
+  transform: translateY(-50%) rotate(0);
+  -webkit-transition: transform .3s;
+  transition: transform .3s;
 }
