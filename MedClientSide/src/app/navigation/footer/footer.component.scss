@@ -2,12 +2,10 @@ html, body {
 }
 
 .footer {
-  position: fixed;
   bottom: 0;
   width: 100%;
   left: 0;
   z-index: 50;
-  background: linear-gradient(102deg, rgb(43 108 60 / 87%) 0%, rgba(8, 173, 138, 0.9928019662921348) 100%);
 
 }
 .footer-menu{
@@ -16,11 +14,12 @@ html, body {
 .footer:before {
   content: "";
   position: absolute;
-  bottom: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  //background-color: #3f424d;
+  height: 120px;
+  background-color: #ccefff;
+  border-top: solid 5px;
+  border-color: #a5c4d2;
   z-index: 2;
 }
 .footer-body {
@@ -54,7 +53,7 @@ html, body {
 .footer-link {
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
-  color: #fff;
+  color: black;
 
   &:hover {
     color: #ffbc00;

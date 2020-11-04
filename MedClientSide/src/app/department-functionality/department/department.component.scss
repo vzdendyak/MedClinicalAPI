@@ -50,20 +50,21 @@ div {
 
 #services {
   //padding-left: 1000px;
-  padding-bottom: 220px;
+  padding-bottom: 100px;
   // padding-top: 115px;
 }
 
 .services__item {
   margin-top: 20px;
   width: 270px;
+  border-radius: 20px;
   float: left;
   text-align: left;
   padding: 20px;
 }
 
 .bggreen {
-  background: #006400;
+  background-color: #00640099;
 }
 
 .bgred {
@@ -78,8 +79,8 @@ hr {
 }
 
 .button {
-  background: #82B1FF;
-  color: #484543;
+  background-color: #517b51;
+  color: white;
   border-radius: 3px;
   display: block;
   width: 200px;
@@ -91,6 +92,9 @@ hr {
   font-weight: bold;
   font-size: 18px;
   margin-top: 50px;
+  &:hover{
+    background-color: #79c179;
+    transition-duration: 0.5s;  }
 }
 
 h2 {
@@ -112,13 +116,13 @@ strong {
 
 #sp-page-title {
   margin-top: 80px;
-  padding: 60px;
+  padding: 30px;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #82B1FF;
+  background-color: #00640099;
   padding-right: 0;
   padding-left: 0;
-
+  border-radius: 3px;
 }
 
 li {

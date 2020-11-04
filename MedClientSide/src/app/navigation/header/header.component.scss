@@ -17,9 +17,10 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
-  //background-color: #3f424d;
   z-index: 2;
-  background: linear-gradient(102deg, rgb(43 108 60 / 87%) 0%, rgba(8, 173, 138, 0.9928019662921348) 100%);
+  border-bottom: solid 5px;
+  background-color: #ccefff;
+  border-color: #a5c4d2;
 }
 .header-body {
   position: relative;
@@ -52,7 +53,7 @@ html, body {
 .header-link {
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
-  color: #fff;
+  color: black;
 
   &:hover {
     color: #ffbc00;

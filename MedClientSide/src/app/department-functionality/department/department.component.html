@@ -2,28 +2,28 @@
 <app-header></app-header>
 
 
-<section id="sp-page-title">
+<section id="sp-page-title" *ngIf="this.department">
   <div class="row">
     <div id="sp-title" class="col-sm-12 col-md-12">
       <div class="sp-column ">
         <div class="sp-page-title">
-        <div class="container">
-        <div class="col-md-6 col-sm-6 col-xs-12 pull-left">
-          <h4>Гастроентерологія</h4>
+          <div class="container">
+            <div class="col-md-6 col-sm-6 col-xs-12 pull-left">
+              <h4>{{this.department.departmentName}}</h4>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12 pull-right text-right path">
+              <ol class="breadcrumb">
+                <span>Ви тут:&nbsp;</span>
+                <li>
+                  <a href="/main" class="pathway">Головна </a>
+                </li>
+                <li class="active">
+                  / {{this.department.departmentName}}
+                </li>
+              </ol>
+            </div>
+          </div>
         </div>
-        <div class="col-md-6 col-sm-6 col-xs-12 pull-right text-right path">
-        <ol class="breadcrumb">
-          <span>Ви тут:&nbsp;</span>
-          <li>
-            <a href="/main" class="pathway">Головна </a>
-          </li>
-          <li class="active">
-            / Гастроентерологія
-          </li>
-        </ol>
-      </div>
-      </div>
-      </div>
       </div>
 
     </div>
@@ -31,10 +31,10 @@
 </section>
 
 
-<section id="services">
+<section id="services" *ngIf="this.department">
   <div class="container">
     <div class="title">
-      <h4>ГАСТРОЕНТЕРОЛОГІЯ</h4>
+      <h4>{{this.department.departmentName}}</h4>
     </div>
     <img src="../../../assets/gastroenterology.jpg" alt="gastroenterology.jpg" class="gastroenterology">
     <div class="services">
@@ -69,10 +69,10 @@
         <a class="button" href="#">Зв'яжіться з нами</a>
       </div>
     </div>
-    <h2>Гастроентерологія в Івано-Франківську</h2>
+    <h2>{{this.department.departmentName}} в Івано-Франківську</h2>
     <div class="text">
       <p>
-        <strong>Гастроентерологія</strong>
+        <strong>{{this.department.departmentName}}</strong>
         – розділ медицини, який вивчає будову, функціонування, захворювання органів<br>шлункового-кишкового тракту.
       </p>
       <p>
@@ -104,13 +104,13 @@
       <p>
         - підшлункової залози.
       </p>
-      <h4>КОЛИ ВАРТО ЗВЕРНУТИСЯ ДО<br> ГАСТРОЕНТЕРОЛОГА</h4>
+      <h4>КОЛИ ВАРТО ЗВЕРНУТИСЯ ДО<br> ЛІКАРЯ</h4>
       <p>
         Якщо ви відчуваєте нудоту, наявне блювання, є відчуття важкості, здуття, гіркота в роті, порушення стільця<br>
         (закрепи, проноси), то вам неодмінно потрібна консультація спеціаліста.
       </p>
       <p>
-        При таких симптомах як блювота кров’ю, чорний кал, жовтушність склер та шкіри,  вам негайно варто<br>
+        При таких симптомах як блювота кров’ю, чорний кал, жовтушність склер та шкіри, вам негайно варто<br>
         звернутися за допомогою.
       </p>
       <p>
@@ -128,7 +128,7 @@
       </p>
       <p>
         - Лабораторні обстеження: загальний аналіз крові, печінкові проби (робота печінки та жовчевивідних<br>
-        шляхів), альфа-амілаза (визначення роботи підшлункової  залози), кал на приховану кров, копрограма<br>
+        шляхів), альфа-амілаза (визначення роботи підшлункової залози), кал на приховану кров, копрограма<br>
         (визначення ходу процесу травлення), зробити СІTO TEST на визначення антигену до Хелікобактер Пілорі.
       </p>
       <p>
@@ -136,10 +136,10 @@
         методи обстеження. Довіряйте своє здоров’я найкращим!
       </p>
 
-<!--      <div class="sppb-addon-divider ">-->
-<!--        <div class="sppb-divider sppb-divider-border ">-->
-<!--      </div>-->
-<!--      </div>-->
+      <!--      <div class="sppb-addon-divider ">-->
+      <!--        <div class="sppb-divider sppb-divider-border ">-->
+      <!--      </div>-->
+      <!--      </div>-->
 
       <h5>
         Ціни на послуги гастроентерології
