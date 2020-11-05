@@ -2,12 +2,14 @@
 using MedClinicalAPI.Features.Commands.DepartmentCRUD.CreateDepartment;
 using MedClinicalAPI.Features.Queries.DepartmentCRUD;
 using MediatR;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 
 namespace MedClinicalAPI.Controllers
 {
+    [EnableCors]
     [Route("api/departments")]
     [ApiController]
     public class DepartmentController : ControllerBase
