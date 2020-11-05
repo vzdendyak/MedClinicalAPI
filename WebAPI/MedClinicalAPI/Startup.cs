@@ -33,6 +33,8 @@ namespace MedClinicalAPI
                 connectionString = Configuration.GetConnectionString("IgorLocalDb");
             else if (mName == "DESKTOP-V1GMI6E")
                 connectionString = Configuration.GetConnectionString("VasylLocalDb");
+            else if (mName == "DESKTOP-QFMO96R")
+                connectionString = Configuration.GetConnectionString("MishaLocalDb");
 
             services.AddEntityFrameworkSqlServer().AddDbContext<AppDbContext>(options =>
             {
