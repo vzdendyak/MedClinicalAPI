@@ -9,18 +9,21 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from './material/material.module';
 import {HeaderComponent} from './navigation/header/header.component';
 import {FooterComponent} from './navigation/footer/footer.component';
-import {LoginComponent} from './account/login/login.component';
-import {LoginModule} from './account/login.module';
-import {RegistrationComponent} from './account/registration/registration.component';
+
 import {MainPageComponent} from './main-page/main-page.component';
 import {DepartmentComponent} from './department-functionality/department/department.component';
 import {DepartmentsListComponent} from './department-functionality/departments-list/departments-list.component';
 import {DepartmentModule} from './department-functionality/department.module';
+import { CabinetComponent } from './account/cabinet/cabinet.component';
+import {LoginModule} from './auth/login.module';
+import {LoginComponent} from './auth/login/login.component';
+import {RegistrationComponent} from './auth/registration/registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent
+    MainPageComponent,
+    CabinetComponent
   ],
   imports: [
     BrowserModule,
@@ -29,8 +32,9 @@ import {DepartmentModule} from './department-functionality/department.module';
     LoginModule,
     RouterModule.forRoot(
       [
-        {path: 'account/login', component: LoginComponent},
-        {path: 'account/registration', component: RegistrationComponent},
+        {path: 'auth/login', component: LoginComponent},
+        {path: 'auth/registration', component: RegistrationComponent},
+        {path: 'account/cabinet', component: CabinetComponent},
         {path: 'departments', component: DepartmentsListComponent},
         {path: 'department/:id', component: DepartmentComponent},
         {path: 'main', component: MainPageComponent},
