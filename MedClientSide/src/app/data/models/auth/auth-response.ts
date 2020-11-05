@@ -3,4 +3,6 @@ export class AuthResponse {
   refreshToken: string;
   success: boolean;
   errorMessages: string[];
+  username: string;
+  userId: string;
 }

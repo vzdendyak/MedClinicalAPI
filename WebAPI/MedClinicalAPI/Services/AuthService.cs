@@ -38,7 +38,7 @@ namespace MedClinical.API.Services
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                     new Claim(JwtRegisteredClaimNames.Email, user.Email),
                     new Claim("id", user.Id),
-                    new Claim("expires in", expiryDate.Subtract(DateTime.UtcNow).TotalSeconds.ToString())
+                    new Claim("expires", expiryDate.Subtract(DateTime.UtcNow).TotalSeconds.ToString())
                  }),
                 Expires = expiryDate,
                 SigningCredentials = credentials,

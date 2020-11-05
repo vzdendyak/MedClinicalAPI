@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {Router} from '@angular/router';
+import {AuthService} from '../../auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -9,12 +10,15 @@ import {Router} from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   burgerActive: boolean;
+  isUserAuthenticated = false;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
     this.burgerActive = false;
+    this.isUserAuthenticated = this.authService.isUserAuthenticated();
   }
 
   ngOnInit(): void {
+
   }
 
 
@@ -26,5 +30,10 @@ export class HeaderComponent implements OnInit {
     const arra = ['a', 'b', 'c'];
     let isA = arra.some(value => value.includes('a'));
 
+  }
+
+  logOut() {
+    this.authService.logOut();
+    this.router.navigateByUrl('/');
   }
 }
