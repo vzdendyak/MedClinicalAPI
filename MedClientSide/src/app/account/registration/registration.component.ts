@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LoginRequest} from '../../data/models/login-request';
 import {RegistrationRequest} from '../../data/models/registration-request';
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-registration',
@@ -12,7 +13,7 @@ export class RegistrationComponent implements OnInit {
 
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
   }
   //
   // get emailGet(): any {
@@ -40,8 +41,12 @@ export class RegistrationComponent implements OnInit {
     const model: RegistrationRequest = {
       email: this.registerForm.get('email').value,
       password: this.registerForm.get('password').value,
-      name: this.registerForm.get('username').value,
+      username: this.registerForm.get('username').value,
       confirmedPassword: this.registerForm.get('confirmedPassword').value
-    };  }
+    };
+    this.authService.register(model).subscribe(value => {
+      console.log(value);
+    });
+  }
 
 }

@@ -149,6 +149,10 @@ namespace MedClinicalAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            if (env.IsDevelopment())
+            {
+                app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowCredentials().AllowAnyMethod().AllowAnyHeader());
+            }
             app.UseMiddleware<ErrorHandlingMiddleware>();
 
             app.UseMiddleware<AuthMiddleware>();
