@@ -3,9 +3,9 @@ import {Environment} from '@angular/compiler-cli/src/ngtsc/typecheck/src/environ
 import {environment} from '../../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {LoginRequest} from '../../data/models/login-request';
 import {AuthResponse} from '../../data/models/auth/auth-response';
-import {RegistrationRequest} from '../../data/models/registration-request';
+import {RegistrationRequest} from '../../data/models/auth/registration-request';
+import {LoginRequest} from '../../data/models/auth/login-request';
 
 @Injectable({
   providedIn: 'root'

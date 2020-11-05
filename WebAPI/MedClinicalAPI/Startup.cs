@@ -41,6 +41,8 @@ namespace MedClinicalAPI
                 connectionString = Configuration.GetConnectionString("IgorLocalDb");
             else if (mName == "DESKTOP-V1GMI6E")
                 connectionString = Configuration.GetConnectionString("VasylLocalDb");
+            else if (mName == "DESKTOP-QFMO96R")
+                connectionString = Configuration.GetConnectionString("MishaLocalDb");
 
             services.AddEntityFrameworkSqlServer().AddDbContext<AppDbContext>(options =>
             {
@@ -58,6 +60,11 @@ namespace MedClinicalAPI
                 };
                 set.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<AppDbContext>();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigin", builder => builder.AllowAnyOrigin());
+            });
+            services.AddControllers();
 
             var tokenParameters = new TokenValidationParameters
             {
@@ -147,12 +154,12 @@ namespace MedClinicalAPI
                 Secure = CookieSecurePolicy.Always
             });
             app.UseHttpsRedirection();
-
             app.UseRouting();
             if (env.IsDevelopment())
             {
                 app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowCredentials().AllowAnyMethod().AllowAnyHeader());
             }
+
             app.UseMiddleware<ErrorHandlingMiddleware>();
 
             app.UseMiddleware<AuthMiddleware>();

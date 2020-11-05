@@ -4,10 +4,12 @@ using MedClinicalAPI.Data.Models;
 using MedClinicalAPI.Features.Queries.ServiceCRUD.GetAllServices;
 using MedClinicalAPI.Features.Queries.ServiceCRUD.GetServicesById;
 using MediatR;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedClinicalAPI.Controllers
 {
+    [EnableCors]
     [Route("api/services")]
     [ApiController]
     public class ServiceController : ControllerBase
