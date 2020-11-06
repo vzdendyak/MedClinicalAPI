@@ -27,5 +27,12 @@ namespace MedClinicalAPI.Helpers
             if (isService)
                 throw new BadRequestException("Service with the same name and same price is exist.");
         }
+
+        public static void IsAddressExist(Address address, AppDbContext _context)
+        {
+            var isAddress = _context.Addresses.Any(d => d.City == address.City && d.Region == address.Region && d.Street == address.Street && d.HouseNumber == address.HouseNumber);
+            if (isAddress)
+                throw new BadRequestException("This address already exists.");
+        }
     }
 }
