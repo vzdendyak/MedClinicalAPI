@@ -1,4 +1,3 @@
-
 body {
   padding: 0;
   margin: 0;
@@ -7,13 +6,11 @@ body {
 div {
   box-sizing: border-box;
 
-
   padding-right: 0;
   padding-left: 0;
 }
 
 .container {
-
   width: 1200px;
   border: 10px;
   margin: 0 auto;
@@ -64,7 +61,7 @@ div {
 }
 
 .bggreen {
-  background-color: #00640099;
+  background-color: #191970;
 }
 
 .bgred {
@@ -79,7 +76,7 @@ hr {
 }
 
 .button {
-  background-color: #517b51;
+  background-color: #800080;
   color: white;
   border-radius: 3px;
   display: block;
@@ -107,7 +104,6 @@ h2 {
 
 strong {
   font-weight: 700;
-
 }
 
 .text {
@@ -146,13 +142,12 @@ h4 {
 }
 
 .title h4 {
-  margin-top: 75px;
+  margin-top: 50px;
   text-align: center;
   font-weight: 700;
   font-size: 30px;
-  margin-bottom: -100px;
+  margin-bottom: -150px;
 }
-
 
 h5{
   margin-top: 75px;
@@ -186,10 +181,8 @@ h5{
 }
 .sppb-toggle-direction {
   color: #ccc;
-
 }
 .sppb-panel{
-
   justify-content: center;
   //align-items:center;
   //display: flex;
@@ -206,7 +199,6 @@ h5{
   font-size: 16px;
   font-weight: normal;
   line-height: normal;
-
  }
 
 .sppb-toggle-direction {

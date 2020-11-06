@@ -22,7 +22,6 @@ import {JwtModule} from '@auth0/angular-jwt';
 import {AuthGuard} from './common/guards/auth-guard';
 import {AuthInterceptor} from './auth/auth-interceptor';
 
-
 export function tokenGetter() {
   return localStorage.getItem('jwt');
 }
