@@ -11,7 +11,7 @@
       <nav class="header-menu" [ngClass]="{'active': burgerActive}">
         <ul class="menu-points-list">
           <li>
-            <a class="header-link">Головна</a>
+            <a [routerLink]="['/main']" class="header-link">Головна</a>
           </li>
           <li>
             <a [routerLink]="['/department/1']" class="header-link">Відділ тест</a>
@@ -27,6 +27,15 @@
           </li>
           <li>
             <a href="#" class="header-link">Про нас</a>
+          </li>
+          <li *ngIf="!isUserAuthenticated">
+            <a [routerLink]="['/auth/login']" class="header-link">Вхід</a>
+          </li>
+          <li *ngIf="!isUserAuthenticated">
+            <a [routerLink]="['/auth/registration']" class="header-link">Реєстрація</a>
+          </li>
+          <li *ngIf="isUserAuthenticated">
+            <button (click)="logOut()" class="header-link">Вихід</button>
           </li>
         </ul>
       </nav>

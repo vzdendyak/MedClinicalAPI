@@ -1,17 +1,25 @@
+using MedClinical.API.Middlewares;
+using MedClinical.API.Services;
+using MedClinical.API.Services.Interfaces;
 using MedClinicalAPI.Data;
 using MedClinicalAPI.Data.Models;
 using MedClinicalAPI.Middlewares;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace MedClinicalAPI
 {
@@ -58,8 +66,38 @@ namespace MedClinicalAPI
             });
             services.AddControllers();
 
+            var tokenParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = Configuration["JwtIssuer"],
+                ValidAudience = Configuration["JwtAudience"],
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration["JwtKey"])),
+                ClockSkew = TimeSpan.Zero
+            };
+
+            services.AddAuthentication(opt =>
+            {
+                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultSignInScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.SaveToken = true;
+                options.TokenValidationParameters = tokenParameters;
+                options.RequireHttpsMetadata = true;
+            });
+            services.AddSingleton(tokenParameters);
+
+            services.AddControllers();
             var assembly = typeof(Startup).Assembly;
             services.AddMediatR(assembly);
+            services.AddScoped<IAuthService, AuthService>();
+
             services.AddMvcCore().AddApiExplorer();
             services.AddSwaggerGen(options =>
             {
@@ -68,6 +106,31 @@ namespace MedClinicalAPI
                 {
                      {"Bearer", new string[0] }
                 };
+                options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "JWT Authorization header using the bearer scheme",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+                options.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                {
+                     {
+                         new OpenApiSecurityScheme
+                         {
+                             Reference = new OpenApiReference
+                             {
+                                 Type = ReferenceType.SecurityScheme,
+                                 Id = "Bearer"
+                             },
+                             Scheme = "oauth2",
+                             Name = "Bearer",
+                             In = ParameterLocation.Header,
+                         },
+                         new List<string>()
+                     }
+                });
                 options.CustomSchemaIds(f => f.FullName);
             });
         }
@@ -84,7 +147,12 @@ namespace MedClinicalAPI
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseCookiePolicy(new CookiePolicyOptions
+            {
+                MinimumSameSitePolicy = SameSiteMode.None,
+                HttpOnly = HttpOnlyPolicy.Always,
+                Secure = CookieSecurePolicy.Always
+            });
             app.UseHttpsRedirection();
             app.UseRouting();
             if (env.IsDevelopment())
@@ -93,6 +161,9 @@ namespace MedClinicalAPI
             }
 
             app.UseMiddleware<ErrorHandlingMiddleware>();
+
+            app.UseMiddleware<AuthMiddleware>();
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

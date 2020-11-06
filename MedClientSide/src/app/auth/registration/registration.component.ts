@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../auth.service';
 import {RegistrationRequest} from '../../data/models/auth/registration-request';
-
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -12,8 +13,9 @@ export class RegistrationComponent implements OnInit {
 
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
   }
+
   //
   // get emailGet(): any {
   //   return this.loginForm.get('email');
@@ -24,6 +26,7 @@ export class RegistrationComponent implements OnInit {
   // }
 
   ngOnInit(): void {
+    this.authService.clearStorage();
     this.initForm();
   }
 
@@ -40,8 +43,14 @@ export class RegistrationComponent implements OnInit {
     const model: RegistrationRequest = {
       email: this.registerForm.get('email').value,
       password: this.registerForm.get('password').value,
-      name: this.registerForm.get('username').value,
+      username: this.registerForm.get('username').value,
       confirmedPassword: this.registerForm.get('confirmedPassword').value
-    };  }
+    };
+    this.authService.register(model).subscribe(value => {
+      this.router.navigateByUrl('/auth/login');
+    }, error => {
+      console.log(error);
+    });
+  }
 
 }
