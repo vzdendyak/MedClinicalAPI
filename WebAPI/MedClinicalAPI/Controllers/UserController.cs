@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MedClinical.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/user")]
     [ApiController]
     public class UserController : ControllerBase
     {
