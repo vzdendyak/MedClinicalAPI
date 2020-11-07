@@ -32,8 +32,8 @@ export class RegistrationComponent implements OnInit {
   private initForm(): void {
     this.registerForm = this.fb.group({
       username: ['', [Validators.required, Validators.pattern('^(?!\\s*$).+')]],
-      firstname: ['', [Validators.required, Validators.pattern('^(?!\\s*$).+')]],
-      lastname: ['', [Validators.required, Validators.pattern('^(?!\\s*$).+')]],
+      firstName: ['', [Validators.required, Validators.pattern('^(?!\\s*$).+')]],
+      lastName: ['', [Validators.required, Validators.pattern('^(?!\\s*$).+')]],
       age: ['', [Validators.required, Validators.pattern('^\\S[0-9]{0,3}$')]],
       email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
       password: ['', [Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$')]],
@@ -46,8 +46,8 @@ export class RegistrationComponent implements OnInit {
       email: this.registerForm.get('email').value,
       password: this.registerForm.get('password').value,
       username: this.registerForm.get('username').value,
-      firstname: this.registerForm.get('firstname').value,
-      lastname: this.registerForm.get('lastname').value,
+      firstName: this.registerForm.get('firstName').value,
+      lastName: this.registerForm.get('lastName').value,
       age: this.registerForm.get('age').value,
       confirmedPassword: this.registerForm.get('confirmedPassword').value
     };
