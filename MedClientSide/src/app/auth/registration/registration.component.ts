@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../auth.service';
-import {RegistrationRequest} from '../../data/models/auth/registration-request';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { RegistrationRequest } from '../../data/models/auth/registration-request';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -10,7 +10,6 @@ import {Router} from '@angular/router';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-
   registerForm: FormGroup;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
@@ -33,6 +32,9 @@ export class RegistrationComponent implements OnInit {
   private initForm(): void {
     this.registerForm = this.fb.group({
       username: ['', [Validators.required, Validators.pattern('^(?!\\s*$).+')]],
+      firtname: ['', [Validators.required, Validators.pattern('^(?!\\s*$).+')]],
+      lastname: ['', [Validators.required, Validators.pattern('^(?!\\s*$).+')]],
+      age: ['', [Validators.required, Validators.pattern('^\\S[0-9]{0,3}$')]],
       email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
       password: ['', [Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$')]],
       confirmedPassword: ['', [Validators.required]]
@@ -44,6 +46,9 @@ export class RegistrationComponent implements OnInit {
       email: this.registerForm.get('email').value,
       password: this.registerForm.get('password').value,
       username: this.registerForm.get('username').value,
+      firtname: this.registerForm.get('firtname').value,
+      lastname: this.registerForm.get('lastname').value,
+      age: this.registerForm.get('age').value,
       confirmedPassword: this.registerForm.get('confirmedPassword').value
     };
     this.authService.register(model).subscribe(value => {
@@ -52,5 +57,4 @@ export class RegistrationComponent implements OnInit {
       console.log(error);
     });
   }
-
 }
