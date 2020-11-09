@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {DepartmentService} from '../services/department.service';
 import {Department} from '../../data/models/department';
+import {MatDialog} from '@angular/material/dialog';
+import {AddRecordFormComponent} from '../forms/add-record-form/add-record-form.component';
 
 @Component({
   selector: 'app-department',
@@ -13,7 +15,9 @@ export class DepartmentComponent implements OnInit {
   departmentId: number;
   department: Department;
 
-  constructor(private route: ActivatedRoute, private departmentService: DepartmentService) {
+  constructor(private route: ActivatedRoute, private departmentService: DepartmentService,
+              public dialog: MatDialog
+  ) {
   }
 
   ngOnInit() {
@@ -28,6 +32,17 @@ export class DepartmentComponent implements OnInit {
       }
     });
 
+  }
+
+  addRecordDialogOpen(): void {
+    let dialogRef;
+    dialogRef = this.dialog.open(AddRecordFormComponent, {
+      width: '450px',
+      data: {   doctors: this.department.doctors}
+    });
+    dialogRef.afterClosed().subscribe((value) => {
+      console.log('dialog closed');
+    });
   }
 
 }
