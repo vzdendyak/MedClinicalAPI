@@ -35,6 +35,7 @@
   <div class="container">
     <div class="title">
       <h4>{{this.department.departmentName}}</h4>
+
     </div>
     <img src="../../../assets/gastroenterology.jpg" alt="gastroenterology.jpg" class="gastroenterology">
     <div class="services">
@@ -70,6 +71,8 @@
       </div>
     </div>
     <h2>{{this.department.departmentName}} в Івано-Франківську</h2>
+    <button type="button" class="btn btn-primary" (click)="addRecordDialogOpen()">Запис</button>
+
     <div class="text">
       <p>
         <strong>{{this.department.departmentName}}</strong>
@@ -140,7 +143,6 @@
       <!--        <div class="sppb-divider sppb-divider-border ">-->
       <!--      </div>-->
       <!--      </div>-->
-
       <h5>
         Ціни на послуги гастроентерології
       </h5>

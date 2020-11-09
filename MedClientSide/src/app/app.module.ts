@@ -21,6 +21,8 @@ import {RegistrationComponent} from './auth/registration/registration.component'
 import {JwtModule} from '@auth0/angular-jwt';
 import {AuthGuard} from './common/guards/auth-guard';
 import {AuthInterceptor} from './auth/auth-interceptor';
+import {AddRecordFormComponent} from './department-functionality/forms/add-record-form/add-record-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -32,6 +34,7 @@ export function tokenGetter() {
     MainPageComponent,
     CabinetComponent
   ],
+  entryComponents: [AddRecordFormComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -58,13 +61,14 @@ export function tokenGetter() {
         whitelistedDomains: ['localhost:5000'],
         blacklistedRoutes: []
       }
-    })
+    }),
+    BrowserAnimationsModule
   ],
   providers: [AuthGuard, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
-      }],
+  }],
   exports: [],
   bootstrap: [AppComponent]
 })
