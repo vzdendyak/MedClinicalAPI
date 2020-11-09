@@ -32,18 +32,9 @@ namespace MedClinical.API.Features.Commands.AddressCRUD.CreateAddress
             public async Task<bool> Handle(Command request, CancellationToken cancellationToken)
             {
                 ValidationHelper.IsAddressExist(request.Address, _context);
-                try
-                {
-                    await _context.Addresses.AddAsync(request.Address);
-                    await _context.SaveChangesAsync();
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine(ex.Message);
-                    return false;
-                }
+                await _context.Addresses.AddAsync(request.Address);
+                await _context.SaveChangesAsync();
+                return true;
             }
         }
     }

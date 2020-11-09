@@ -34,18 +34,9 @@ namespace MedClinical.API.Features.Commands.ServiceCRUD.CreateService
             public async Task<bool> Handle(Command request, CancellationToken cancellationToken)
             {
                 ValidationHelper.IsServiceExist(request.Service, _context);
-                try
-                {
-                    await _context.Services.AddAsync(request.Service);
-                    await _context.SaveChangesAsync();
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine(ex.Message);
-                    return false;
-                }
+                await _context.Services.AddAsync(request.Service);
+                await _context.SaveChangesAsync();
+                return true;
             }
         }
     }
