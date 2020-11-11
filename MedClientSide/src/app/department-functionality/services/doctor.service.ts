@@ -14,7 +14,8 @@ export class DoctorService {
   constructor(private http: HttpClient) {
   }
 
-  getHours(id: string, date: number) {
-    return this.http.get(`${this.url}/${id}/${date}`);
+  getHours(id: string, date: number): Observable<Date[]> {
+    return this.http.get<Date[]>(`${this.url}/${id}/${date}`);
   }
+
 }

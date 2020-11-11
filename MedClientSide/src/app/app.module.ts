@@ -22,12 +22,23 @@ import {JwtModule} from '@auth0/angular-jwt';
 import {AuthGuard} from './common/guards/auth-guard';
 import {AuthInterceptor} from './auth/auth-interceptor';
 import {AddRecordFormComponent} from './department-functionality/forms/add-record-form/add-record-form.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MAT_DATE_LOCALE} from '@angular/material/core';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
 }
-
+export const MY_DATE_FORMATS = {
+  parse: {
+    dateInput: 'DD.MM.YYYY',
+  },
+  display: {
+    dateInput: 'MMM DD, YYYY',
+    monthYearLabel: 'MMMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY'
+  },
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,11 +75,16 @@ export function tokenGetter() {
     }),
     BrowserAnimationsModule
   ],
-  providers: [AuthGuard, {
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
-  }],
+  providers: [
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: MAT_DATE_LOCALE, useValue: MY_DATE_FORMATS
+    }],
   exports: [],
   bootstrap: [AppComponent]
 })

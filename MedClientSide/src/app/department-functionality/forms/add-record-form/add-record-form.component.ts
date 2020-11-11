@@ -5,6 +5,8 @@ import {User} from '../../../data/models/user';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import {DoctorService} from '../../services/doctor.service';
 import {DatePipe, formatDate} from '@angular/common';
+import {RecordService} from '../../services/record.service';
+import {Record} from '../../../data/models/record';
 
 @Component({
   selector: 'app-add-record-form',
@@ -15,14 +17,19 @@ export class AddRecordFormComponent implements OnInit {
   pageForm: FormGroup;
   doctors: User[];
   selectedDoctor: User;
+  freeHours: Date[];
+  selectedHour: Date;
+  isLoading = false;
 
   constructor(private fb: FormBuilder,
               public dialogRef: MatDialogRef<AddRecordFormComponent>,
               @Inject(MAT_DIALOG_DATA) public data: DialogData,
-              private doctorService: DoctorService) {
+              private doctorService: DoctorService,
+              private recordService: RecordService) {
     if (data.doctors) {
       this.doctors = data.doctors;
     }
+    this.freeHours = null;
   }
 
   ngOnInit(): void {
@@ -40,25 +47,40 @@ export class AddRecordFormComponent implements OnInit {
   addEvent(event: MatDatepickerInputEvent<Date>): void {
     console.log(event);
     const date = event.value;
-    const date2 = new DatePipe('en-Us').transform(event.value, 'full', 'GMT+0');
-    const epochTicks = 621355968000000000;
+    const yourTicks = 621355968000000000 + (date.getTime() * 10000);
 
-    const ticksPerMillisecond = 10000;
-
-    const yourTicks = epochTicks + (date.getTime() * ticksPerMillisecond);
+    this.freeHours = null;
+    this.isLoading = true;
     this.doctorService.getHours('365468ba-020a-4850-82cd-e4b0e703b6f5', yourTicks).subscribe(rec => {
       console.log(rec);
+      this.freeHours = rec;
+      this.isLoading = false;
     });
     console.log(date);
-    console.log(date2);
   }
 
-  close(): void {
-    this.dialogRef.close();
+  close(result: boolean): void {
+    this.dialogRef.close({success: result});
   }
 
   onSubmit(): void {
-    alert('submit');
+    const date = new Date(this.selectedHour);
+    const meetingDate = 621355968000000000 + (date.getTime() * 10000);
+    const doctorId = this.selectedDoctor.id;
+    const patientId = localStorage.getItem('uId');
+    const record: Record = {
+      id: 0,
+      doctorId: this.selectedDoctor.id,
+      patientId: localStorage.getItem('uId'),
+      dateOfMeeting: meetingDate,
+      dateOfRecord: 0
+    };
+    this.isLoading = true;
+    this.recordService.addRecord(record).subscribe(value => {
+      console.log(value);
+      this.isLoading = false;
+      this.close(true);
+    });
   }
 }
 

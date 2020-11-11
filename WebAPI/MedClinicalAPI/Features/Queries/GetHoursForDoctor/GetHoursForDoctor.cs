@@ -58,13 +58,20 @@ namespace MedClinical.API.Features.Queries.GetHoursForDoctor
                     DateOfMeeting = rec.DateOfMeeting,
                     DoctorId = rec.DoctorId,
                     PatientId = rec.PatientId
-                }).Where(rec => rec.DoctorId == doctor.Id && rec.DateOfMeeting.Date == exDate.Date).ToList();
+                }).Where(rec => rec.DoctorId == doctor.Id && rec.DateOfMeeting.Date == needDate.Date).ToList();
                 var freeHours = new List<DateTime>();
+                foreach (var item in existingRecords)
+                {
+                    Console.WriteLine(item);
+                    Console.WriteLine(item.DateOfMeeting.ToLocalTime());
+                    Console.WriteLine(item.DateOfMeeting.ToLocalTime().TimeOfDay);
+                    Console.WriteLine(item.DateOfMeeting.ToLocalTime().TimeOfDay.Hours);
+                }
                 for (int i = schedule.StartHour; i < schedule.EndHour; i++)
                 {
                     if (!existingRecords.Any(r => r.DateOfMeeting.TimeOfDay.Hours == i))
                     {
-                        freeHours.Add(new DateTime(needDate.Year, needDate.Month, needDate.Day, i, 0, 0).ToLocalTime());
+                        freeHours.Add(new DateTime(needDate.Year, needDate.Month, needDate.Day, i, 0, 0));
                     }
                 }
                 return freeHours;
