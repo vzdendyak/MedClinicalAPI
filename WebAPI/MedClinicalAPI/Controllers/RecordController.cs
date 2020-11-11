@@ -1,4 +1,5 @@
-﻿using MedClinical.API.Features.Commands.RecordCRUD.CreateRecord;
+﻿using MedClinical.API.Data.DTOs;
+using MedClinical.API.Features.Commands.RecordCRUD.CreateRecord;
 using MedClinical.API.Features.Queries.RecordCRUD.GetDoctorRecord;
 using MedClinical.API.Features.Queries.RecordCRUD.GetPatientRecord;
 using MedClinicalAPI.Data.Models;
@@ -21,7 +22,7 @@ namespace MedClinical.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAsync([FromBody] Record record)
+        public async Task<IActionResult> CreateAsync([FromBody] CreateRecordRequest record)
         {
             var createRecordCommand = new CreateRecord.Command(record);
             var res = await _mediator.Send(createRecordCommand);

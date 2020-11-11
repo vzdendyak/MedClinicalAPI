@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="department.component.scss" xmlns="http://www.w3.org/1999/html">
 <app-header></app-header>
 
+<div class="main-content" [ngClass]="{'is-blurred': isDialogOpen}">
 
 <section id="sp-page-title" *ngIf="this.department">
   <div class="row">
@@ -159,6 +160,7 @@
 
 
 </section>
+</div>
 
 
 <app-footer></app-footer>
