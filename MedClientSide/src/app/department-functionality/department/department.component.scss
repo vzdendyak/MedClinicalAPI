@@ -2,10 +2,12 @@ body {
   padding: 0;
   margin: 0;
 }
-.is-blurred{
+
+.is-blurred {
   filter: blur(5px);
   -webkit-filter: blur(5px);
 }
+
 div {
   box-sizing: border-box;
 
@@ -92,9 +94,11 @@ hr {
   font-weight: bold;
   font-size: 18px;
   margin-top: 50px;
-  &:hover{
+
+  &:hover {
     background-color: #79c179;
-    transition-duration: 0.5s;  }
+    transition-duration: 0.5s;
+  }
 }
 
 h2 {
@@ -152,12 +156,12 @@ h4 {
   margin-bottom: -150px;
 }
 
-h5{
+h5 {
   margin-top: 75px;
   text-align: center;
   font-weight: 700;
   font-size: 30px;
-  margin-bottom: 40px;
+  margin-bottom: 35px;
 }
 
 //
@@ -182,27 +186,33 @@ h5{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 .sppb-toggle-direction {
   color: #ccc;
 }
-.sppb-panel{
-  justify-content: center;
-  //align-items:center;
-  //display: flex;
-  margin-left: 300px;
-  margin-right: 300px;
+
+.sppb-panel {
+  justify-content: space-between;
+  margin: 5px auto;
+  display: flex;
   border-width: 1px;
-  border-color: rgba(228, 228, 228, 1);
+  border-color: #e4e4e4;
   border-style: solid;
-  background: #f9f9f9;
-  color: #3f424d;
-  padding: 10px 30px 10px 15px;
+  background: white;
+  color: #000000;
+  border-radius: 6px;
+  width: 300px;
   cursor: pointer;
   position: relative;
   font-size: 16px;
   font-weight: normal;
   line-height: normal;
- }
+  transition-duration: 0.5s;
+
+  &:hover {
+    background-color: #ffbdbd;
+  }
+}
 
 .sppb-toggle-direction {
   position: absolute;
@@ -212,4 +222,38 @@ h5{
   transform: translateY(-50%) rotate(0);
   -webkit-transition: transform .3s;
   transition: transform .3s;
+}
+
+.sppb-panel-price {
+  font-weight: 500;
+}
+
+.price-block {
+  width: 25%;
+  background-color: #ff090914;
+  padding: 6px 0px;
+  text-align: center;
+  border-radius: 7px;
+  border: 1px solid #dadada;
+ }
+
+.sppb-panel-title {
+  margin: auto;
+  padding: 6px 0px;
+}
+
+.services-header {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.services-block {
+  width: fit-content;
+  margin: auto;
+  border: 1px solid #cccaca;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #ccefff;
+  transition-duration: 0.5s;
 }
