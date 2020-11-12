@@ -10,7 +10,6 @@ import {Router} from '@angular/router';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-
   registerForm: FormGroup;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
@@ -52,5 +51,4 @@ export class RegistrationComponent implements OnInit {
       console.log(error);
     });
   }
-
 }

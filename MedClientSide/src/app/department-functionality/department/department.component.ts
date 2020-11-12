@@ -12,7 +12,6 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   styleUrls: ['./department.component.scss']
 })
 export class DepartmentComponent implements OnInit {
-
   departmentId: number;
   department: Department;
   isDialogOpen = false;
@@ -33,7 +32,6 @@ export class DepartmentComponent implements OnInit {
         });
       }
     });
-
   }
 
   addRecordDialogOpen(): void {
@@ -61,5 +59,4 @@ export class DepartmentComponent implements OnInit {
       }
     });
   }
-
 }

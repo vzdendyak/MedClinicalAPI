@@ -13,7 +13,6 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
-
 @NgModule({
   declarations: [
     HeaderComponent,

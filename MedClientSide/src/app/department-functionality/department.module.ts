@@ -8,7 +8,6 @@ import { AddRecordFormComponent } from './forms/add-record-form/add-record-form.
 import {MatButtonModule} from '@angular/material/button';
 import {ReactiveFormsModule} from '@angular/forms';
 
-
 @NgModule({
   declarations: [DepartmentComponent, DepartmentsListComponent, AddRecordFormComponent],
   imports: [
