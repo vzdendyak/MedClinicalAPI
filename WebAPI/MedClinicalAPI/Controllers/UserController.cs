@@ -17,7 +17,8 @@ namespace MedClinical.API.Controllers
             _userManager = userManager;
         }
 
-        public async Task<IActionResult> Update(string id)
+        [HttpGet("{id}/edit")]
+        public async Task<IActionResult> EditAsync(string id)
         {
             User user = await _userManager.FindByIdAsync(id);
             if (user == null)
@@ -38,7 +39,7 @@ namespace MedClinical.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(UserUpdateDto model)
+        public async Task<IActionResult> EditAsync(UserUpdateDto model)
         {
             if (ModelState.IsValid)
             {
@@ -69,19 +70,24 @@ namespace MedClinical.API.Controllers
             return Ok();
         }
 
-        public async Task<IActionResult> ChangePassword(string id)
+        [HttpGet("{id}/changePassword")]
+        public async Task<IActionResult> ChangePasswordAsync(string id)
         {
             User user = await _userManager.FindByIdAsync(id);
             if (user == null)
             {
                 return NotFound();
             }
-            UserChangePasswordDto model = new UserChangePasswordDto { Id = user.Id, Email = user.Email };
+            UserChangePasswordDto model = new UserChangePasswordDto
+            {
+                Id = user.Id,
+                Email = user.Email
+            };
             return Ok(model);
         }
 
         [HttpPost]
-        public async Task<IActionResult> ChangePassword(UserChangePasswordDto model)
+        public async Task<IActionResult> ChangePasswordAsync(UserChangePasswordDto model)
         {
             if (ModelState.IsValid)
             {
