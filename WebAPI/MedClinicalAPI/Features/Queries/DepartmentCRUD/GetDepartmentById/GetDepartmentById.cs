@@ -35,7 +35,8 @@ namespace MedClinicalAPI.Features.Queries.DepartmentCRUD
 
             public async Task<DepartmentDto> Handle(Query request, CancellationToken cancellationToken)
             {
-                //await _userManager.CreateAsync(new User { FirstName = "Vasyl", Email = "user@gmail.com", UserName = "vzden" DepartmentId = 1 }, "User-1111");
+                //await _userManager.CreateAsync(new User { UserName = "test-doctor", Email = "testdoctor@gmail.com" });
+                //await _userManager.CreateAsync(new User { UserName = "test-patient", Email = "testpatient@gmail.com" });
                 var department = await _context.Departments.Where(d => d.Id == request.Id).Select(dep => new DepartmentDto
                 {
                     Id = dep.Id,

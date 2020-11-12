@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../auth.service';
 import {LoginRequest} from '../../data/models/auth/login-request';
+import {Router} from '@angular/router';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-login',
@@ -10,19 +13,11 @@ import {LoginRequest} from '../../data/models/auth/login-request';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private jwtHelper: JwtHelperService) {
   }
 
-  //
-  // get emailGet(): any {
-  //   return this.loginForm.get('email');
-  // }
-  //
-  // get passwordGet(): any {
-  //   return this.loginForm.get('password');
-  // }
-
   ngOnInit(): void {
+    this.authService.clearStorage();
     this.initForm();
   }
 
@@ -33,7 +28,20 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  loginSubmit() {
+  loginSubmit(): void {
     const model: LoginRequest = {email: this.loginForm.get('email').value, password: this.loginForm.get('password').value};
+    this.authService.login(model).subscribe(value => {
+      const token = value.token;
+      if (token) {
+        const decodedInfo = this.jwtHelper.decodeToken(token);
+        localStorage.setItem('jwt', token);
+        localStorage.setItem('uId', decodedInfo.id);
+        localStorage.setItem('email', decodedInfo.email);
+        localStorage.setItem('expires', decodedInfo.expires);
+      }
+      this.router.navigateByUrl('/');
+    }, error => {
+      console.log(error);
+    });
   }
 }
