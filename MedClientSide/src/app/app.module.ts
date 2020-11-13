@@ -26,6 +26,7 @@ import {AuthInterceptor} from './auth/auth-interceptor';
 import {AddRecordFormComponent} from './department-functionality/forms/add-record-form/add-record-form.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MAT_DATE_LOCALE} from '@angular/material/core';
+import { ListDoctorsComponent } from './doctors/list-doctors/list-doctors.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -49,6 +50,7 @@ export const MY_DATE_FORMATS = {
     SettingsComponent,
     MyRecordsComponent,
     SupportComponent,
+    ListDoctorsComponent,
   ],
   entryComponents: [AddRecordFormComponent],
   imports: [
@@ -66,6 +68,7 @@ export const MY_DATE_FORMATS = {
         {path: 'account/cabinet/support', component: SupportComponent},
         {path: 'departments', component: DepartmentsListComponent},
         {path: 'department/:id', component: DepartmentComponent},
+        {path: 'doctors', component: ListDoctorsComponent},
         {path: 'main', component: MainPageComponent},
         {path: '**', redirectTo: 'main'}
 
