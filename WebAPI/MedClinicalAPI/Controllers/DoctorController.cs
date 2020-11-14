@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MedClinical.API.Data.DTOs;
-using MedClinical.API.Features.Queries.GetHoursForDoctor;
+﻿using MedClinical.API.Features.Queries.GetHoursForDoctor;
 using MedClinical.API.Services.Interfaces;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace MedClinical.API.Controllers
 {
