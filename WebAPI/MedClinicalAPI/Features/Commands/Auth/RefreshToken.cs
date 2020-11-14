@@ -1,5 +1,4 @@
 ﻿using MedClinical.API.Data.Models.Auth;
-using MedClinical.API.Services;
 using MedClinical.API.Services.Interfaces;
 using MedClinicalAPI.Data;
 using MedClinicalAPI.Data.Models;

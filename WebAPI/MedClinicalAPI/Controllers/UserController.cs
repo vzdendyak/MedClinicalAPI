@@ -1,119 +1,46 @@
 ﻿using MedClinical.API.Data.DTOs;
-using MedClinicalAPI.Data.Models;
-using Microsoft.AspNetCore.Identity;
+using MedClinical.API.Features.Commands.UserCRUD.ChangeUserPassword;
+using MedClinical.API.Features.Commands.UserCRUD.UpdateUserWithoutPassword;
+using MedClinical.API.Features.Queries.UserCRUD.GetUserById;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace MedClinical.API.Controllers
 {
-    [Route("api/user")]
+    [Route("api/users")]
     [ApiController]
     public class UserController : ControllerBase
     {
-        private UserManager<User> _userManager;
+        private readonly IMediator _mediator;
 
-        public UserController(UserManager<User> userManager)
+        public UserController(IMediator mediator)
         {
-            _userManager = userManager;
+            _mediator = mediator;
         }
 
-        [HttpGet("{id}/edit")]
-        public async Task<IActionResult> EditAsync(string id)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetAsync(string id)
         {
-            User user = await _userManager.FindByIdAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-            UserUpdateDto model = new UserUpdateDto
-            {
-                Id = user.Id,
-                UserName = user.UserName,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Email = user.Email,
-                PhoneNumber = user.PhoneNumber,
-                Age = user.Age
-            };
-            return Ok(model);
+            var getQuery = new GetUserById.Query(id);
+            var res = await _mediator.Send(getQuery);
+            return Ok(res);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> EditAsync(UserUpdateDto model)
+        [HttpPut]
+        public async Task<IActionResult> UpdateAsync(UserDto model)
         {
-            if (ModelState.IsValid)
-            {
-                User user = await _userManager.FindByIdAsync(model.Id);
-                if (user != null)
-                {
-                    user.UserName = model.UserName;
-                    user.FirstName = model.FirstName;
-                    user.LastName = model.LastName;
-                    user.Email = model.Email;
-                    user.PhoneNumber = model.PhoneNumber;
-                    user.Age = model.Age;
-
-                    var result = await _userManager.UpdateAsync(user);
-                    if (result.Succeeded)
-                    {
-                        return Ok();
-                    }
-                    else
-                    {
-                        foreach (var error in result.Errors)
-                        {
-                            ModelState.AddModelError(string.Empty, error.Description);
-                        }
-                    }
-                }
-            }
-            return Ok();
+            var updCommand = new UpdateUserWithoutPassword.Command(model);
+            var res = await _mediator.Send(updCommand);
+            return Ok(res);
         }
 
-        [HttpGet("{id}/changePassword")]
-        public async Task<IActionResult> ChangePasswordAsync(string id)
-        {
-            User user = await _userManager.FindByIdAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-            UserChangePasswordDto model = new UserChangePasswordDto
-            {
-                Id = user.Id,
-                Email = user.Email
-            };
-            return Ok(model);
-        }
-
-        [HttpPost]
+        [HttpPut("password")]
         public async Task<IActionResult> ChangePasswordAsync(UserChangePasswordDto model)
         {
-            if (ModelState.IsValid)
-            {
-                User user = await _userManager.FindByIdAsync(model.Id);
-                if (user != null)
-                {
-                    IdentityResult result =
-                    await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
-                    if (result.Succeeded)
-                    {
-                        return Ok();
-                    }
-                    else
-                    {
-                        foreach (var error in result.Errors)
-                        {
-                            ModelState.AddModelError(string.Empty, error.Description);
-                        }
-                    }
-                }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "User no exist");
-                }
-            }
-            return Ok();
+            var changePassword = new ChangeUserPassword.Command(model);
+            var res = await _mediator.Send(changePassword);
+            return Ok(res);
         }
     }
 }
