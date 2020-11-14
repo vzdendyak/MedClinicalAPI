@@ -1,44 +1,35 @@
 ﻿using MedClinical.API.Data.DTOs;
+using MedClinical.API.Features.Queries.UserCRUD.GetUserById;
 using MedClinicalAPI.Data.Models;
+using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace MedClinical.API.Controllers
 {
-    [Route("api/user")]
+    [Route("api/users")]
     [ApiController]
     public class UserController : ControllerBase
     {
         private UserManager<User> _userManager;
+        private readonly IMediator _mediator;
 
-        public UserController(UserManager<User> userManager)
+        public UserController(UserManager<User> userManager, IMediator mediator)
         {
             _userManager = userManager;
+            _mediator = mediator;
         }
 
-        [HttpGet("{id}/edit")]
-        public async Task<IActionResult> EditAsync(string id)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetAsync(string id)
         {
-            User user = await _userManager.FindByIdAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-            UserUpdateDto model = new UserUpdateDto
-            {
-                Id = user.Id,
-                UserName = user.UserName,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Email = user.Email,
-                PhoneNumber = user.PhoneNumber,
-                Age = user.Age
-            };
-            return Ok(model);
+            var getQuery = new GetUserById.Query(id);
+            var res = await _mediator.Send(getQuery);
+            return Ok(res);
         }
 
-        [HttpPost]
+        [HttpPost("edit")]
         public async Task<IActionResult> EditAsync(UserUpdateDto model)
         {
             if (ModelState.IsValid)
@@ -70,23 +61,7 @@ namespace MedClinical.API.Controllers
             return Ok();
         }
 
-        [HttpGet("{id}/changePassword")]
-        public async Task<IActionResult> ChangePasswordAsync(string id)
-        {
-            User user = await _userManager.FindByIdAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-            UserChangePasswordDto model = new UserChangePasswordDto
-            {
-                Id = user.Id,
-                Email = user.Email
-            };
-            return Ok(model);
-        }
-
-        [HttpPost]
+        [HttpPost("changePassword")]
         public async Task<IActionResult> ChangePasswordAsync(UserChangePasswordDto model)
         {
             if (ModelState.IsValid)
