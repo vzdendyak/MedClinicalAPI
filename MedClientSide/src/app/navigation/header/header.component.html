@@ -28,15 +28,21 @@
           <li>
             <a href="#" class="header-link">Про нас</a>
           </li>
-          <li *ngIf="!isUserAuthenticated">
-            <a [routerLink]="['/auth/login']" class="header-link">Вхід</a>
-          </li>
-          <li *ngIf="!isUserAuthenticated">
-            <a [routerLink]="['/auth/registration']" class="header-link">Реєстрація</a>
-          </li>
-          <li *ngIf="isUserAuthenticated">
-            <button (click)="logOut()" class="header-link">Вихід</button>
-          </li>
+          <div class="login-buttons" *ngIf="!isUserAuthenticated">
+            <li class="login-divider">
+              <a [routerLink]="['/auth/login']" class="header-link auth-link">Вхід</a>
+            </li>
+            <li>
+              <a [routerLink]="['/auth/registration']" class="header-link auth-link">Реєстрація</a>
+            </li>
+          </div>
+
+          <div class="login-buttons" *ngIf="isUserAuthenticated">
+            <li>
+              <a (click)="logOut()" class="header-link logout">Вихід</a>
+            </li>
+          </div>
+
         </ul>
       </nav>
     </div>

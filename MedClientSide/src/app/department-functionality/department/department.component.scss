@@ -119,12 +119,11 @@ strong {
 
 #sp-page-title {
   margin-top: 80px;
-  padding: 30px;
+  padding: 5px;
+  padding-bottom: 8px;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #00640099;
-  padding-right: 0;
-  padding-left: 0;
+  background-color: #b4d8e8;
   border-radius: 3px;
 }
 
@@ -141,11 +140,11 @@ h4 {
 .breadcrumb {
   display: flex;
   flex-wrap: wrap;
-  padding: .75rem 1rem;
-  margin-bottom: 1rem;
+  padding: 8px 1rem;
+  margin: 5px 0px;
   list-style: none;
   background-color: #e9ecef;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
 }
 
 .title h4 {
