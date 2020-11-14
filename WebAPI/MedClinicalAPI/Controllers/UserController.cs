@@ -1,4 +1,5 @@
 ﻿using MedClinical.API.Data.DTOs;
+using MedClinical.API.Features.Queries.UserCRUD.GetUserById;
 using MedClinical.API.Features.Commands.UserCRUD.UpdateUserWithoutPassword;
 using MedClinicalAPI.Data.Models;
 using MediatR;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MedClinical.API.Controllers
 {
-    [Route("api/user")]
+    [Route("api/users")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -19,10 +20,12 @@ namespace MedClinical.API.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("{id}/edit")]
-        public async Task<IActionResult> EditAsync(string id)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetAsync(string id)
         {
-            return Ok(true);
+            var getQuery = new GetUserById.Query(id);
+            var res = await _mediator.Send(getQuery);
+            return Ok(res);
         }
 
         [HttpPut]
