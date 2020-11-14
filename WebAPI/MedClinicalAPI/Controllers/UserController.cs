@@ -1,9 +1,8 @@
 ﻿using MedClinical.API.Data.DTOs;
-using MedClinical.API.Features.Queries.UserCRUD.GetUserById;
+using MedClinical.API.Features.Commands.UserCRUD.ChangeUserPassword;
 using MedClinical.API.Features.Commands.UserCRUD.UpdateUserWithoutPassword;
-using MedClinicalAPI.Data.Models;
+using MedClinical.API.Features.Queries.UserCRUD.GetUserById;
 using MediatR;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -32,14 +31,16 @@ namespace MedClinical.API.Controllers
         public async Task<IActionResult> UpdateAsync(UserDto model)
         {
             var updCommand = new UpdateUserWithoutPassword.Command(model);
-            var res = _mediator.Send(updCommand);
-            return Ok();
+            var res = await _mediator.Send(updCommand);
+            return Ok(res);
         }
 
-        [HttpPost]
+        [HttpPut("password")]
         public async Task<IActionResult> ChangePasswordAsync(UserChangePasswordDto model)
         {
-            return Ok();
+            var changePassword = new ChangeUserPassword.Command(model);
+            var res = await _mediator.Send(changePassword);
+            return Ok(res);
         }
     }
 }

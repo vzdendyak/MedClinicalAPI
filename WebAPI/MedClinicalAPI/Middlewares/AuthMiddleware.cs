@@ -1,11 +1,8 @@
 ﻿using MedClinical.API.Data.Models.Auth;
-using MedClinical.API.Services;
 using MedClinical.API.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace MedClinical.API.Middlewares

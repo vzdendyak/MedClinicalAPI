@@ -1,5 +1,4 @@
 ﻿using MedClinical.API.Data.DTOs;
-using MedClinicalAPI.Data;
 using MedClinicalAPI.Data.Models;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
@@ -40,7 +39,8 @@ namespace MedClinical.API.Features.Queries.UserCRUD.GetUserById
                     LastName = user.LastName,
                     Email = user.Email,
                     PhoneNumber = user.PhoneNumber,
-                    Age = user.Age
+                    Age = user.Age,
+                    DepartmentId = user.DepartmentId
                 };
                 return model;
             }

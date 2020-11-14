@@ -1,5 +1,4 @@
 ﻿using MedClinical.API.Data.DTOs;
-using MedClinicalAPI.Data;
 using MedClinicalAPI.Data.Models;
 using MedClinicalAPI.Exceptions;
 using MediatR;
@@ -24,12 +23,10 @@ namespace MedClinical.API.Features.Commands.UserCRUD.UpdateUserWithoutPassword
 
         public class Handler : IRequestHandler<UpdateUserWithoutPassword.Command, bool>
         {
-            private readonly AppDbContext _context;
-            private UserManager<User> _userManager;
+            private readonly UserManager<User> _userManager;
 
-            public Handler(AppDbContext context, UserManager<User> userManager)
+            public Handler(UserManager<User> userManager)
             {
-                _context = context;
                 _userManager = userManager;
             }
 
@@ -45,6 +42,7 @@ namespace MedClinical.API.Features.Commands.UserCRUD.UpdateUserWithoutPassword
                 user.Email = command.User.Email;
                 user.PhoneNumber = command.User.PhoneNumber;
                 user.Age = command.User.Age;
+                user.DepartmentId = command.User.DepartmentId;
                 var result = await _userManager.UpdateAsync(user);
                 if (!result.Succeeded)
                 {

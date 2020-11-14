@@ -1,5 +1,4 @@
 ﻿using MedClinical.API.Data.DTOs;
-using MedClinicalAPI.Data;
 using MedClinicalAPI.Data.Models;
 using MedClinicalAPI.Exceptions;
 using MediatR;
@@ -14,38 +13,27 @@ namespace MedClinical.API.Features.Commands.UserCRUD.ChangeUserPassword
     {
         public class Command : IRequest<bool>
         {
-            public UserDto User { get; set; }
+            public UserChangePasswordDto model { get; set; }
 
-            public Command(UserDto user)
+            public Command(UserChangePasswordDto user)
             {
-                User = user;
+                model = user;
             }
         }
 
         public class Handler : IRequestHandler<ChangeUserPassword.Command, bool>
         {
-            private readonly AppDbContext _context;
             private UserManager<User> _userManager;
 
-            public Handler(AppDbContext context, UserManager<User> userManager)
+            public Handler(UserManager<User> userManager)
             {
-                _context = context;
                 _userManager = userManager;
             }
 
             public async Task<bool> Handle(Command command, CancellationToken cancellationToken)
             {
-                User user = await _userManager.FindByIdAsync(command.User.Id);
-                if (user == null)
-                    return false;
-
-                user.UserName = command.User.UserName;
-                user.FirstName = command.User.FirstName;
-                user.LastName = command.User.LastName;
-                user.Email = command.User.Email;
-                user.PhoneNumber = command.User.PhoneNumber;
-                user.Age = command.User.Age;
-                var result = await _userManager.UpdateAsync(user);
+                var user = await _userManager.FindByIdAsync(command.model.Id);
+                var result = await _userManager.ChangePasswordAsync(user, command.model.OldPassword, command.model.NewPassword);
                 if (!result.Succeeded)
                 {
                     var returnText = new StringBuilder();

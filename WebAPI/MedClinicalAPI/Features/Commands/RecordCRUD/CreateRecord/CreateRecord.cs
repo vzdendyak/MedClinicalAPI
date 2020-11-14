@@ -2,7 +2,6 @@
 using MedClinicalAPI.Data.Models;
 using MedClinicalAPI.Helpers;
 using MediatR;
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 

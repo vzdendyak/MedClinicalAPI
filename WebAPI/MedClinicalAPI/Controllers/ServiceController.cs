@@ -1,11 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
-using MedClinicalAPI.Data.Models;
+﻿using MedClinicalAPI.Data.Models;
 using MedClinicalAPI.Features.Queries.ServiceCRUD.GetAllServices;
 using MedClinicalAPI.Features.Queries.ServiceCRUD.GetServicesById;
 using MediatR;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 
 namespace MedClinicalAPI.Controllers
 {

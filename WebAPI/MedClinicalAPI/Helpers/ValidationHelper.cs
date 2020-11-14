@@ -1,7 +1,6 @@
 ﻿using MedClinicalAPI.Data;
 using MedClinicalAPI.Data.Models;
 using MedClinicalAPI.Exceptions;
-using System;
 using System.Linq;
 
 namespace MedClinicalAPI.Helpers
