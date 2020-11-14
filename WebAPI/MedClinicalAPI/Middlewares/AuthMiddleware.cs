@@ -49,13 +49,19 @@ namespace MedClinical.API.Middlewares
             context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
             context.Response.Headers.Add("X-Xss-Protection", "1");
             context.Response.Headers.Add("X-Frame-Options", "DENY");
-            Console.WriteLine("HANDLED AT: " + DateTime.Now.ToString());
-            Console.WriteLine("Request: " + context.Request.Headers["Authorization"]);
-            foreach (var cookie in context.Request.Cookies)
-            {
-                Console.WriteLine(cookie);
-            }
+            log("Request: " + DateTime.Now.ToString(), ConsoleColor.Blue);
+            log("Token: " + String.IsNullOrEmpty(context.Request.Headers["Authorization"]), ConsoleColor.Blue);
+
             await _next.Invoke(context);
+        }
+
+        private void log(string text, ConsoleColor color)
+        {
+            Console.ForegroundColor = color;
+            Console.WriteLine(text);
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("------------------");
+            Console.ResetColor();
         }
 
         public bool IsExpiredAccess(string token)

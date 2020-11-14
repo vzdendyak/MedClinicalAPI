@@ -1,4 +1,5 @@
-﻿using MedClinicalAPI.Data;
+﻿using MedClinical.API.Data.DTOs;
+using MedClinicalAPI.Data;
 using MedClinicalAPI.Data.Models;
 using MedClinicalAPI.Helpers;
 using MediatR;
@@ -11,9 +12,9 @@ namespace MedClinical.API.Features.Commands.RecordCRUD.CreateRecord
     {
         public class Command : IRequest<bool>
         {
-            public Record Record { get; set; }
+            public CreateRecordRequest Record { get; set; }
 
-            public Command(Record record)
+            public Command(CreateRecordRequest record)
             {
                 Record = record;
             }
@@ -30,8 +31,18 @@ namespace MedClinical.API.Features.Commands.RecordCRUD.CreateRecord
 
             public async Task<bool> Handle(Command request, CancellationToken cancellationToken)
             {
-                ValidationHelper.IsRecordExist(request.Record, _context);
-                await _context.Records.AddAsync(request.Record);
+                var tspan = new TimeSpan();
+                var needDate = new DateTimeOffset(request.Record.DateOfMeeting, tspan).LocalDateTime;
+                var record = new Record
+                {
+                    Id = 0,
+                    DateOfMeeting = needDate,
+                    DoctorId = request.Record.DoctorId,
+                    PatientId = request.Record.PatientId,
+                    DateOfRecord = DateTime.Now
+                };
+                ValidationHelper.IsRecordExist(record, _context);
+                await _context.Records.AddAsync(record);
                 await _context.SaveChangesAsync();
                 return true;
             }
