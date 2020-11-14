@@ -2,58 +2,44 @@
 <section>
   <div class="container">
     <div class="sppb-panel">
-      <span class="sppb-panel-title" aria-label="Medhouse">Medhouse</span>
-      <span class="sppb-toggle-direction" aria-label="Toggle Direction Icon 13">
+      <div class="title-Med" id="title-Med" (click)="TitleMed()">
+
+        <span class="sppb-panel-title" aria-label="Medhouse">Medhouse</span>
+        <span class="sppb-toggle-direction" aria-label="Toggle Direction Icon 13" id="arrow">
         <i class="fa fa-chevron-right" aria-hidden="true">
         </i>
         </span>
-    </div>
-    <div class="container">
-      <div class="customs">
-        <div class="three-row">
-          <div class="services__item bgred"
-               style="background: url('../../assets/andrusiv.jpg') no-repeat center center / cover ">
+      </div>
 
-            <div class="imgeffect-desc">
-              Андрусів Т.І.<br>
-              Лікар-УЗД
-
-
+      <div class="container" id="doctors_block">
+        <div class="customs">
+          <div class="three-row">
+            <div class="services__item bgred"
+                 style="background: url('../../assets/andrusiv.jpg') no-repeat center center / cover ">
+              <div class="imgeffect-desc">
+                Андрусів Т.І.<br>
+                Лікар-УЗД
+              </div>
             </div>
-
-          </div>
-          <div class="services__item bgred"
-               style="background: url('../../assets/bartlovska.jpg') no-repeat center center / cover ">
-            <div class="imgeffect-desc">
-              Бартловська О.Т.<br>
-              Заступник директора з медичної роботи, лікар-акушер-гінеколог, онкогінеколог
+            <div class="services__item bgred"
+                 style="background: url('../../assets/bartlovska.jpg') no-repeat center center / cover ">
+              <div class="imgeffect-desc">
+                Бартловська О.Т.<br>
+                Заступник директора з медичної роботи, лікар-акушер-гінеколог, онкогінеколог
+              </div>
             </div>
-          </div>
-          <div class="services__item bgred"
-               style="background: url('../../assets/berkiy.jpg') no-repeat center center / cover  ">
-            <div class="imgeffect-desc">
-              Андрусів Т.І.
-              Лікар-УЗД
+            <div class="services__item bgred"
+                 style="background: url('../../assets/berkiy.jpg') no-repeat center center / cover  ">
+              <div class="imgeffect-desc">
+                Андрусів Т.І.<br>
+                Лікар-Ендоскопіст
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <script>
-    let coll = document.getElementsByClassName('sppb-panel');
-    for (let i = 0; i < coll.length; i++) {
-      coll[i].addEventListener('click', function () {
-        this.classlist.toggle('active');
-        let content = this.nextElementSibling;
-        if (content.style.maxHeight) {
-          content.style.maxHeight = null;
-        } else {
-          content.style.maxHeight = content.scrollHeight + 'px'
-        }
-      })
-    }
-  </script>
 </section>
 
-<app-footer></app-footer>
+<!--<app-footer></app-footer>-->
