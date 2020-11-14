@@ -17,15 +17,16 @@ import {CabinetComponent } from './account/cabinet/cabinet.component';
 import {LoginModule} from './auth/login.module';
 import {LoginComponent} from './auth/login/login.component';
 import {RegistrationComponent} from './auth/registration/registration.component';
-import { SettingsComponent } from './account/cabinet/cabinet/settings/settings.component';
-import { MyRecordsComponent } from './account/cabinet/cabinet/my-records/my-records.component';
-import { SupportComponent } from './account/cabinet/cabinet/support/support.component';
+import { SettingsComponent } from './account/settings/settings.component';
+import { MyRecordsComponent } from './account/my-records/my-records.component';
+import { SupportComponent } from './account/support/support.component';
 import {JwtModule} from '@auth0/angular-jwt';
 import {AuthGuard} from './common/guards/auth-guard';
 import {AuthInterceptor} from './auth/auth-interceptor';
 import {AddRecordFormComponent} from './department-functionality/forms/add-record-form/add-record-form.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MAT_DATE_LOCALE} from '@angular/material/core';
+import { CabinetNavComponent } from './navigation/cabinet-nav/cabinet-nav.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -49,6 +50,7 @@ export const MY_DATE_FORMATS = {
     SettingsComponent,
     MyRecordsComponent,
     SupportComponent,
+    CabinetNavComponent,
   ],
   entryComponents: [AddRecordFormComponent],
   imports: [
@@ -60,7 +62,7 @@ export const MY_DATE_FORMATS = {
       [
         {path: 'auth/login', component: LoginComponent},
         {path: 'auth/registration', component: RegistrationComponent},
-        {path: 'account/cabinet', component: CabinetComponent},
+        {path: 'account/cabinet', component: CabinetComponent, canActivate: [AuthGuard]},
         {path: 'account/cabinet/settings', component: SettingsComponent},
         {path: 'account/cabinet/my-records', component: MyRecordsComponent},
         {path: 'account/cabinet/support', component: SupportComponent},
