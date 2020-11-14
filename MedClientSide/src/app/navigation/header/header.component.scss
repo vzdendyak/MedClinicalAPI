@@ -41,12 +41,13 @@ html, body {
 .menu-points-list {
   display: flex;
   position: relative;
+  align-items: center;
   z-index: 2;
   margin: 0;
 }
 
 .menu-points-list li {
-  padding: 0 25px;
+  padding: 0 20px;
 
 }
 
@@ -54,7 +55,7 @@ html, body {
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
   color: black;
-
+  background-color: transparent;
   &:hover {
     color: #ffbc00;
   }
@@ -259,4 +260,23 @@ html, body {
   .button-icon {
     height: 30px;
   }
+}
+.login-buttons{
+  display: flex;
+  border: 3px solid white;
+  padding: 8px 0px;
+  border-radius: 6px;
+  background-color: #94c0d4;
+  color: white;
+  transition-duration: 0.4s;
+  &:hover{
+    background-color: #5eb3da;
+    border-color: transparent;
+  }
+}
+.login-divider{
+ border-right: 2px solid white;
+}
+.logout{
+  cursor: pointer;
 }
