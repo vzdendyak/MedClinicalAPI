@@ -23,12 +23,10 @@ namespace MedClinical.API.Features.Commands.RecordCRUD.DeleteRecord
 
         public class Handler : IRequestHandler<DeleteRecord.Command, bool>
         {
-            private readonly RoleManager<IdentityRole> _roleManager;
             private readonly AppDbContext _context;
 
-            public Handler(RoleManager<IdentityRole> roleManager, AppDbContext context)
+            public Handler(AppDbContext context)
             {
-                _roleManager = roleManager;
                 _context = context;
             }
 
