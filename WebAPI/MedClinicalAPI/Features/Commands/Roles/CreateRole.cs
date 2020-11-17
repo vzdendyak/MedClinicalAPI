@@ -1,12 +1,8 @@
-﻿using MedClinical.API.Data.DTOs;
-using MedClinicalAPI.Data.Models;
-using MedClinicalAPI.Exceptions;
+﻿using MedClinicalAPI.Data;
 using MedClinicalAPI.Helpers;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -27,18 +23,20 @@ namespace MedClinical.API.Features.Commands.Roles
         public class Handler : IRequestHandler<CreateRole.Command, bool>
         {
             private readonly RoleManager<IdentityRole> _roleManager;
+            private readonly AppDbContext _context;
 
-            public Handler(RoleManager<IdentityRole> roleManager)
+            public Handler(RoleManager<IdentityRole> roleManager, AppDbContext context)
             {
                 _roleManager = roleManager;
+                _context = context;
             }
 
             public async Task<bool> Handle(Command command, CancellationToken cancellationToken)
             {
-                ValidationHelper.IsRoleExist(request.RoleName, _context);
+                ValidationHelper.IsRoleExist(command.Name, _context);
                 try
                 {
-                    await _roleManager.CreateAsync(new IdentityRole(request.RoleName));
+                    await _roleManager.CreateAsync(new IdentityRole(command.Name));
                     return true;
                 }
                 catch (Exception ex)

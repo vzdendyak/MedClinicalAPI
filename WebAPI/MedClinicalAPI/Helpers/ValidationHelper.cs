@@ -34,5 +34,12 @@ namespace MedClinicalAPI.Helpers
             if (isAddress)
                 throw new BadRequestException("This address already exists.");
         }
+
+        public static void IsRoleExist(string RoleName, AppDbContext _context)
+        {
+            var isRole = _context.Roles.Any(d => d.Name == RoleName);
+            if (isRole)
+                throw new BadRequestException("This role already exists.");
+        }
     }
 }
