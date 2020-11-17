@@ -1,4 +1,5 @@
 ﻿using MedClinicalAPI.Data.Models;
+using System.Collections.Generic;
 
 namespace MedClinical.API.Data.DTOs
 {
@@ -13,5 +14,6 @@ namespace MedClinical.API.Data.DTOs
         public string PhoneNumber { get; set; }
         public int Age { get; set; }
         public Department Department { get; set; }
+        public virtual ICollection<RecordDto> Records { get; set; }
     }
 }
