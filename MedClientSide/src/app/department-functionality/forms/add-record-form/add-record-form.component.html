@@ -24,7 +24,7 @@
             <mat-label>Послуга</mat-label>
             <mat-select [(value)]="selectedService" [disabled]="!selectedDoctor">
               <mat-option *ngFor="let ds of depServices" [value]="ds.service">
-                {{ds.service.name}} ({{ds.service.price}})
+                {{ds.service.name}} ({{ds.service.price}} грн)
               </mat-option>
             </mat-select>
           </mat-form-field>
