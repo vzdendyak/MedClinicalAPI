@@ -1,4 +1,5 @@
 import {Department} from './department';
+import {Record} from './record';
 
 export class User {
   public id: string;
@@ -10,4 +11,5 @@ export class User {
   public age: number;
   public departmentId: number;
   public department: Department;
+  public records: Record[];
 }
