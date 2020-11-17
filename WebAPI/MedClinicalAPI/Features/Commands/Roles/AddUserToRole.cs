@@ -9,7 +9,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace MedClinical.API.Features.Commands.AddUserToRole
+namespace MedClinical.API.Features.Commands.Roles
 {
     public class AddUserToRole
     {

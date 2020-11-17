@@ -1,5 +1,5 @@
 ﻿using MedClinical.API.Data.DTOs;
-using MedClinical.API.Features.Commands.AddUserToRole;
+using MedClinical.API.Features.Commands.Roles;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
