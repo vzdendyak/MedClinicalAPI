@@ -8,9 +8,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace MedClinical.API.Features.Queries.UserCRUD.GetUserById
+namespace MedClinical.API.Features.Queries.UserCRUD.GetShortUserById
 {
-    public class GetUserById
+    public class GetShortUserById
     {
         public class Query : IRequest<UserDto>
         {
@@ -22,7 +22,7 @@ namespace MedClinical.API.Features.Queries.UserCRUD.GetUserById
             }
         }
 
-        public class Handler : IRequestHandler<GetUserById.Query, UserDto>
+        public class Handler : IRequestHandler<GetShortUserById.Query, UserDto>
         {
             private readonly UserManager<User> _userManager;
             private readonly IUserService _userService;
@@ -42,13 +42,7 @@ namespace MedClinical.API.Features.Queries.UserCRUD.GetUserById
                     UserName = user.UserName,
                     FirstName = user.FirstName,
                     LastName = user.LastName,
-                    Email = user.Email,
-                    PhoneNumber = user.PhoneNumber,
-                    Age = user.Age,
-                    DepartmentId = user.DepartmentId
                 };
-                model.Records = await _userService.GetUserRecords(user);
-
                 return model;
             }
         }

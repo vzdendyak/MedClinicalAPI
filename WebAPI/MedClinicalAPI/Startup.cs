@@ -98,6 +98,7 @@ namespace MedClinicalAPI
             services.AddMediatR(assembly);
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IDoctorService, DoctorService>();
+            services.AddScoped<IUserService, UserService>();
             services.AddMvcCore().AddApiExplorer();
             services.AddSwaggerGen(options =>
             {

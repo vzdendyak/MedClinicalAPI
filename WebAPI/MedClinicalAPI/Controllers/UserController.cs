@@ -1,6 +1,7 @@
 ﻿using MedClinical.API.Data.DTOs;
 using MedClinical.API.Features.Commands.UserCRUD.ChangeUserPassword;
 using MedClinical.API.Features.Commands.UserCRUD.UpdateUserWithoutPassword;
+using MedClinical.API.Features.Queries.UserCRUD.GetShortUserById;
 using MedClinical.API.Features.Queries.UserCRUD.GetUserById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -23,6 +24,14 @@ namespace MedClinical.API.Controllers
         public async Task<IActionResult> GetAsync(string id)
         {
             var getQuery = new GetUserById.Query(id);
+            var res = await _mediator.Send(getQuery);
+            return Ok(res);
+        }
+
+        [HttpGet("{id}/short")]
+        public async Task<IActionResult> GetShortAsync(string id)
+        {
+            var getQuery = new GetShortUserById.Query(id);
             var res = await _mediator.Send(getQuery);
             return Ok(res);
         }
