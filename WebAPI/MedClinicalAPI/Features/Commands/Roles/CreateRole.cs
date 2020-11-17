@@ -1,6 +1,7 @@
 ﻿using MedClinical.API.Data.DTOs;
 using MedClinicalAPI.Data.Models;
 using MedClinicalAPI.Exceptions;
+using MedClinicalAPI.Helpers;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System;
@@ -34,8 +35,18 @@ namespace MedClinical.API.Features.Commands.Roles
 
             public async Task<bool> Handle(Command command, CancellationToken cancellationToken)
             {
-                // check if role exist!!!!
-                return (await _roleManager.CreateAsync(new IdentityRole(command.Name.ToUpper()))).Succeeded;
+                ValidationHelper.IsRoleExist(request.RoleName, _context);
+                try
+                {
+                    await _roleManager.CreateAsync(new IdentityRole(request.RoleName));
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(ex.Message);
+                    return false;
+                }
             }
         }
     }
