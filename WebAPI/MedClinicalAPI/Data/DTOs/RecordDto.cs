@@ -12,5 +12,6 @@ namespace MedClinical.API.Data.DTOs
         public string PatientId { get; set; }
         public DateTime DateOfRecord { get; set; }
         public DateTime DateOfMeeting { get; set; }
+        public int ServiceId { get; set; }
     }
 }

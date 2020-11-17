@@ -51,6 +51,10 @@ namespace MedClinicalAPI.Data
                 .HasOne(r => r.Patient)
                 .WithMany(u => u.Visits)
                 .HasForeignKey(r => r.PatientId);
+            builder.Entity<Record>()
+                .HasOne(r => r.Service)
+                .WithMany(s => s.Records)
+                .HasForeignKey(r => r.ServiceId);
             builder.Entity<User>()
                 .HasOne(u => u.Department)
                 .WithMany(dep => dep.Doctors)

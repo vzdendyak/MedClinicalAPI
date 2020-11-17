@@ -13,5 +13,7 @@ namespace MedClinicalAPI.Data.Models
 
         // nav props
         public virtual ICollection<DepartmentService> DepartmentServices { get; set; }
+
+        public virtual ICollection<Record> Records { get; set; }
     }
 }
