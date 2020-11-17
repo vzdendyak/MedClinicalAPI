@@ -128,5 +128,8 @@
       }
     }
   },
-  "defaultProject": "MedClientSide"
+  "defaultProject": "MedClientSide",
+  "cli": {
+    "analytics": "b9828d3b-2a68-4531-89f2-a0867675ad05"
+  }
 }
