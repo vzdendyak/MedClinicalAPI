@@ -42,6 +42,7 @@ namespace MedClinical.API.Features.Queries.UserCRUD.GetShortUserById
                     UserName = user.UserName,
                     FirstName = user.FirstName,
                     LastName = user.LastName,
+                    DepartmentId = user.DepartmentId
                 };
                 return model;
             }

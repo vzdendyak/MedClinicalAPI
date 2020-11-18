@@ -18,6 +18,10 @@ export class AccountService {
     return this.http.get<User>(`${this.url}/${id}`);
   }
 
+  getShortUser(id: string): Observable<User> {
+    return this.http.get<User>(`${this.url}/${id}/short`);
+  }
+
   updateUser(user: User): Observable<boolean> {
     return this.http.put<boolean>(this.url, user);
   }

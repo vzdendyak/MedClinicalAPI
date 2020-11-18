@@ -18,4 +18,8 @@ export class RecordService {
     return this.http.post<boolean>(this.url, record);
   }
 
+  deleteRecord(id: number): Observable<boolean> {
+    return this.http.delete<boolean>(`${this.url}/${id}`);
+  }
+
 }
