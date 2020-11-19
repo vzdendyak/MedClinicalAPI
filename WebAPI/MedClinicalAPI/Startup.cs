@@ -37,17 +37,18 @@ namespace MedClinicalAPI
         {
             var connectionString = "";
             var mName = Environment.MachineName;
-            if (mName == "DESKTOP-QRMC7LQ")
-                connectionString = Configuration.GetConnectionString("IgorLocalDb");
-            else if (mName == "DESKTOP-V1GMI6E")
-                connectionString = Configuration.GetConnectionString("VasylLocalDb");
-            else if (mName == "DESKTOP-QFMO96R")
-                connectionString = Configuration.GetConnectionString("MishaLocalDb");
-
+            //if (mName == "DESKTOP-QRMC7LQ")
+            //    connectionString = Configuration.GetConnectionString("IgorLocalDb");
+            //else if (mName == "DESKTOP-V1GMI6E")
+            //    connectionString = Configuration.GetConnectionString("VasylLocalDb");
+            //else if (mName == "DESKTOP-QFMO96R")
+            //    connectionString = Configuration.GetConnectionString("MishaLocalDb");
+            connectionString = Configuration.GetConnectionString("RemoteDb");
             services.AddEntityFrameworkSqlServer().AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(connectionString);
             });
+            services.AddDbContext<AppDbContext>();
             services.AddIdentity<User, IdentityRole>(set =>
             {
                 set.Password = new PasswordOptions()
@@ -94,11 +95,12 @@ namespace MedClinicalAPI
             services.AddSingleton(tokenParameters);
 
             services.AddControllers();
-            var assembly = typeof(Startup).Assembly;
-            services.AddMediatR(assembly);
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IDoctorService, DoctorService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddTransient<DbContext>();
+            var assembly = typeof(Startup).Assembly;
+            services.AddMediatR(assembly);
             services.AddMvcCore().AddApiExplorer();
             services.AddSwaggerGen(options =>
             {
@@ -156,10 +158,7 @@ namespace MedClinicalAPI
             });
             app.UseHttpsRedirection();
             app.UseRouting();
-            if (env.IsDevelopment())
-            {
-                app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowCredentials().AllowAnyMethod().AllowAnyHeader());
-            }
+            app.UseCors(builder => builder.WithOrigins().AllowCredentials().AllowAnyMethod().AllowAnyHeader());
 
             app.UseMiddleware<ErrorHandlingMiddleware>();
 
