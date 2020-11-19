@@ -12,12 +12,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDrawerContainer, MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
-  declarations: [
-    HeaderComponent,
-    FooterComponent
-  ],
   imports: [
     CommonModule,
     MatDividerModule,
@@ -29,11 +26,10 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatInputModule,
     MatNativeDateModule,
     MatProgressBarModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSidenavModule
   ],
   exports: [
-    HeaderComponent,
-    FooterComponent,
     MatDividerModule,
     RouterModule,
     MatDialogModule,
@@ -43,7 +39,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatInputModule,
     MatNativeDateModule,
     MatProgressBarModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSidenavModule
   ]
 })
 export class MaterialModule {

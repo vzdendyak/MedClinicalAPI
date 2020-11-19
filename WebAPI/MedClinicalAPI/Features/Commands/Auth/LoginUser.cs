@@ -1,11 +1,9 @@
 ﻿using MedClinical.API.Data.Models.Auth;
-using MedClinical.API.Services;
 using MedClinical.API.Services.Interfaces;
 using MedClinicalAPI.Data;
 using MedClinicalAPI.Data.Models;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 

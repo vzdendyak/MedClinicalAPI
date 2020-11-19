@@ -15,6 +15,7 @@ export class DepartmentComponent implements OnInit {
   departmentId: number;
   department: Department;
   isDialogOpen = false;
+  isServicesVisible = false;
 
   constructor(private route: ActivatedRoute, private departmentService: DepartmentService,
               public dialog: MatDialog, private snackBar: MatSnackBar
@@ -38,7 +39,7 @@ export class DepartmentComponent implements OnInit {
     let dialogRef;
     dialogRef = this.dialog.open(AddRecordFormComponent, {
       width: '450px',
-      data: {doctors: this.department.doctors},
+      data: {doctors: this.department.doctors, depServices: this.department.departmentServices},
       panelClass: 'my-dialog-window'
     });
     dialogRef.afterOpened().subscribe(res => {
@@ -58,5 +59,9 @@ export class DepartmentComponent implements OnInit {
         });
       }
     });
+  }
+
+  hideServices() {
+    this.isServicesVisible = !this.isServicesVisible;
   }
 }

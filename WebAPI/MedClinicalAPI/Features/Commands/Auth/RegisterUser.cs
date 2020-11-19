@@ -1,11 +1,9 @@
 ﻿using MedClinical.API.Data.Models.Auth;
-using MedClinical.API.Services;
 using MedClinical.API.Services.Interfaces;
 using MedClinicalAPI.Data;
 using MedClinicalAPI.Data.Models;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -48,7 +46,7 @@ namespace MedClinical.API.Features.Commands.Auth
                         ErrorMessages = new[] { "User with this email is already exist!" }
                     };
                 }
-                User user = new User { Email = command.Model.Email, UserName = command.Model.Username };
+                User user = new User { Email = command.Model.Email, UserName = command.Model.Username, FirstName = command.Model.FirstName, LastName = command.Model.LastName, Age = command.Model.Age };
                 var result = await _userManager.CreateAsync(user, command.Model.Password);
                 if (!result.Succeeded)
                     return new AuthResultDto()

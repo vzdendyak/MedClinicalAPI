@@ -33,7 +33,9 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut() {
+    this.router
+      .navigateByUrl('/RELOAD_PLACEHOLDER', {skipLocationChange: true})
+      .then(() => this.router.navigateByUrl('/'));
     this.authService.logOut();
-    this.router.navigateByUrl('/');
   }
 }
