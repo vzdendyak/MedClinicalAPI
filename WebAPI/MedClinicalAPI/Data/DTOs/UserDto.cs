@@ -1,5 +1,8 @@
 ﻿using MedClinicalAPI.Data.Models;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace MedClinical.API.Data.DTOs
 {
@@ -13,6 +16,5 @@ namespace MedClinical.API.Data.DTOs
         public int? DepartmentId { get; set; }
         public List<DateTime> FreeHours { get; set; }
         public Department Department { get; set; }
-        public virtual ICollection<RecordDto> Records { get; set; }
     }
 }
