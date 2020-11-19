@@ -1,4 +1,5 @@
 import {Department} from './department';
+import {Record} from './record';
 
 export class User {
   public id: string;
@@ -8,4 +9,5 @@ export class User {
   public email: string;
   public departmentId: number;
   public department: Department;
+  public records: Record[];
 }
