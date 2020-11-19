@@ -7,8 +7,6 @@ import {DoctorService} from '../../services/doctor.service';
 import {DatePipe, formatDate} from '@angular/common';
 import {RecordService} from '../../services/record.service';
 import {Record} from '../../../data/models/record';
-import {DepartmentService} from '../../../data/models/department-service';
-import {Service} from '../../../data/models/service';
 
 @Component({
   selector: 'app-add-record-form',
@@ -18,8 +16,6 @@ import {Service} from '../../../data/models/service';
 export class AddRecordFormComponent implements OnInit {
   pageForm: FormGroup;
   doctors: User[];
-  depServices: DepartmentService[];
-  selectedService: Service;
   selectedDoctor: User;
   freeHours: Date[];
   selectedHour: Date;
@@ -33,10 +29,6 @@ export class AddRecordFormComponent implements OnInit {
     if (data.doctors) {
       this.doctors = data.doctors;
     }
-    if (data.depServices) {
-      console.log('got services - ' + data.depServices);
-      this.depServices = data.depServices;
-    }
     this.freeHours = null;
   }
 
@@ -47,7 +39,6 @@ export class AddRecordFormComponent implements OnInit {
   initForm(): void {
     this.pageForm = this.fb.group({
       Doctor: [null, [Validators.required]],
-      Service: [null, [Validators.required]],
       Date: [null, [Validators.required]],
       Hour: [null, [Validators.required]]
     });
@@ -82,9 +73,7 @@ export class AddRecordFormComponent implements OnInit {
       doctorId: this.selectedDoctor.id,
       patientId: localStorage.getItem('uId'),
       dateOfMeeting: meetingDate,
-      dateOfRecord: 0,
-      serviceId: this.selectedService.id,
-      service: null
+      dateOfRecord: 0
     };
     this.isLoading = true;
     this.recordService.addRecord(record).subscribe(value => {
@@ -97,5 +86,4 @@ export class AddRecordFormComponent implements OnInit {
 
 export interface DialogData {
   doctors: User[];
-  depServices: DepartmentService[];
 }

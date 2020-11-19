@@ -3,172 +3,158 @@
 
 <div class="main-content" [ngClass]="{'is-blurred': isDialogOpen}">
 
-  <section id="sp-page-title" *ngIf="this.department">
-    <div class="row">
-      <div id="sp-title" class="col-sm-12 col-md-12">
-        <div class="sp-column ">
-          <div class="sp-page-title">
-            <div class="container">
-              <div class="col-md-6 col-sm-6 col-xs-12 pull-left" style="margin-top: 10px">
-                <h4>{{this.department.departmentName}}</h4>
-              </div>
-              <div class="col-md-6 col-sm-6 col-xs-12 pull-right text-right path">
-                <ol class="breadcrumb">
-                  <span>Ви тут:&nbsp;</span>
-                  <li>
-                    <a href="/main" class="pathway">Головна </a>
-                  </li>
-                  <li class="active">
-                    / {{this.department.departmentName}}
-                  </li>
-                </ol>
-              </div>
+<section id="sp-page-title" *ngIf="this.department">
+  <div class="row">
+    <div id="sp-title" class="col-sm-12 col-md-12">
+      <div class="sp-column ">
+        <div class="sp-page-title">
+          <div class="container">
+            <div class="col-md-6 col-sm-6 col-xs-12 pull-left">
+              <h4>{{this.department.departmentName}}</h4>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12 pull-right text-right path">
+              <ol class="breadcrumb">
+                <span>Ви тут:&nbsp;</span>
+                <li>
+                  <a href="/main" class="pathway">Головна </a>
+                </li>
+                <li class="active">
+                  / {{this.department.departmentName}}
+                </li>
+              </ol>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="services" *ngIf="this.department">
-    <div class="container">
-      <div class="title">
-        <h4>{{this.department.departmentName}}</h4>
+<section id="services" *ngIf="this.department">
+  <div class="container">
+    <div class="title">
+      <h4>{{this.department.departmentName}}</h4>
+    </div>
+    <img src="../../../assets/gastroenterology.jpg" alt="gastroenterology.jpg" class="gastroenterology">
+    <div class="services">
+      <div class="services__item bgred">
+        <h3>Години роботи</h3>
+        <p>
+          <span>Понеділок - П'ятниця</span>
+          <span>8:00 – 19:00</span>
+        </p>
+        <hr>
+        <p>
+          <span>Субота</span>
+          <span>9:00 – 16:00</span>
+        </p>
+        <hr>
+        <p><span>Неділя</span>
+          <span>Вихідний</span>
+        </p>
       </div>
-      <img src="../../../assets/gastroenterology.jpg" alt="gastroenterology.jpg" class="gastroenterology">
-      <div class="services">
-        <div class="services__item bgred">
-          <h3>Години роботи</h3>
-          <p>
-            <span>Понеділок - П'ятниця</span>
-            <span>8:00 – 19:00</span>
-          </p>
-          <hr>
-          <p>
-            <span>Субота</span>
-            <span>9:00 – 16:00</span>
-          </p>
-          <hr>
-          <p><span>Неділя</span>
-            <span>Вихідний</span>
-          </p>
-        </div>
-        <div class="services__item bggreen">
-          <h3>Лікар додому</h3>
-          <p>
-            Якщо у Вас немає можливості<br>
-            відвідати нашу клініку<br>
-            особисто - ви маєте змогу
-            викликати спеціаліста МЕДХАУЗ
-            прямо до дому. Ми<br>
-            з радістю надамо Вам<br>
-            консультації та необхідну<br>
-            допомогу!
-          </p>
-          <a class="button" href="#">Зв'яжіться з нами</a>
-        </div>
-      </div>
-      <h2>{{this.department.departmentName}} в Івано-Франківську</h2>
-
-      <div class="text">
+      <div class="services__item bggreen">
+        <h3>Лікар додому</h3>
         <p>
-          <strong>{{this.department.departmentName}}</strong>
-          – розділ медицини, який вивчає будову, функціонування, захворювання органів<br>шлункового-кишкового тракту.
+          Якщо у Вас немає можливості<br>
+          відвідати нашу клініку<br>
+          особисто - ви маєте змогу
+          викликати спеціаліста МЕДХАУЗ
+          прямо до дому. Ми<br>
+          з радістю надамо Вам<br>
+          консультації та необхідну<br>
+          допомогу!
         </p>
-        <p>
-          Ця галузь терапії спрямована на попередження захворювань органів травної системи та їх лікування. І саме<br>
-          в МЦ «МЕДХАУЗ» ви зможете отримати максимально якісну консультацію та лікування від<br>
-          висококваліфікованого лікаря-гастроентеролога.
-        </p>
-        <p>
-          Наш фахівець виявляє і лікує захворювання:
-        </p>
-        <p>
-          - стравоходу (гастроезофагально-рефлюксну хворобу);
-        </p>
-        <p>
-          - шлунка (гастрит, виразка);
-        </p>
-        <p>
-          - дванадцятипалої кишки (виразка, дуоденіт);
-        </p>
-        <p>
-          - кишечника (неспецифічний виразковий коліт, хвороба Крона, синдром подразненого кишечника);
-        </p>
-        <p>
-          - печінки;
-        </p>
-        <p>
-          - жовчного міхура;
-        </p>
-        <p>
-          - підшлункової залози.
-        </p>
-        <h4>КОЛИ ВАРТО ЗВЕРНУТИСЯ ДО<br> ЛІКАРЯ</h4>
-        <p>
-          Якщо ви відчуваєте нудоту, наявне блювання, є відчуття важкості, здуття, гіркота в роті, порушення стільця<br>
-          (закрепи, проноси), то вам неодмінно потрібна консультація спеціаліста.
-        </p>
-        <p>
-          При таких симптомах як блювота кров’ю, чорний кал, жовтушність склер та шкіри, вам негайно варто<br>
-          звернутися за допомогою.
-        </p>
-        <p>
-          У <b>МЦ</b> «<b>МЕДХАУЗ</b>» використовують передові технології діагностики та лікування
-          шлунково-кишкового<br>
-          тракту. У нас ви можете зробити:
-        </p>
-        <p>
-          - УЗД черевної порожнини
-        </p>
-        <p>
-          - Відеогастроскопію;
-        </p>
-        <p>
-          - Відеоколоноскопію.
-        </p>
-        <p>
-          - Лабораторні обстеження: загальний аналіз крові, печінкові проби (робота печінки та жовчевивідних<br>
-          шляхів), альфа-амілаза (визначення роботи підшлункової залози), кал на приховану кров, копрограма<br>
-          (визначення ходу процесу травлення), зробити СІTO TEST на визначення антигену до Хелікобактер Пілорі.
-        </p>
-        <p>
-          «<b>МЕДХАУЗ</b>» пропонує своїм пацієнтам якісне обслуговування, висококваліфіковних спеціалістів, сучасні<br>
-          методи обстеження. Довіряйте своє здоров’я найкращим!
-        </p>
-
-        <!--      <div class="sppb-addon-divider ">-->
-        <!--        <div class="sppb-divider sppb-divider-border ">-->
-        <!--      </div>-->
-        <!--      </div>-->
-
-        <div class="price-block-content" *ngIf="department.departmentServices.length!=0">
-          <h5 class="services-header" (click)="hideServices()">
-            Перелік послуг
-            <span class="material-icons" *ngIf="!isServicesVisible else thenBlock">
-              expand_more
-            </span>
-            <ng-template #thenBlock>
-              <span class="material-icons">
-              expand_less
-            </span>
-            </ng-template>
-          </h5>
-          <div class="services-block" *ngIf="isServicesVisible">
-            <div class="sppb-panel" *ngFor="let s of department.departmentServices">
-              <span class="sppb-panel-title" aria-label="Гастроентерологія">{{s.service.name}}</span>
-              <div class="price-block">
-                <span class="sppb-panel-price" aria-label="Гастроентерологія">{{s.service.price}} грн</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="record-block">
-          <button type="button" class="btn btn-primary record-button" (click)="addRecordDialogOpen()">Записатись на прийом</button>
-        </div>
+        <a class="button" href="#">Зв'яжіться з нами</a>
       </div>
     </div>
-  </section>
+    <h2>{{this.department.departmentName}} в Івано-Франківську</h2>
+    <button type="button" class="btn btn-primary" (click)="addRecordDialogOpen()">Запис</button>
+
+    <div class="text">
+      <p>
+        <strong>{{this.department.departmentName}}</strong>
+        – розділ медицини, який вивчає будову, функціонування, захворювання органів<br>шлункового-кишкового тракту.
+      </p>
+      <p>
+        Ця галузь терапії спрямована на попередження захворювань органів травної системи та їх лікування. І саме<br>
+        в МЦ «МЕДХАУЗ» ви зможете отримати максимально якісну консультацію та лікування від<br>
+        висококваліфікованого лікаря-гастроентеролога.
+      </p>
+      <p>
+        Наш фахівець виявляє і лікує захворювання:
+      </p>
+      <p>
+        - стравоходу (гастроезофагально-рефлюксну хворобу);
+      </p>
+      <p>
+        - шлунка (гастрит, виразка);
+      </p>
+      <p>
+        - дванадцятипалої кишки (виразка, дуоденіт);
+      </p>
+      <p>
+        - кишечника (неспецифічний виразковий коліт, хвороба Крона, синдром подразненого кишечника);
+      </p>
+      <p>
+        - печінки;
+      </p>
+      <p>
+        - жовчного міхура;
+      </p>
+      <p>
+        - підшлункової залози.
+      </p>
+      <h4>КОЛИ ВАРТО ЗВЕРНУТИСЯ ДО<br> ЛІКАРЯ</h4>
+      <p>
+        Якщо ви відчуваєте нудоту, наявне блювання, є відчуття важкості, здуття, гіркота в роті, порушення стільця<br>
+        (закрепи, проноси), то вам неодмінно потрібна консультація спеціаліста.
+      </p>
+      <p>
+        При таких симптомах як блювота кров’ю, чорний кал, жовтушність склер та шкіри, вам негайно варто<br>
+        звернутися за допомогою.
+      </p>
+      <p>
+        У <b>МЦ</b> «<b>МЕДХАУЗ</b>» використовують передові технології діагностики та лікування шлунково-кишкового<br>
+        тракту. У нас ви можете зробити:
+      </p>
+      <p>
+        - УЗД черевної порожнини
+      </p>
+      <p>
+        - Відеогастроскопію;
+      </p>
+      <p>
+        - Відеоколоноскопію.
+      </p>
+      <p>
+        - Лабораторні обстеження: загальний аналіз крові, печінкові проби (робота печінки та жовчевивідних<br>
+        шляхів), альфа-амілаза (визначення роботи підшлункової залози), кал на приховану кров, копрограма<br>
+        (визначення ходу процесу травлення), зробити СІTO TEST на визначення антигену до Хелікобактер Пілорі.
+      </p>
+      <p>
+        «<b>МЕДХАУЗ</b>» пропонує своїм пацієнтам якісне обслуговування, висококваліфіковних спеціалістів, сучасні<br>
+        методи обстеження. Довіряйте своє здоров’я найкращим!
+      </p>
+
+      <!--      <div class="sppb-addon-divider ">-->
+      <!--        <div class="sppb-divider sppb-divider-border ">-->
+      <!--      </div>-->
+      <!--      </div>-->
+      <h5>
+        Ціни на послуги гастроентерології
+      </h5>
+
+      <div class="sppb-panel">
+        <span class="sppb-panel-title" aria-label="Гастроентерологія">Гастроентерологія</span>
+        <span class="sppb-toggle-direction" aria-label="Toggle Direction Icon 13">
+        <i class="fa fa-chevron-right" aria-hidden="true">
+        </i>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
 </div>
 
 <app-footer></app-footer>

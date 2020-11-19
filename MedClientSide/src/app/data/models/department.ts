@@ -1,6 +1,4 @@
 import {User} from './user';
-import {Service} from './service';
-import {DepartmentService} from './department-service';
 
 export class Department {
   public id: number;
@@ -10,5 +8,4 @@ export class Department {
   public scheduleId: number;
 
   public doctors: User[];
-  public departmentServices: DepartmentService[];
 }

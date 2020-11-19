@@ -40,8 +40,7 @@ namespace MedClinical.API.Features.Commands.RecordCRUD.CreateRecord
                     DateOfMeeting = needDate,
                     DoctorId = request.Record.DoctorId,
                     PatientId = request.Record.PatientId,
-                    DateOfRecord = DateTime.Now,
-                    ServiceId = request.Record.ServiceId
+                    DateOfRecord = DateTime.Now
                 };
                 ValidationHelper.IsRecordExist(record, _context);
                 await _context.Records.AddAsync(record);

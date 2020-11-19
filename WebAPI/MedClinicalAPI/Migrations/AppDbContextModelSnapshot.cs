@@ -105,16 +105,11 @@ namespace MedClinicalAPI.Migrations
                     b.Property<string>("PatientId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int?>("ServiceId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("DoctorId");
 
                     b.HasIndex("PatientId");
-
-                    b.HasIndex("ServiceId");
 
                     b.ToTable("Records");
                 });
@@ -426,10 +421,6 @@ namespace MedClinicalAPI.Migrations
                     b.HasOne("MedClinicalAPI.Data.Models.User", "Patient")
                         .WithMany("Visits")
                         .HasForeignKey("PatientId");
-
-                    b.HasOne("MedClinicalAPI.Data.Models.Service", "Service")
-                        .WithMany("Records")
-                        .HasForeignKey("ServiceId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -4,6 +4,7 @@ using MedClinical.API.Features.Queries.RecordCRUD.GetDoctorRecord;
 using MedClinical.API.Features.Queries.RecordCRUD.GetPatientRecord;
 using MedClinicalAPI.Data.Models;
 using MediatR;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 

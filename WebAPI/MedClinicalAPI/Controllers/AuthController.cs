@@ -1,7 +1,9 @@
 ﻿using MedClinical.API.Data.Models.Auth;
 using MedClinical.API.Features.Commands.Auth;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 

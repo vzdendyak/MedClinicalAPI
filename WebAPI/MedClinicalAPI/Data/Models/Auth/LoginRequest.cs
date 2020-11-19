@@ -1,4 +1,9 @@
-﻿namespace MedClinical.API.Data.Models.Auth
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace MedClinical.API.Data.Models.Auth
 {
     public class LoginRequest
     {

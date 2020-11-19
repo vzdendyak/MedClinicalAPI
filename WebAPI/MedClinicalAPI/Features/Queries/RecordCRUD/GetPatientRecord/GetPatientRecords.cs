@@ -30,6 +30,7 @@ namespace MedClinical.API.Features.Queries.RecordCRUD.GetPatientRecord
                 _context = context;
             }
 
+
             public async Task<IEnumerable<Record>> Handle(Query request, CancellationToken cancellationToken)
             {
                 var records = await _context.Records.Where(d => d.PatientId == request.PatientId).Select(rec => new Record

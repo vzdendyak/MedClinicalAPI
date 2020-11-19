@@ -11,12 +11,10 @@ namespace MedClinicalAPI.Data.Models
         public string PatientId { get; set; }
         public DateTime DateOfRecord { get; set; }
         public DateTime DateOfMeeting { get; set; }
-        public int? ServiceId { get; set; }
 
         // nav props
         public User Doctor { get; set; }
 
-        public Service Service { get; set; }
         public User Patient { get; set; }
     }
 }
