@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://returex-001-site1.atempurl.com/api'
+  apiUrl: 'https://localhost:5001/api'
 };
 
 /*
