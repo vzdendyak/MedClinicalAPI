@@ -35,8 +35,6 @@ namespace MedClinicalAPI.Features.Queries.DepartmentCRUD
 
             public async Task<DepartmentDto> Handle(Query request, CancellationToken cancellationToken)
             {
-                //await _userManager.CreateAsync(new User { UserName = "test-doctor", Email = "testdoctor@gmail.com" });
-                //await _userManager.CreateAsync(new User { UserName = "test-patient", Email = "testpatient@gmail.com" });
                 var department = await _context.Departments.Where(d => d.Id == request.Id).Select(dep => new DepartmentDto
                 {
                     Id = dep.Id,
@@ -60,12 +58,17 @@ namespace MedClinicalAPI.Features.Queries.DepartmentCRUD
                         FirstName = doc.FirstName,
                         LastName = doc.LastName
                     }).ToList(),
-                    ScheduleId = dep.ScheduleId,
                     DepartmentServices = dep.DepartmentServices.Select(ds => new DepartmentService
                     {
                         ServiceId = ds.ServiceId,
                         Service = ds.Service
-                    }).ToList()
+                    }).ToList(),
+                    Schedule = new Schedule
+                    {
+                        StartHour = dep.Schedule.StartHour,
+                        EndHour = dep.Schedule.EndHour,
+                        IsSaturdayWork = dep.Schedule.IsSaturdayWork
+                    }
                 }).FirstOrDefaultAsync();
                 return department;
             }
