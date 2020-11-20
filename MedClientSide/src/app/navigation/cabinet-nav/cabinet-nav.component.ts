@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {AccountService} from '../../account/services/account.service';
+import {User} from '../../data/models/user';
 
 @Component({
   selector: 'app-cabinet-nav',
@@ -6,8 +8,14 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./cabinet-nav.component.scss']
 })
 export class CabinetNavComponent implements OnInit {
+  user: User;
 
-  constructor() {
+  constructor(private accountService: AccountService) {
+    const id = localStorage.getItem('uId');
+    this.accountService.getShortUser(id).subscribe(value => {
+      this.user = value;
+      console.log(this.user);
+    });
   }
 
   ngOnInit(): void {

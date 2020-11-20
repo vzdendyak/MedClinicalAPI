@@ -43,11 +43,21 @@ namespace MedClinicalAPI
                 connectionString = Configuration.GetConnectionString("VasylLocalDb");
             else if (mName == "DESKTOP-QFMO96R")
                 connectionString = Configuration.GetConnectionString("MishaLocalDb");
+            var dbConnectionStr = Environment.GetEnvironmentVariable("Database");
+            if (!String.IsNullOrWhiteSpace(dbConnectionStr))
+            {
+                connectionString = dbConnectionStr;
+            }
 
+            var indexOfFirst = connectionString.IndexOf(';');
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Started with: {connectionString.Substring(0, indexOfFirst)}\n");
+            Console.ResetColor();
             services.AddEntityFrameworkSqlServer().AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(connectionString);
             });
+            services.AddDbContext<AppDbContext>();
             services.AddIdentity<User, IdentityRole>(set =>
             {
                 set.Password = new PasswordOptions()
@@ -94,11 +104,14 @@ namespace MedClinicalAPI
             services.AddSingleton(tokenParameters);
 
             services.AddControllers();
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IDoctorService, DoctorService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddTransient<DbContext>();
             var assembly = typeof(Startup).Assembly;
             services.AddMediatR(assembly);
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IDoctorService, DoctorService>();
-            services.AddScoped<IUserService, UserService>();
             services.AddMvcCore().AddApiExplorer();
             services.AddSwaggerGen(options =>
             {
@@ -156,10 +169,7 @@ namespace MedClinicalAPI
             });
             app.UseHttpsRedirection();
             app.UseRouting();
-            if (env.IsDevelopment())
-            {
-                app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowCredentials().AllowAnyMethod().AllowAnyHeader());
-            }
+            app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowCredentials().AllowAnyMethod().AllowAnyHeader());
 
             app.UseMiddleware<ErrorHandlingMiddleware>();
 

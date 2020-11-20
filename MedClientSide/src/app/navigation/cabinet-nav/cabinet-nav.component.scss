@@ -43,3 +43,48 @@ a {
 .sidebar-list{
   width: 180px;
 }
+.user-name-item{
+  text-align: center;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 10px 4px;
+  display: grid;
+  margin: 5px 0px 10px 0px;
+  background-color: #343a40;
+  color: white;
+  transition-duration: 0.3s;
+  &:hover{
+    cursor: pointer;
+    background: #eeeeee;
+    color: black;
+    border-color: #bababa;
+  }
+}
+#name-span{
+  font-size: 23px;
+}
+#username-span{
+   font-size: 14px;
+  width: max-content;
+  padding: 0px 25px;
+  margin: auto;
+  border-radius: 2px;
+  position: relative;
+  top: 3px;
+
+}
+.role-span{
+  width: 80px;
+  margin: auto;
+  border-radius: 4px;
+  padding: 2px 0px;
+  position: relative;
+  top: 4px;
+  font-size: 15px;
+}
+.user-doctor{
+  background: #51ae1b;
+}
+.user-patient{
+  background: #ae1b1b;
+}
