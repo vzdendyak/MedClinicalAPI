@@ -1,0 +1,88 @@
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+div {
+  box-sizing: border-box;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.container {
+
+  width: 1200px;
+  border: 10px;
+  margin: 0 auto;
+}
+.title-Med{
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.sppb-panel{
+  margin-top: 150px;
+  //margin-left: 300px;
+  // margin-right: 300px;
+  border-width: 1px;
+  border-color: rgba(228, 228, 228, 1);
+  border-style: solid;
+  background: #f9f9f9;
+  color: #3f424d;
+  padding:0 15px 0 0;
+  cursor: pointer;
+  position: relative;
+  font-size: 18px;
+}
+.sppb-toggle-direction {
+  float:right;
+  color: #ccc;
+  transition: transform .3s;
+}
+
+.three-row{
+  max-width: 100%;
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: center;
+}
+
+.customs {
+  padding-bottom: 150px;
+  padding-top: 25px;
+}
+#doctors_block{
+  transition: height .3s;
+  height: 0;
+  overflow: hidden;
+}
+.services__item {
+  display: flex;
+  align-items: flex-end;
+  height: 400px;
+  //padding-right: 15px;
+  //padding-left: 15px;
+  width: 31%;
+  margin:10px 10px;
+
+}
+.services__item:hover .imgeffect-desc{
+
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+
+.bgred {
+  background: red;
+}
+.imgeffect-desc{
+  width: 100%;
+  text-align: center;
+  background: green;
+  font-size: 0.8em;
+  opacity: 0;
+  line-height: 28px;
+  color:#ffffff;
+  text-transform: uppercase;
+}
