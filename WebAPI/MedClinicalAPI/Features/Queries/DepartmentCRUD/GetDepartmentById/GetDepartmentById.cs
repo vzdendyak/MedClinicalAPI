@@ -25,10 +25,12 @@ namespace MedClinicalAPI.Features.Queries.DepartmentCRUD
         public class Handler : IRequestHandler<GetDepartmentById.Query, DepartmentDto>
         {
             private readonly AppDbContext _context;
+            private readonly UserManager<User> _userManager;
 
-            public Handler(AppDbContext context)
+            public Handler(AppDbContext context, UserManager<User> userManager)
             {
                 _context = context;
+                _userManager = userManager;
             }
 
             public async Task<DepartmentDto> Handle(Query request, CancellationToken cancellationToken)
@@ -56,12 +58,17 @@ namespace MedClinicalAPI.Features.Queries.DepartmentCRUD
                         FirstName = doc.FirstName,
                         LastName = doc.LastName
                     }).ToList(),
-                    ScheduleId = dep.ScheduleId,
                     DepartmentServices = dep.DepartmentServices.Select(ds => new DepartmentService
                     {
                         ServiceId = ds.ServiceId,
                         Service = ds.Service
-                    }).ToList()
+                    }).ToList(),
+                    Schedule = new Schedule
+                    {
+                        StartHour = dep.Schedule.StartHour,
+                        EndHour = dep.Schedule.EndHour,
+                        IsSaturdayWork = dep.Schedule.IsSaturdayWork
+                    }
                 }).FirstOrDefaultAsync();
                 return department;
             }

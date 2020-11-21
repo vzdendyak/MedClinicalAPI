@@ -1,0 +1,23 @@
+<div class="main-content">
+    <div class="login-form-block">
+      <form class="text-center login-form" [formGroup]="loginForm" (submit)="loginSubmit()">
+        <div class="login-elements-block">
+
+        <h1 class="login-text">Login</h1>
+        <div class="form-group">
+          <input type="email" placeholder="Enter email" formControlName="email" class="form-control"
+                 id="emailForm">
+        </div>
+        <div class="form-group">
+          <input type="password" placeholder="Enter password" formControlName="password" class="form-control"
+                 id="passwordForm">
+        </div>
+        <div class="form-group buttons-block">
+          <button type="submit" class="btn btn-lg btn-primary form-button" value="submit" name="submit">Sign in</button>
+          <button type="button" [routerLink]="['/auth/registration']" class="btn btn-lg btn-primary form-button"  name="register">Sign up</button>
+        </div>
+        </div>
+
+    </form>
+    </div>
+</div>

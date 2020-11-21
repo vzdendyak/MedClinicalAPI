@@ -5,6 +5,29 @@ html {
   //background-color: #acefef;
 
 }
+.my-dialog-window .mat-dialog-container {
+  overflow: hidden;
+  /*zoom: 0.9;*/
+  overflow-x: auto;
+}
+.my-snack{
+  //background-color: cornflowerblue;
+}
+.main-comp {
+  margin: 10px 30px;
+}
+
+.backDropBackground {
+  //filter: blur(2px);
+  //-webkit-filter: blur(2px);
+}
+.cabinet-content{
+  height: 100%;
+}
+.cabinet-drawer-container{
+  height: 100%;
+}
+
 
 /*Обнуление*/
 * {
@@ -101,3 +124,6 @@ html::-webkit-scrollbar-thumb {
   background-color: #82B1FF;
 }
 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

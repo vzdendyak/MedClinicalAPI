@@ -1,17 +1,25 @@
+using MedClinical.API.Middlewares;
+using MedClinical.API.Services;
+using MedClinical.API.Services.Interfaces;
 using MedClinicalAPI.Data;
 using MedClinicalAPI.Data.Models;
 using MedClinicalAPI.Middlewares;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace MedClinicalAPI
 {
@@ -33,11 +41,23 @@ namespace MedClinicalAPI
                 connectionString = Configuration.GetConnectionString("IgorLocalDb");
             else if (mName == "DESKTOP-V1GMI6E")
                 connectionString = Configuration.GetConnectionString("VasylLocalDb");
+            else if (mName == "DESKTOP-QFMO96R")
+                connectionString = Configuration.GetConnectionString("MishaLocalDb");
+            var dbConnectionStr = Environment.GetEnvironmentVariable("Database");
+            if (!String.IsNullOrWhiteSpace(dbConnectionStr))
+            {
+                connectionString = dbConnectionStr;
+            }
 
+            var indexOfFirst = connectionString.IndexOf(';');
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Started with: {connectionString.Substring(0, indexOfFirst)}\n");
+            Console.ResetColor();
             services.AddEntityFrameworkSqlServer().AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(connectionString);
             });
+            services.AddDbContext<AppDbContext>();
             services.AddIdentity<User, IdentityRole>(set =>
             {
                 set.Password = new PasswordOptions()
@@ -50,10 +70,48 @@ namespace MedClinicalAPI
                 };
                 set.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<AppDbContext>();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigin", builder => builder.AllowAnyOrigin());
+            });
+            services.AddControllers();
+
+            var tokenParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = Configuration["JwtIssuer"],
+                ValidAudience = Configuration["JwtAudience"],
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration["JwtKey"])),
+                ClockSkew = TimeSpan.Zero
+            };
+
+            services.AddAuthentication(opt =>
+            {
+                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultSignInScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.SaveToken = true;
+                options.TokenValidationParameters = tokenParameters;
+                options.RequireHttpsMetadata = true;
+            });
+            services.AddSingleton(tokenParameters);
 
             services.AddControllers();
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IDoctorService, DoctorService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddTransient<DbContext>();
             var assembly = typeof(Startup).Assembly;
             services.AddMediatR(assembly);
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IDoctorService, DoctorService>();
             services.AddMvcCore().AddApiExplorer();
             services.AddSwaggerGen(options =>
             {
@@ -62,6 +120,31 @@ namespace MedClinicalAPI
                 {
                      {"Bearer", new string[0] }
                 };
+                options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "JWT Authorization header using the bearer scheme",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+                options.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                {
+                     {
+                         new OpenApiSecurityScheme
+                         {
+                             Reference = new OpenApiReference
+                             {
+                                 Type = ReferenceType.SecurityScheme,
+                                 Id = "Bearer"
+                             },
+                             Scheme = "oauth2",
+                             Name = "Bearer",
+                             In = ParameterLocation.Header,
+                         },
+                         new List<string>()
+                     }
+                });
                 options.CustomSchemaIds(f => f.FullName);
             });
         }
@@ -78,11 +161,20 @@ namespace MedClinicalAPI
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseCookiePolicy(new CookiePolicyOptions
+            {
+                MinimumSameSitePolicy = SameSiteMode.None,
+                HttpOnly = HttpOnlyPolicy.Always,
+                Secure = CookieSecurePolicy.Always
+            });
             app.UseHttpsRedirection();
-
             app.UseRouting();
+            app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowCredentials().AllowAnyMethod().AllowAnyHeader());
+
             app.UseMiddleware<ErrorHandlingMiddleware>();
+
+            app.UseMiddleware<AuthMiddleware>();
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

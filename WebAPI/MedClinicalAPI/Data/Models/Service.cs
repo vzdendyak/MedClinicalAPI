@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MedClinicalAPI.Data.Models
@@ -14,5 +13,7 @@ namespace MedClinicalAPI.Data.Models
 
         // nav props
         public virtual ICollection<DepartmentService> DepartmentServices { get; set; }
+
+        public virtual ICollection<Record> Records { get; set; }
     }
 }

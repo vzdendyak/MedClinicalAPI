@@ -11,23 +11,38 @@
       <nav class="header-menu" [ngClass]="{'active': burgerActive}">
         <ul class="menu-points-list">
           <li>
-            <a class="header-link">Головна</a>
+            <a [routerLink]="['/main']" class="header-link">Головна</a>
           </li>
           <li>
-            <a [routerLink]="['vocabulary/4']" class="header-link">Послуги</a>
+            <a [routerLink]="['/department/1']" class="header-link">Відділ тест</a>
           </li>
           <li>
             <a href="#" class="header-link">Ціни</a>
           </li>
           <li>
-            <a href="#" class="header-link">Лікарі</a>
+            <a [routerLink]="['/departments']" class="header-link">Відділи</a>
           </li>
           <li>
-            <a href="#" class="header-link">Контакти</a>
+            <a [routerLink]="['/account/cabinet']" class="header-link">Мій кабінет</a>
           </li>
           <li>
             <a href="#" class="header-link">Про нас</a>
           </li>
+          <div class="login-buttons" *ngIf="!isUserAuthenticated">
+            <li class="login-divider">
+              <a [routerLink]="['/auth/login']" class="header-link auth-link">Вхід</a>
+            </li>
+            <li>
+              <a [routerLink]="['/auth/registration']" class="header-link auth-link">Реєстрація</a>
+            </li>
+          </div>
+
+          <div class="login-buttons" *ngIf="isUserAuthenticated">
+            <li>
+              <a (click)="logOut()" class="header-link logout">Вихід</a>
+            </li>
+          </div>
+
         </ul>
       </nav>
     </div>

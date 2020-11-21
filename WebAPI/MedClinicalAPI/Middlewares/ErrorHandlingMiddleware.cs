@@ -25,11 +25,17 @@ namespace MedClinicalAPI.Middlewares
             }
             catch (BaseCustomException baseEx)
             {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine(baseEx.Message);
                 await HandleCustomExceptionAsync(context, baseEx);
+                Console.ResetColor();
             }
             catch (Exception ex)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(ex.Message);
                 await HandleExceptionAsync(context, ex);
+                Console.ResetColor();
             }
         }
 

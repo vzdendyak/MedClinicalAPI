@@ -1,0 +1,66 @@
+<div class="dialog-content">
+
+  <div class="main-content">
+    <div class="form-header">
+      <h1>Запис на прийом</h1>
+    </div>
+    <div class="form-content">
+      <form [formGroup]="pageForm" (submit)="onSubmit()">
+
+        <div class="form-group ">
+          <mat-form-field appearance="fill" class="formElement">
+            <mat-label>Лікар</mat-label>
+            <mat-select [(value)]="selectedDoctor">
+              <mat-option>None</mat-option>
+              <mat-option *ngFor="let d of doctors" [value]="d">
+                {{d.userName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field appearance="fill" class="formElement">
+            <mat-label>Послуга</mat-label>
+            <mat-select [(value)]="selectedService" [disabled]="!selectedDoctor">
+              <mat-option *ngFor="let ds of depServices" [value]="ds.service">
+                {{ds.service.name}} ({{ds.service.price}} грн)
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field appearance="fill" class="formElement">
+            <mat-label>Дата</mat-label>
+            <input matInput [matDatepicker]="picker" (dateChange)="addEvent($event)" [disabled]="!selectedService">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field appearance="fill" class="formElement">
+            <mat-label>Час</mat-label>
+            <mat-select [(value)]="selectedHour" [disabled]="!freeHours">
+              <mat-option *ngFor="let f of freeHours" [value]="f">
+                {{f | date: "H:mm"}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group buttons-group">
+          <button type="button" class="btn btn-dark form-button close-btn" (click)="close(false)">
+            Відміна
+          </button>
+          <button type="submit" class="btn btn-success form-button save-btn" [disabled]="!selectedHour || !selectedDoctor || !selectedService" >
+            Створити
+          </button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+  <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+</div>

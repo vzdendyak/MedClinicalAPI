@@ -1,0 +1,63 @@
+<section class="cabinet-content">
+  <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Особистий кабінет</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse"
+            data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <ul class="navbar-nav px-3">
+      <li class="nav-item text-nowrap">
+        <a class="nav-link" href="#">Sign out</a>
+      </li>
+    </ul>
+  </nav>
+  <mat-drawer-container class="example-container cabinet-drawer-container">
+    <mat-drawer mode="side" opened>
+      <app-cabinet-nav></app-cabinet-nav>
+    </mat-drawer>
+    <mat-drawer-content>
+      <div class="container-fluid">
+        <div class="row">
+          <main role="main" class="col-md-9 col-lg-10 px-md-4 main-comp">
+            <div class="chartjs-size-monitor"
+                 style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+              <div class="chartjs-size-monitor-expand"
+                   style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0;"></div>
+              </div>
+              <div class="chartjs-size-monitor-shrink"
+                   style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
+              </div>
+            </div>
+            <div
+              class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1 class="h2">Головна</h1>
+              <div class="btn-toolbar mb-2 mb-md-0">
+              </div>
+            </div>
+
+            <form [formGroup]="pageForm">
+              <div class="form-group">
+                <label for="name">Імя</label>
+                <input type="text" class="form-control" id="name">
+              </div>
+              <div class="form-group">
+                <label for="surname">Прізвище</label>
+                <input type="text" class="form-control" id="surname">
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputCity">Місто</label>
+                  <input type="text" class="form-control" id="inputCity">
+                </div>
+              </div>
+            </form>
+          </main>
+        </div>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</section>
+

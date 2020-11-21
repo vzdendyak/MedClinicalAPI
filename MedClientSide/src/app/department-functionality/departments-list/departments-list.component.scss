@@ -1,0 +1,148 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+div {
+  box-sizing: border-box;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.container {
+  width: 1200px;
+  border: 10px;
+  margin: 0 auto;
+}
+
+#customs {
+}
+
+.customs {
+  padding-bottom: 2500px;
+  padding-top: 125px;
+}
+
+.services__item {
+  margin: 25px;
+  width: 330px;
+  float: left;
+  text-align: left;
+  padding: 125px;
+  height: 250px;
+  border: 2px solid #797979;
+  border-radius: 15px;
+}
+
+.bggreen {
+  background: darkgreen;
+}
+
+.bgred {
+  background: darkred;
+}
+
+.bgbrown {
+  background: #008080;
+}
+
+.bg1 {
+  background: #0000FF;
+}
+
+.bg2 {
+  background: #000000;
+}
+
+.bg3 {
+  background: #CD853F;
+}
+
+.bg4 {
+  background: #00FF00;
+}
+
+.bg5 {
+  background: #FFFF00;
+}
+
+.bg6 {
+  background: #FF00FF;
+}
+
+.bg7 {
+  background: #DAA520;
+}
+
+#twenty {
+  padding-left: 185px;
+}
+
+.figcaption {
+  padding: 125%;
+  text-align: left;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.imgeffect-title {
+  padding: 10px 15px;
+  width: 290px;
+  position: relative;
+  bottom: 250px;
+  margin-top: -82px;
+  margin-left: -105px;
+  font-weight: 400;
+  font-size: 1.5em;
+  line-height: 28px;
+  color: #fff;
+  text-transform: uppercase;
+  border: 6px solid white;
+  border-radius: 9px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition-duration: 0.4s;
+
+  &:hover {
+    cursor: pointer;
+    border-color: #434a76;
+    background-color: #b1cdf7;
+    color: black;
+    border-radius: 11px;
+  }
+}
+
+.imgeffect-desc {
+  padding-right: -250px;
+  margin-top: 10px;
+  margin-left: -50px;
+  // word-spacing: -0.15em;
+  font-weight: 300;
+  font-size: 1.5em;
+  line-height: 28px;
+  /* line-height: 24px; */
+  font-family: 'Open Sans';
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.25em;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.bg-image {
+  width: 327px;
+  height: 250px;
+  position: relative;
+  border-radius: 15px;
+  top: -125px;
+  right: 125px;
+  filter: blur(1px);
+  background: #2b5876; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #4e4376, #2b5876); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #4e4376, #2b5876); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}

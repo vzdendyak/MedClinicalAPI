@@ -17,9 +17,10 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
-  //background-color: #3f424d;
   z-index: 2;
-  background: linear-gradient(102deg, rgb(43 108 60 / 87%) 0%, rgba(8, 173, 138, 0.9928019662921348) 100%);
+  border-bottom: solid 5px;
+  background-color: #ccefff;
+  border-color: #a5c4d2;
 }
 .header-body {
   position: relative;
@@ -40,20 +41,21 @@ html, body {
 .menu-points-list {
   display: flex;
   position: relative;
+  align-items: center;
   z-index: 2;
   margin: 0;
 }
 
 .menu-points-list li {
-  padding: 0 25px;
+  padding: 0 20px;
 
 }
 
 .header-link {
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
-  color: #fff;
-
+  color: black;
+  background-color: transparent;
   &:hover {
     color: #ffbc00;
   }
@@ -258,4 +260,23 @@ html, body {
   .button-icon {
     height: 30px;
   }
+}
+.login-buttons{
+  display: flex;
+  border: 3px solid white;
+  padding: 8px 0px;
+  border-radius: 6px;
+  background-color: #94c0d4;
+  color: white;
+  transition-duration: 0.4s;
+  &:hover{
+    background-color: #5eb3da;
+    border-color: transparent;
+  }
+}
+.login-divider{
+ border-right: 2px solid white;
+}
+.logout{
+  cursor: pointer;
 }

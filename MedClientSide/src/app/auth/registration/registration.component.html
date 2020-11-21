@@ -1,0 +1,40 @@
+<div class="main-content">
+  <div class="login-form-block">
+    <form class="text-center login-form" [formGroup]="registerForm" (submit)="registrationSubmit()">
+      <div class="login-elements-block">
+
+        <h1 class="login-text">Registration</h1>
+        <div class="form-group">
+          <input type="text" placeholder="Enter username" formControlName="username" class="form-control" id="userNameForm">
+        </div>
+        <div class="form-group">
+          <input type="text" placeholder="Enter firstname" formControlName="firstName" class="form-control"
+                 id="firstNameForm">
+        </div>
+        <div class="form-group">
+          <input type="text" placeholder="Enter lastname" formControlName="lastName" class="form-control"
+                 id="lastNameForm">
+        </div>
+        <div class="form-group">
+          <input type="text" placeholder="Enter age" formControlName="age" class="form-control"
+                 id="ageForm">
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Enter email" formControlName="email" class="form-control"
+                 id="emailForm">
+        </div>
+        <div class="form-group">
+          <input type="password" placeholder="Enter password" formControlName="password" class="form-control"
+                 id="passwordForm">
+        </div>
+        <div class="form-group">
+          <input type="password" placeholder="Confirm password" formControlName="confirmedPassword" class="form-control passwordForm">
+        </div>
+        <div class="form-group buttons-block">
+          <button type="submit" class="btn btn-lg btn-primary form-button" value="submit" name="submit">Sign up </button>
+        </div>
+        <a class="badge" [routerLink]="['/auth/login']">Sign in</a>
+      </div>
+    </form>
+  </div>
+</div>
