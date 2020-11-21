@@ -1,2 +1,2 @@
-cd D:\projects\MedClinical\MedClientSide
+cd WebAPI\MedClientSide
 npm start
