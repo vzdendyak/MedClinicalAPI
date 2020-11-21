@@ -103,4 +103,5 @@ export class AddRecordFormComponent implements OnInit {
 export interface DialogData {
   doctors: User[];
   depServices: DepartmentService[];
+  name: string;
 }

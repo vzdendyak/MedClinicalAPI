@@ -16,12 +16,20 @@ div {
   border: 10px;
   margin: 0 auto;
 }
-.title-Med{
+
+.title-Med {
   text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
+  border-radius: 4px;
+  background-color: #bce0f1;
+  transition-duration: 0.4s;
+  &:hover{
+    background-color: #91d4f4;
+  }
 }
-.sppb-panel{
+
+.sppb-panel {
   margin-top: 150px;
   //margin-left: 300px;
   // margin-right: 300px;
@@ -30,21 +38,23 @@ div {
   border-style: solid;
   background: #f9f9f9;
   color: #3f424d;
-  padding:0 15px 0 0;
+  border-radius: 6px;
   cursor: pointer;
   position: relative;
   font-size: 18px;
+  display: grid;
 }
+
 .sppb-toggle-direction {
-  float:right;
+  float: right;
   color: #ccc;
   transition: transform .3s;
 }
 
-.three-row{
+.three-row {
   max-width: 100%;
   display: flex;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
@@ -52,11 +62,17 @@ div {
   padding-bottom: 150px;
   padding-top: 25px;
 }
-#doctors_block{
+
+.doctors_block {
   transition: height .3s;
-  height: 0;
+  height: 0px;
   overflow: hidden;
 }
+
+.expanded {
+  height: 500px;
+}
+
 .services__item {
   display: flex;
   align-items: flex-end;
@@ -64,25 +80,39 @@ div {
   //padding-right: 15px;
   //padding-left: 15px;
   width: 31%;
-  margin:10px 10px;
+  margin: 10px 10px;
 
 }
-.services__item:hover .imgeffect-desc{
+
+.services__item:hover .imgeffect-desc {
 
   transition: opacity 0.3s ease;
   opacity: 1;
 }
 
 .bgred {
-  background: red;
+  background: #2b5876; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #4e4376, #2b5876); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #4e4376, #2b5876); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-.imgeffect-desc{
+
+.imgeffect-desc {
   width: 100%;
   text-align: center;
   background: green;
   font-size: 0.8em;
   opacity: 0;
   line-height: 28px;
-  color:#ffffff;
+  color: #ffffff;
   text-transform: uppercase;
+}
+.dep-title{
+  font-size: 20pt;
+}
+.record-button{
+background-color: #65ac38;
+}
+.is-blurred {
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
 }

@@ -29,6 +29,7 @@ import {MAT_DATE_LOCALE} from '@angular/material/core';
 import {CabinetNavComponent} from './navigation/cabinet-nav/cabinet-nav.component';
 import {AccountModule} from './account/account.module';
 import {ChangePasswordFormComponent} from './account/change-password-form/change-password-form.component';
+import {ListDoctorsComponent} from './doctors/list-doctors/list-doctors.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -49,7 +50,8 @@ export const MY_DATE_FORMATS = {
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent
+    MainPageComponent,
+    ListDoctorsComponent
   ],
   entryComponents: [AddRecordFormComponent, ChangePasswordFormComponent],
   imports: [
@@ -66,6 +68,7 @@ export const MY_DATE_FORMATS = {
         {path: 'account/cabinet/my-records', component: MyRecordsComponent, canActivate: [AuthGuard]},
         {path: 'account/cabinet/support', component: SupportComponent, canActivate: [AuthGuard]},
         {path: 'departments', component: DepartmentsListComponent},
+        {path: 'doctors', component: ListDoctorsComponent},
         {path: 'department/:id', component: DepartmentComponent},
         {path: 'main', component: MainPageComponent},
         {path: '**', redirectTo: 'main'}

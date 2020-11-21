@@ -10,7 +10,7 @@ export class Department {
   public addressId: number;
   public scheduleId: number;
   public schedule: Schedule;
-
+  public isVisible: boolean;
   public doctors: User[];
   public departmentServices: DepartmentService[];
 }
