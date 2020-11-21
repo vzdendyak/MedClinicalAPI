@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {DepartmentService} from '../../department-functionality/services/department.service';
+import {Department} from '../../data/models/department';
 
 @Component({
   selector: 'app-list-doctors',
@@ -6,11 +8,24 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./list-doctors.component.scss']
 })
 export class ListDoctorsComponent implements OnInit {
+  showDoctors: boolean;
+  departments: Department[];
+
+  constructor(private departmentService: DepartmentService) {
+    this.departmentService.getDepartments().subscribe(value => {
+      this.departments = value;
+      console.log(this.departments);
+    });
+  }
+
+  ngOnInit(): void {
+  }
+
 
   TitleMed(): void {
     let doctorsBlock = document.getElementById('doctors_block');
     let arrow = document.getElementById('arrow');
-    if (doctorsBlock.style.height === '0px' || doctorsBlock.style.height == 0) {
+    if (doctorsBlock.style.height === '0px') {
       doctorsBlock.style.height = '500px';
       arrow.style.transform = 'rotate(90deg)';
     } else {
@@ -19,9 +34,11 @@ export class ListDoctorsComponent implements OnInit {
     }
     console.log(doctorsBlock);
   }
-  constructor() {
-  }
 
-  ngOnInit(): void {
+  toogleBlock(dep: Department) {
+    console.log('debug');
+    var depp = this.departments.find(dp => dp.id == dep.id);
+    depp.isVisible = !depp.isVisible;
+
   }
 }
