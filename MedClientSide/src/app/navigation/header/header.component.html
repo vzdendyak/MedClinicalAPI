@@ -2,7 +2,6 @@
   <div class="container">
     <div class="header-body" [ngClass]="{'active' : burgerActive}">
       <a href="#" class="logo-text">
-        <img src="../../../assets/logo3.png" class="logo-image" alt="">
       </a>
       <div class="header-burger" [ngClass]="{'active': burgerActive}" (click)="burgerClick()">
         <span></span>
@@ -36,7 +35,7 @@
 
           <div class="login-buttons" *ngIf="isUserAuthenticated">
             <li>
-              <a (click)="logOut()" class="header-link logout">Вихід</a>
+              <a (click)="logOut()" [routerLink]="['/']" class="header-link logout">Вихід</a>
             </li>
           </div>
 
