@@ -112,3 +112,7 @@ div {
 .record-button{
 background-color: #65ac38;
 }
+.is-blurred {
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+}

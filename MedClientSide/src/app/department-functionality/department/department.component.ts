@@ -42,7 +42,7 @@ export class DepartmentComponent implements OnInit {
     let dialogRef;
     dialogRef = this.dialog.open(AddRecordFormComponent, {
       width: '450px',
-      data: {doctors: this.department.doctors, depServices: this.department.departmentServices},
+      data: {doctors: this.department.doctors, depServices: this.department.departmentServices, name: this.department.departmentName},
       panelClass: 'my-dialog-window'
     });
     dialogRef.afterOpened().subscribe(res => {
