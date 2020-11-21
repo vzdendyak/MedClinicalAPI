@@ -1,2 +1,2 @@
-cd D:\projects\MedClinical\WebAPI\MedClinicalAPI
+cd WebAPI\MedClinicalAPI
 dotnet run

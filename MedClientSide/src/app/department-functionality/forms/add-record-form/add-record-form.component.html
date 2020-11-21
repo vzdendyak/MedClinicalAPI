@@ -10,10 +10,10 @@
         <div class="form-group ">
           <mat-form-field appearance="fill" class="formElement">
             <mat-label>Лікар</mat-label>
-            <mat-select [(value)]="selectedDoctor">
+            <mat-select [(value)]="selectedDoctor" (selectionChange)="changedDoctor($event)">
               <mat-option>None</mat-option>
               <mat-option *ngFor="let d of doctors" [value]="d">
-                {{d.userName}}
+                {{d.firstName}} {{d.lastName}}
               </mat-option>
             </mat-select>
           </mat-form-field>

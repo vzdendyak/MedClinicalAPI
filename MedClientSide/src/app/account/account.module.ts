@@ -8,6 +8,7 @@ import {CabinetNavComponent} from '../navigation/cabinet-nav/cabinet-nav.compone
 import {MaterialModule} from '../material/material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ChangePasswordFormComponent} from './change-password-form/change-password-form.component';
+import { CabinetHeaderComponent } from './cabinet-header/cabinet-header.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {ChangePasswordFormComponent} from './change-password-form/change-passwor
     MyRecordsComponent,
     SupportComponent,
     CabinetNavComponent,
-    ChangePasswordFormComponent
+    ChangePasswordFormComponent,
+    CabinetHeaderComponent
   ],
   imports: [
     CommonModule, MaterialModule, FormsModule, ReactiveFormsModule

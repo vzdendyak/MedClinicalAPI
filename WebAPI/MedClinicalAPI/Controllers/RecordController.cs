@@ -44,10 +44,10 @@ namespace MedClinical.API.Controllers
             return Ok(res);
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> DeleteAsync(int RecordId)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAsync(int id)
         {
-            var command = new DeleteRecord.Command(RecordId);
+            var command = new DeleteRecord.Command(id);
             var res = await _mediator.Send(command);
             return Ok(res);
         }

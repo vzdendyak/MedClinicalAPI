@@ -1,0 +1,22 @@
+.my-header {
+  height: 60px;
+}
+
+.nav-list {
+  width: 300px;
+  display: flex;
+  text-align: center;
+  margin: auto 0px;
+  justify-content: space-around;
+}
+
+.nav-list-item {
+  width: 120px;
+}
+
+.nav-list-link {
+  color: white;
+  &:hover{
+    color: #afafaf;
+  }
+}
