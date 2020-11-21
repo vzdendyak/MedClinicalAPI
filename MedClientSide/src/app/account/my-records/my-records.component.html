@@ -1,17 +1,5 @@
 <section class="cabinet-content">
-  <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Особистий кабінет</a>
-    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse"
-            data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-            aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <ul class="navbar-nav px-3">
-      <li class="nav-item text-nowrap">
-        <a class="nav-link" href="#">Sign out</a>
-      </li>
-    </ul>
-  </nav>
+  <app-cabinet-header></app-cabinet-header>
   <mat-drawer-container class="example-container cabinet-drawer-container">
     <mat-drawer mode="side" opened>
       <app-cabinet-nav></app-cabinet-nav>
@@ -76,10 +64,12 @@
             <td mat-cell *matCellDef="let element"> {{element.service.name}} </td>
           </ng-container>
 
-          <ng-container matColumnDef="delete" *ngIf="user.departmentId">
+          <ng-container matColumnDef="delete">
             <th mat-header-cell *matHeaderCellDef width="10%"> Відміна</th>
             <td mat-cell *matCellDef="let element">
-              <button mat-flat-button color="warn" (click)="deleteRecord(element.id)">Відмінити</button>
+              <button mat-flat-button color="warn" (click)="deleteRecord(element.id)  ">
+                Відмінити
+              </button>
             </td>
           </ng-container>
 
@@ -87,7 +77,7 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
       </div>
-       <div class="table-title" style="margin-top: 80px;">
+      <div class="table-title" style="margin-top: 80px;">
         <h1>Минулі записи</h1>
       </div>
       <hr>
@@ -120,10 +110,10 @@
             <td mat-cell *matCellDef="let element"> {{element.service.name}} </td>
           </ng-container>
 
-          <ng-container matColumnDef="empty" *ngIf="user.departmentId">
+          <ng-container matColumnDef="empty">
             <th mat-header-cell *matHeaderCellDef width="10%"> Відміна</th>
             <td mat-cell *matCellDef="let element">
-              <button mat-flat-button color="warn"  disabled="true">Відмінити</button>
+              <button mat-flat-button color="warn" disabled="true">Відмінити</button>
             </td>
           </ng-container>
 

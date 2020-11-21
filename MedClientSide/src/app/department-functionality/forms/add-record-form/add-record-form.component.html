@@ -13,7 +13,7 @@
             <mat-select [(value)]="selectedDoctor">
               <mat-option>None</mat-option>
               <mat-option *ngFor="let d of doctors" [value]="d">
-                {{d.userName}}
+                {{d.firstName}} {{d.lastName}}
               </mat-option>
             </mat-select>
           </mat-form-field>
