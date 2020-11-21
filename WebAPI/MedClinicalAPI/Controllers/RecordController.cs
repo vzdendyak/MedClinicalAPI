@@ -4,6 +4,7 @@ using MedClinical.API.Features.Commands.RecordCRUD.DeleteRecord;
 using MedClinical.API.Features.Queries.RecordCRUD.GetDoctorRecord;
 using MedClinical.API.Features.Queries.RecordCRUD.GetPatientRecord;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -20,6 +21,7 @@ namespace MedClinical.API.Controllers
             _mediator = mediator;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> CreateAsync([FromBody] CreateRecordRequest record)
         {

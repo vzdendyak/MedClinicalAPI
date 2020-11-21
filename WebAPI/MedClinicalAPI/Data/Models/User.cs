@@ -10,6 +10,7 @@ namespace MedClinicalAPI.Data.Models
         public int Age { get; set; }
         public int? DepartmentId { get; set; }
         public int RoleId { get; set; }
+        public string AvatarPath { get; set; }
 
         // nav props
         public Department Department { get; set; }

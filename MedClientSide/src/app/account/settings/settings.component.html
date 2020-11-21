@@ -71,6 +71,9 @@
               <button type="button" class="btn btn-primary" (click)="toogleForm()">Змінити</button>
               <button type="submit" class="btn btn-success"  *ngIf="isFormEnabled">Зберегти</button>
             </form>
+
+            <app-upload-helper (uploadFinished)="uploadFinished($event)"></app-upload-helper>
+            <img [src]="createImgPath()" alt="profile picture" class="user-picture">
           </main>
         </div>
       </div>
