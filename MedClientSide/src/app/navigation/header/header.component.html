@@ -14,19 +14,16 @@
             <a [routerLink]="['/main']" class="header-link">Головна</a>
           </li>
           <li>
-            <a [routerLink]="['/department/1']" class="header-link">Відділ тест</a>
-          </li>
-          <li>
-            <a href="#" class="header-link">Ціни</a>
-          </li>
-          <li>
             <a [routerLink]="['/departments']" class="header-link">Відділи</a>
           </li>
           <li>
-            <a [routerLink]="['/account/cabinet']" class="header-link">Мій кабінет</a>
+            <a [routerLink]="['/doctors']" class="header-link">Лікарі</a>
           </li>
           <li>
-            <a href="#" class="header-link">Про нас</a>
+            <a href="#" class="header-link">Про клініку</a>
+          </li>
+          <li>
+            <a [routerLink]="['/account/cabinet']" class="header-link">Мій кабінет</a>
           </li>
           <div class="login-buttons" *ngIf="!isUserAuthenticated">
             <li class="login-divider">

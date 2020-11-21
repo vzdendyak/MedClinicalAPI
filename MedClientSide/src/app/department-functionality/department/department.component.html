@@ -70,6 +70,8 @@
       </div>
       <h2>{{this.department.departmentName}} в Івано-Франківську</h2>
       <div class="text" [innerHTML]="department.description" id="text-desc">
+      </div>
+      <div>
         <div class="price-block-content" *ngIf="department.departmentServices.length!=0">
           <h5 class="services-header" (click)="hideServices()">
             Перелік послуг

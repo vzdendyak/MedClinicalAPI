@@ -4,27 +4,27 @@
       <nav class="footer-menu">
         <ul class="menu-points-list">
           <li>
-            <a href="#" class="footer-link">Головна</a>
+            <a [routerLink]="['/main']" class="footer-link">Головна</a>
           </li>
           <li>
-            <a [routerLink]="['vocabulary/4']" class="footer-link">Послуги</a>
+            <a [routerLink]="['/departments']" class="footer-link">Відділи</a>
           </li>
           <li>
-            <a href="#" class="footer-link">Ціни</a>
+            <a [routerLink]="['/doctors']" class="footer-link">Лікарі</a>
           </li>
           <li>
-            <a href="#" class="footer-link">Лікарі</a>
+            <a href="#" class="footer-link">Про клініку</a>
+          </li>
+          <li>
+            <a [routerLink]="['/account/cabinet']" class="footer-link">Мій кабінет</a>
           </li>
           <li>
             <a href="#" class="footer-link">Контакти</a>
           </li>
-          <li>
-            <a href="#" class="footer-link">Про нас</a>
-          </li>
         </ul>
       </nav>
     </div>
-    <p id="copyright-text">© 2020 MedClinical. All rights reserved. </p>
-
   </div>
+  <p id="copyright-text">© 2020 Наша клініка. Всі права захищено. </p>
+
 </footer>
