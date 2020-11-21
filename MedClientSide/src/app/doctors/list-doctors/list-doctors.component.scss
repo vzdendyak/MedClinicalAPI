@@ -21,6 +21,12 @@ div {
   text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
+  border-radius: 4px;
+  background-color: #bce0f1;
+  transition-duration: 0.4s;
+  &:hover{
+    background-color: #91d4f4;
+  }
 }
 
 .sppb-panel {
@@ -32,10 +38,11 @@ div {
   border-style: solid;
   background: #f9f9f9;
   color: #3f424d;
-  padding: 0 15px 0 0;
+  border-radius: 6px;
   cursor: pointer;
   position: relative;
   font-size: 18px;
+  display: grid;
 }
 
 .sppb-toggle-direction {
@@ -98,4 +105,10 @@ div {
   line-height: 28px;
   color: #ffffff;
   text-transform: uppercase;
+}
+.dep-title{
+  font-size: 20pt;
+}
+.record-button{
+background-color: #65ac38;
 }

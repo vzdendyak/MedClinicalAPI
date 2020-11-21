@@ -2,13 +2,9 @@
 <section>
   <div class="container">
     <div class="sppb-panel" *ngFor="let dep of departments">
-      <div class="title-Med" id="title-Med" (click)="toogleBlock(dep)">
-
-        <span class="sppb-panel-title" aria-label="Medhouse">{{dep.departmentName}}</span>
-        <span class="sppb-toggle-direction" aria-label="Toggle Direction Icon 13" id="arrow">
-        <i class="fa fa-chevron-right" aria-hidden="true">
-        </i>
-        </span>
+      <button class="record-button" (click)="openDialog()" mat-flat-button color="warn">Записатись</button>
+      <div class="title-Med" id="title-Med" (click)="toogleBlock(dep)" >
+        <span class="sppb-panel-title dep-title" aria-label="Medhouse">{{dep.departmentName}}</span>
       </div>
 
       <div class="container doctors_block" [ngClass]="{'expanded' : dep.isVisible}">

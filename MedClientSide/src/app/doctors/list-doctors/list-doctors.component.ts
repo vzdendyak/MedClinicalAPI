@@ -41,4 +41,8 @@ export class ListDoctorsComponent implements OnInit {
     depp.isVisible = !depp.isVisible;
 
   }
+
+  openDialog() {
+
+  }
 }
