@@ -56,7 +56,8 @@ namespace MedClinicalAPI.Features.Queries.DepartmentCRUD
                             ServiceId = ds.ServiceId,
                             Service = ds.Service
                         }).ToList(),
-                        ScheduleId = dep.ScheduleId
+                        ScheduleId = dep.ScheduleId,
+                        PhotoPath = dep.PhotoPath
                     }).ToListAsync();
                 return departments;
             }

@@ -68,7 +68,8 @@ namespace MedClinicalAPI.Features.Queries.DepartmentCRUD
                         StartHour = dep.Schedule.StartHour,
                         EndHour = dep.Schedule.EndHour,
                         IsSaturdayWork = dep.Schedule.IsSaturdayWork
-                    }
+                    },
+                    PhotoPath = dep.PhotoPath
                 }).FirstOrDefaultAsync();
                 return department;
             }

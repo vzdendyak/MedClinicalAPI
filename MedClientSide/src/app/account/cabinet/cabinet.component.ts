@@ -11,6 +11,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class CabinetComponent implements OnInit {
   user: User;
   pageForm: FormGroup;
+  photoPath: string;
+  public response: { dbPath: '' };
+  timeStamp: number;
 
   constructor(private fb: FormBuilder,
               private accountService: AccountService) {
@@ -18,6 +21,7 @@ export class CabinetComponent implements OnInit {
     this.accountService.getUser(uId).subscribe(value => {
       console.log('user got');
       this.user = value;
+      this.photoPath = `https://localhost:5001/api/account/avatar/${this.user.id}`;
     });
   }
 
@@ -30,5 +34,22 @@ export class CabinetComponent implements OnInit {
       newPassword: [null, [Validators.required]]
     });
   }
+
+  public getLinkPicture() {
+    if (this.timeStamp) {
+      return this.photoPath + '?' + this.timeStamp;
+    }
+    return this.photoPath;
+  }
+
+  public setLinkPicture(url: string) {
+    this.photoPath = url;
+    this.timeStamp = (new Date()).getTime();
+  }
+
+  public uploadFinished = (event) => {
+    this.setLinkPicture(this.photoPath);
+  };
+
 
 }

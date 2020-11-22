@@ -13,15 +13,16 @@
             <div class="btn-toolbar mb-2 mb-md-0">
             </div>
           </div>
-          <div class="row">
+          <div class="row" *ngIf="user">
             <div class="col-lg-4">
-              <img src="/assets/tea.jpg" class="profile-img">
-
-              <h2>Міша Дубровський</h2>
-              <p>Чайок </p>
-              <p><a class="btn btn-secondary" href="#" role="button">View details »</a>
-                <a class="btn btn-primary" href="#" role="button">View details »</a>
-              </p>
+              <div class="photo-block">
+              <img [src]="getLinkPicture()"  id="user-photo" class="user-picture">
+              </div>
+              <h2>{{user.firstName}} {{user.lastName}}</h2>
+              <p *ngIf="user.department">{{user.department.departmentName}} </p>
+              <div class="upload-button-block">
+                <app-upload-helper (uploadFinished)="uploadFinished($event)"></app-upload-helper>
+              </div>
             </div>
 
             <div class="col-lg-4">

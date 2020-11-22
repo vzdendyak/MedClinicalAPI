@@ -20,7 +20,6 @@ export class SettingsComponent implements OnInit {
   pageForm: FormGroup;
   isFormEnabled = false;
   isDialogOpen = false;
-  public response: {dbPath: ''};
 
 
 
@@ -112,12 +111,4 @@ export class SettingsComponent implements OnInit {
     });
   }
 
-  public uploadFinished = (event) => {
-    this.response = event;
-    console.log(this.response);
-  }
-
-  createImgPath() {
-    return `https://localhost:5001/api/account/avatar/${this.user.id}`;
-  }
 }

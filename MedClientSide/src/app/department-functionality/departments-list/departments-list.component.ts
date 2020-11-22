@@ -23,4 +23,8 @@ export class DepartmentsListComponent implements OnInit {
   goToDepartment(id: number): void {
     this.router.navigateByUrl(`/department/${id}`);
   }
+
+  public getLinkPicture(id: number) {
+    return `https://localhost:5001/api/departments/image/${id}`;
+  }
 }
