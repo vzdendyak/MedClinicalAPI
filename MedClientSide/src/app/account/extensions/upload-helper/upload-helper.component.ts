@@ -10,9 +10,13 @@ import {EventEmitter} from '@angular/core';
 export class UploadHelperComponent implements OnInit {
   public progress: number;
   public message: string;
+  isVisible: boolean;
+  isLoading: boolean;
   @Output() uploadFinished = new EventEmitter();
 
   constructor(private http: HttpClient) {
+    this.isVisible = false;
+    this.isLoading = false;
   }
 
   ngOnInit() {
@@ -22,6 +26,7 @@ export class UploadHelperComponent implements OnInit {
     if (files.length === 0) {
       return;
     }
+    this.isLoading = true;
     const fileToUpload = files[0] as File;
     const formData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
@@ -31,11 +36,15 @@ export class UploadHelperComponent implements OnInit {
         if (event.type === HttpEventType.UploadProgress) {
           this.progress = Math.round(100 * event.loaded / event.total);
         } else if (event.type === HttpEventType.Response) {
-          this.message = 'Завантажено. Оновіть сторінку, будь ласка!';
           console.log('uploaded');
           this.uploadFinished.emit(event.body);
+          this.isVisible = true;
+          this.isLoading = false;
+          setTimeout(() => {
+            this.isVisible = false;
+          }, 3000);
         }
       });
-  }
+  };
 
 }

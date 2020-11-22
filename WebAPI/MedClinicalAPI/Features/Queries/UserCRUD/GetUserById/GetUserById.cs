@@ -45,7 +45,8 @@ namespace MedClinical.API.Features.Queries.UserCRUD.GetUserById
                     Email = user.Email,
                     PhoneNumber = user.PhoneNumber,
                     Age = user.Age,
-                    DepartmentId = user.DepartmentId
+                    DepartmentId = user.DepartmentId,
+                    Department = user.Department
                 };
                 model.Records = await _userService.GetUserRecords(user);
 
