@@ -34,7 +34,8 @@ li {
 
 a {
   text-decoration: none;
-  background-color: transparent;
+  //background-color: transparent;
+  margin-right: 10px;
 }
 
 .sidebar .nav-link:hover {
@@ -42,13 +43,20 @@ a {
 }
 
 .form-group {
-  width: 33%;
+  width: 100%;
 }
 
 .form-row {
-  width: 33.5%;
+  width: 100%;
 }
 
 .main-comp {
   margin: 10px 30px;
+}
+.col-lg-4{
+  text-align: center;
+}
+.profile-img{
+  width: 160px;
+  border-radius: 50%;
 }
