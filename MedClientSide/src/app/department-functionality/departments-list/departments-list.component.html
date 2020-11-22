@@ -6,7 +6,9 @@
     <div class="customs">
       <div class="three-row" *ngIf="departments">
         <div class="services__item" *ngFor="let d of departments">
-          <div class="bg-image"></div>
+          <div class="bg-image">
+            <img [src]="getLinkPicture(d.id)" class="dep-photo user-picture">
+          </div>
           <div class="imgeffect-title" (click)="goToDepartment(d.id)">
             {{d.departmentName}}
           </div>

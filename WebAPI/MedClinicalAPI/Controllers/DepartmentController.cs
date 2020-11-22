@@ -1,10 +1,12 @@
-﻿using MedClinicalAPI.Data.Models;
+﻿using MedClinical.API.Features.Queries.GetDepartmentPhoto;
+using MedClinicalAPI.Data.Models;
 using MedClinicalAPI.Features.Commands.DepartmentCRUD.CreateDepartment;
 using MedClinicalAPI.Features.Queries.DepartmentCRUD;
 using MediatR;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace MedClinicalAPI.Controllers
@@ -55,6 +57,25 @@ namespace MedClinicalAPI.Controllers
         public async Task<IActionResult> DeleteAsync(int id)
         {
             throw new NotImplementedException();
+        }
+
+        //[HttpPost("image"), DisableRequestSizeLimit]
+        //public async Task<IActionResult> UploadImage()
+        //{
+        //    var file = Request.Form.Files[0];
+        //    var userId = Request.Form["user"];
+        //    var command = new UploadUserAvatar.Command(file, userId);
+        //    var res = await _mediator.Send(command);
+        //    return Ok(res);
+        //}
+
+        [HttpGet("image/{id}")]
+        public async Task<IActionResult> GetImage(int Id)
+        {
+            var query = new GetDepartmentPhoto.Query(Id);
+            var res = await _mediator.Send(query);
+
+            return new FileStreamResult(new FileStream(res, FileMode.Open), "image/jpeg");
         }
     }
 }

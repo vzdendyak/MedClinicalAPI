@@ -30,7 +30,7 @@ div {
   text-align: left;
   padding: 125px;
   height: 250px;
-  border: 2px solid #797979;
+  border: 3px solid #cfcfcf;
   border-radius: 15px;
 }
 
@@ -138,11 +138,14 @@ div {
   height: 250px;
   position: relative;
   border-radius: 15px;
-  top: -125px;
+  top: -126px;
   right: 125px;
   filter: blur(1px);
-  background: #2b5876; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #4e4376, #2b5876); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #4e4376, #2b5876); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  background: #2b5876;
+  background: linear-gradient(to bottom, #4e4376, #2b5876);
+}
+.dep-photo{
+  height: 100%;
+  width: 100%;
+  border-radius: 15px;
 }

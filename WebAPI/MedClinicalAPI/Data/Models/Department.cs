@@ -11,6 +11,7 @@ namespace MedClinicalAPI.Data.Models
         public string Description { get; set; }
         public int AddressId { get; set; }
         public int ScheduleId { get; set; }
+        public string PhotoPath { get; set; }
 
         // nav props
         public Schedule Schedule { get; set; }
