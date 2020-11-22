@@ -10,11 +10,15 @@
       <div class="container doctors_block" [ngClass]="{'expanded' : dep.isVisible}">
         <div class="customs">
           <div class="three-row">
-            <div class="services__item bgred" *ngFor="let u of dep.doctors">
-              <div class="imgeffect-desc">
-                {{u.firstName}} {{u.lastName}}<br>
-                Лікар-УЗД
+            <div class="services__item" *ngFor="let u of dep.doctors">
+              <div class="photo-block">
+                <img [src]="getLinkPicture(u.id)"  id="user-photo" class="user-picture">
+                <div class="imgeffect-desc">
+                  {{u.firstName}} {{u.lastName}}<br>
+                  Лікар-УЗД
+                </div>
               </div>
+
             </div>
           </div>
         </div>

@@ -97,7 +97,9 @@ div {
 }
 
 .imgeffect-desc {
-  width: 100%;
+  width: 98%;
+  position: relative;
+  border-radius: 5px;
   text-align: center;
   background: green;
   font-size: 0.8em;
@@ -105,6 +107,8 @@ div {
   line-height: 28px;
   color: #ffffff;
   text-transform: uppercase;
+  margin-top: -59px;
+  right: -3px;
 }
 .dep-title{
   font-size: 20pt;
@@ -115,4 +119,16 @@ background-color: #65ac38;
 .is-blurred {
   filter: blur(5px);
   -webkit-filter: blur(5px);
+}
+.user-picture{
+  height: 100%;
+  width: 100%;
+  border-radius: 2%;
+  border: 3px solid #dfdfdf;
+}
+.photo-block{
+  height: 100%;
+  width: 85%;
+  padding: 5px;
+  margin: auto;
 }

@@ -71,4 +71,8 @@ export class ListDoctorsComponent implements OnInit {
       }
     });
   }
+
+  public getLinkPicture(id: string) {
+   return `https://localhost:5001/api/account/avatar/${id}`;
+  }
 }
