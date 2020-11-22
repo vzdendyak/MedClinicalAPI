@@ -1,5 +1,6 @@
+<div class="content" style="display: grid;"></div>
 <app-header></app-header>
-<section>
+<section style="margin-bottom: 100px; margin-top: 110px;">
   <div class="container" [ngClass]="{'is-blurred': isDialogOpen}">
     <div class="sppb-panel" *ngFor="let dep of departments">
       <button class="record-button" (click)="openDialog(dep)" mat-flat-button color="warn">Записатись</button>
@@ -27,4 +28,4 @@
   </div>
 </section>
 
-<!--<app-footer></app-footer>-->
+<app-footer></app-footer>
