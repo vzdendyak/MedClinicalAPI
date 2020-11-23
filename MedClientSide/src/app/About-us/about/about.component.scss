@@ -1,0 +1,53 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 1200px;
+  border: 10px;
+  margin: 0 auto;
+}
+.title {
+margin-top: 110px;
+  text-align: center;
+margin-bottom: 100px;
+}
+.jumbotron{
+
+  text-align: center;
+  background: #000000;
+  color: white;
+}
+.lead-footer{
+  font-size: 24px;
+}
+.row{
+  position: relative;
+  //text-align: center;
+  height: 500px;
+}
+#first{
+  color:blue;
+}
+#second{
+  color:green;
+}
+.info{
+  line-height: 1.25em;
+  padding: 0;
+  margin-bottom: 5px;
+}
+.row p{
+  text-align: left;
+}
+.text-p{
+  margin-bottom: 42px;
+}
+.img-doctor{
+  width: 500px;
+}
