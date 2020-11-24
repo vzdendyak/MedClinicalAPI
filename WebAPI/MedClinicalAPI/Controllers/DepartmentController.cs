@@ -1,4 +1,5 @@
-﻿using MedClinical.API.Features.Queries.GetDepartmentPhoto;
+﻿using MedClinical.API.Features.Commands.DepartmentCRUD.DeleteDepartment;
+using MedClinical.API.Features.Queries.GetDepartmentPhoto;
 using MedClinicalAPI.Data.Models;
 using MedClinicalAPI.Features.Commands.DepartmentCRUD.CreateDepartment;
 using MedClinicalAPI.Features.Queries.DepartmentCRUD;
@@ -56,7 +57,9 @@ namespace MedClinicalAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var command = new DeleteDepartment.Command(id);
+            var res = await _mediator.Send(command);
+            return Ok(res);
         }
 
         //[HttpPost("image"), DisableRequestSizeLimit]
