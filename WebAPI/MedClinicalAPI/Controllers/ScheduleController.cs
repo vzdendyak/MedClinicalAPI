@@ -1,5 +1,8 @@
-﻿using MedClinical.API.Features.Commands.ScheduleCRUD.DeleteSchedule;
+﻿using MedClinical.API.Features.Commands.ScheduleCRUD.CreateSchedule;
+using MedClinical.API.Features.Commands.ScheduleCRUD.DeleteSchedule;
+using MedClinical.API.Features.Commands.ScheduleCRUD.UpdateSchedule;
 using MedClinical.API.Features.Queries.ScheduleCRUD.GetAllSchedule;
+using MedClinicalAPI.Data.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -22,6 +25,22 @@ namespace MedClinical.API.Controllers
         {
             var getQuery = new GetAllSchedule.Query();
             var res = await _mediator.Send(getQuery);
+            return Ok(res);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateAsync([FromBody] Schedule schedule)
+        {
+            var command = new CreateSchedule.Command(schedule);
+            var res = await _mediator.Send(command);
+            return Ok(res);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateAsync([FromBody] Schedule schedule)
+        {
+            var command = new UpdateSchedule.Command(schedule);
+            var res = await _mediator.Send(command);
             return Ok(res);
         }
 
