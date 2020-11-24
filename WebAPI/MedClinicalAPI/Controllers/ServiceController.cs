@@ -1,4 +1,5 @@
-﻿using MedClinicalAPI.Data.Models;
+﻿using MedClinical.API.Features.Commands.ServiceCRUD.DeleteService;
+using MedClinicalAPI.Data.Models;
 using MedClinicalAPI.Features.Queries.ServiceCRUD.GetAllServices;
 using MedClinicalAPI.Features.Queries.ServiceCRUD.GetServicesById;
 using MediatR;
@@ -52,7 +53,9 @@ namespace MedClinicalAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var command = new DeleteService.Command(id);
+            var res = await _mediator.Send(command);
+            return Ok(res);
         }
     }
 }
