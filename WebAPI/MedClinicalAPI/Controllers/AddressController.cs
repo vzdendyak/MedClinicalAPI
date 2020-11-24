@@ -1,4 +1,5 @@
-﻿using MedClinicalAPI.Data.Models;
+﻿using MedClinical.API.Features.Commands.AddressCRUD.DeleteAddress;
+using MedClinicalAPI.Data.Models;
 using MedClinicalAPI.Features.Queries.AddressCRUD.GetAddressById;
 using MedClinicalAPI.Features.Queries.AddressCRUD.GetAllAddresses;
 using MediatR;
@@ -52,7 +53,9 @@ namespace MedClinicalAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var command = new DeleteAddress.Command(id);
+            var res = await _mediator.Send(command);
+            return Ok(res);
         }
     }
 }
