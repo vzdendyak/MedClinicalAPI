@@ -1,4 +1,6 @@
-﻿using MedClinical.API.Features.Commands.AddressCRUD.DeleteAddress;
+﻿using MedClinical.API.Features.Commands.AddressCRUD.CreateAddress;
+using MedClinical.API.Features.Commands.AddressCRUD.DeleteAddress;
+using MedClinical.API.Features.Commands.AddressCRUD.UpdateAddress;
 using MedClinicalAPI.Data.Models;
 using MedClinicalAPI.Features.Queries.AddressCRUD.GetAddressById;
 using MedClinicalAPI.Features.Queries.AddressCRUD.GetAllAddresses;
@@ -41,13 +43,17 @@ namespace MedClinicalAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAsync([FromBody] Address address)
         {
-            throw new NotImplementedException();
+            var createCommand = new CreateAddress.Command(address);
+            var res = await _mediator.Send(createCommand);
+            return Ok(res);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task<IActionResult> UpdateAsync([FromBody] Address address)
         {
-            throw new NotImplementedException();
+            var command = new UpdateAddress.Command(address);
+            var res = await _mediator.Send(command);
+            return Ok(res);
         }
 
         [HttpDelete("{id}")]
