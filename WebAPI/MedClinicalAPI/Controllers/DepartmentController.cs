@@ -1,4 +1,5 @@
 ﻿using MedClinical.API.Features.Commands.DepartmentCRUD.DeleteDepartment;
+using MedClinical.API.Features.Commands.DepartmentCRUD.UpdateDepartment;
 using MedClinical.API.Features.Queries.GetDepartmentPhoto;
 using MedClinicalAPI.Data.Models;
 using MedClinicalAPI.Features.Commands.DepartmentCRUD.CreateDepartment;
@@ -48,10 +49,12 @@ namespace MedClinicalAPI.Controllers
             return Ok(res);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task<IActionResult> UpdateAsync([FromBody] Department department)
         {
-            throw new NotImplementedException();
+            var command = new UpdateDepartment.Command(department);
+            var res = await _mediator.Send(command);
+            return Ok(res);
         }
 
         [HttpDelete("{id}")]
