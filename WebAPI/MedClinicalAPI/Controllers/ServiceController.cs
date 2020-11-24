@@ -1,4 +1,6 @@
-﻿using MedClinical.API.Features.Commands.ServiceCRUD.DeleteService;
+﻿using MedClinical.API.Features.Commands.ServiceCRUD.CreateService;
+using MedClinical.API.Features.Commands.ServiceCRUD.DeleteService;
+using MedClinical.API.Features.Commands.ServiceCRUD.UpdateService;
 using MedClinicalAPI.Data.Models;
 using MedClinicalAPI.Features.Queries.ServiceCRUD.GetAllServices;
 using MedClinicalAPI.Features.Queries.ServiceCRUD.GetServicesById;
@@ -41,13 +43,17 @@ namespace MedClinicalAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAsync([FromBody] Service service)
         {
-            throw new NotImplementedException();
+            var command = new CreateService.Command(service);
+            var res = await _mediator.Send(command);
+            return Ok(res);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task<IActionResult> UpdateAsync([FromBody] Service service)
         {
-            throw new NotImplementedException();
+            var command = new UpdateService.Command(service);
+            var res = await _mediator.Send(command);
+            return Ok(res);
         }
 
         [HttpDelete("{id}")]
