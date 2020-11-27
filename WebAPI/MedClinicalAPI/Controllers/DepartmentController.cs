@@ -84,13 +84,5 @@ namespace MedClinicalAPI.Controllers
 
             return new FileStreamResult(new FileStream(res, FileMode.Open), "image/jpeg");
         }
-
-        [HttpGet("createForm")]
-        public async Task<IActionResult> GetAddressAndShedulesAsync()
-        {
-            var getQuery = new GetAddressAndShedules.Query();
-            var res = await _mediator.Send(getQuery);
-            return Ok(res);
-        }
     }
 }
