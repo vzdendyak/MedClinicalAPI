@@ -27,8 +27,7 @@ export class SettingsComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private accountService: AccountService,
               private snackBar: MatSnackBar,
-              public dialog: MatDialog,
-              private http: HttpClient) {
+              public dialog: MatDialog) {
     const uId = localStorage.getItem('uId');
     this.accountService.getUser(uId).subscribe(value => {
       console.log('user got');
@@ -66,7 +65,8 @@ export class SettingsComponent implements OnInit {
       id: this.user.id,
       departmentId: this.user.departmentId,
       department: null,
-      records: null
+      records: null,
+      role: null
     };
     this.accountService.updateUser(model).subscribe(value => {
       if (value) {

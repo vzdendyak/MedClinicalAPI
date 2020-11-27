@@ -6,6 +6,8 @@ using MedClinical.API.Features.Queries.UserCRUD.GetUserById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using MedClinicalAPI.Features.Queries.UserCRUD;
+using MedClinical.API.Features.Commands.UserCRUD;
 
 namespace MedClinical.API.Controllers
 {
@@ -28,11 +30,27 @@ namespace MedClinical.API.Controllers
             return Ok(res);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAllAsync()
+        {
+            var getQuery = new GetAllUsers.Query();
+            var res = await _mediator.Send(getQuery);
+            return Ok(res);
+        }
+
         [HttpGet("{id}/short")]
         public async Task<IActionResult> GetShortAsync(string id)
         {
             var getQuery = new GetShortUserById.Query(id);
             var res = await _mediator.Send(getQuery);
+            return Ok(res);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateAsync(UserDto model)
+        {
+            var updCommand = new CreateUser.Command(model);
+            var res = await _mediator.Send(updCommand);
             return Ok(res);
         }
 
