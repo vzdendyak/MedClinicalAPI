@@ -10,6 +10,8 @@ namespace MedClinical.API.Data.DTOs
         public string Description { get; set; }
         public int AddressId { get; set; }
         public int ScheduleId { get; set; }
+        public bool IsVisible { get; set; }
+        public string PhotoPath { get; set; }
 
         // nav props
         public Schedule Schedule { get; set; }

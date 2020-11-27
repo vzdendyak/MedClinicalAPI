@@ -41,5 +41,12 @@ namespace MedClinicalAPI.Helpers
             if (isRole)
                 throw new BadRequestException("This role already exists.");
         }
+
+        public static void IsScheduleExist(Schedule schedule, AppDbContext _context)
+        {
+            var isSchedule = _context.Schedules.Any(s => s.StartHour == schedule.StartHour && s.EndHour == schedule.EndHour && s.IsSaturdayWork == schedule.IsSaturdayWork);
+            if (isSchedule)
+                throw new BadRequestException("This schedule already exists.");
+        }
     }
 }

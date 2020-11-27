@@ -1,0 +1,12 @@
+<div class="content">
+  <div class="button-block">
+    <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
+    <button type="button" class="btn btn-success" style="width: 150px" (click)="file.click()">Upload File</button>
+  </div>
+  <div class="text-block" *ngIf="(progress || message) && isVisible">
+    <span class="upload" *ngIf="progress > 0">
+      <b>{{progress}}%</b>
+    </span>
+  </div>
+  <mat-progress-bar style="margin-top: 10px;" *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+</div>

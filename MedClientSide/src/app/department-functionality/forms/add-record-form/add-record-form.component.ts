@@ -9,6 +9,7 @@ import {RecordService} from '../../services/record.service';
 import {Record} from '../../../data/models/record';
 import {DepartmentService} from '../../../data/models/department-service';
 import {Service} from '../../../data/models/service';
+import {MatSelectChange} from '@angular/material/select';
 
 @Component({
   selector: 'app-add-record-form',
@@ -60,7 +61,7 @@ export class AddRecordFormComponent implements OnInit {
 
     this.freeHours = null;
     this.isLoading = true;
-    this.doctorService.getHours('365468ba-020a-4850-82cd-e4b0e703b6f5', yourTicks).subscribe(rec => {
+    this.doctorService.getHours(this.selectedDoctor.id, yourTicks).subscribe(rec => {
       console.log(rec);
       this.freeHours = rec;
       this.isLoading = false;
@@ -93,9 +94,14 @@ export class AddRecordFormComponent implements OnInit {
       this.close(true);
     });
   }
+
+  changedDoctor($event: MatSelectChange) {
+    console.log(this.selectedDoctor);
+  }
 }
 
 export interface DialogData {
   doctors: User[];
   depServices: DepartmentService[];
+  name: string;
 }

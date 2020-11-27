@@ -3,6 +3,7 @@ import {User} from '../../data/models/user';
 import {Record} from '../../data/models/record';
 import {AccountService} from '../services/account.service';
 import {RecordService} from '../../department-functionality/services/record.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-my-records',
@@ -13,20 +14,18 @@ export class MyRecordsComponent implements OnInit {
   user: User;
   records: Record[];
   expiredRecords: Record[];
-  displayedColumns: string[] = ['doctor', 'patient', 'dateOfMeeting', 'dateOfRecord', 'service'];
+  displayedColumns: string[] = ['doctor', 'patient', 'dateOfMeeting', 'dateOfRecord', 'service', 'delete'];
   displayedColumns2: string[] = ['doctor', 'patient', 'dateOfMeeting', 'dateOfRecord', 'service', 'empty'];
 
-  constructor(private accountService: AccountService, private recordService: RecordService) {
+  constructor(private accountService: AccountService, private recordService: RecordService, private snackBar: MatSnackBar) {
     const uId = localStorage.getItem('uId');
     this.accountService.getUser(uId).subscribe(value => {
-      console.log('user got');
       this.user = value;
       this.records = value.records;
+      console.log(this.records);
       this.expiredRecords = this.records.filter(rec => this.isDateExpired(rec.dateOfMeeting));
       this.records = this.records.filter(rec => !this.isDateExpired(rec.dateOfMeeting));
-      if (this.user.departmentId) {
-        this.displayedColumns.push('delete');
-      }
+      console.log('filtered. Expired = ', this.expiredRecords);
       console.log(this.records);
     });
   }
@@ -36,7 +35,16 @@ export class MyRecordsComponent implements OnInit {
 
   deleteRecord(id: number): void {
     this.recordService.deleteRecord(id).subscribe(value => {
-      console.log(value);
+      if (value) {
+        this.records = this.records.filter(rec => rec.id !== id);
+        this.snackBar.open('Запис відмінено', 'Подякував', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+          panelClass: ['my-snack'],
+          politeness: 'assertive'
+        });
+      }
     });
   }
 

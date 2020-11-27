@@ -10,8 +10,9 @@ div {
 }
 
 .container {
-  width: 1200px;
   border: 10px;
+  height: 100%;
+  display: flex;
   margin: 0 auto;
 }
 
@@ -19,8 +20,9 @@ div {
 }
 
 .customs {
-  padding-bottom: 2500px;
+  padding-bottom: 100px;
   padding-top: 125px;
+  height: 100%;
 }
 
 .services__item {
@@ -30,8 +32,9 @@ div {
   text-align: left;
   padding: 125px;
   height: 250px;
-  border: 2px solid #797979;
+  border: 3px solid #cfcfcf;
   border-radius: 15px;
+  background: #688fb8;
 }
 
 .bggreen {
@@ -93,7 +96,7 @@ div {
   padding: 10px 15px;
   width: 290px;
   position: relative;
-  bottom: 250px;
+  bottom: 40px;
   margin-top: -82px;
   margin-left: -105px;
   font-weight: 400;
@@ -134,15 +137,21 @@ div {
 }
 
 .bg-image {
+
   width: 327px;
-  height: 250px;
+  height: 181px;
   position: relative;
   border-radius: 15px;
-  top: -125px;
+  top: -126px;
   right: 125px;
-  filter: blur(1px);
-  background: #2b5876; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #4e4376, #2b5876); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #4e4376, #2b5876); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /* filter: blur(2px); */
+  background: #2b5876;
+  //background: linear-gradient(to bottom, #4e4376, #2b5876);
 
+}
+
+.dep-photo{
+height: 100%;
+width: 100%;
+border-radius: 15px;
 }

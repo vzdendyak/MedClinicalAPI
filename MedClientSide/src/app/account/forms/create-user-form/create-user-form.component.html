@@ -1,0 +1,55 @@
+<form [formGroup]="pageForm" (submit)="onSubmit()">
+  <div class="form-group">
+    <label for="email">E-mail</label>
+    <input type="email" formControlName="email" class="form-control" id="email">
+  </div>
+  <div class="form-group">
+    <label for="firstName">Імя</label>
+    <input type="text" formControlName="firstName" class="form-control" id="firstName">
+  </div>
+  <div class="form-group">
+    <label for="lastName">Прізвище</label>
+    <input type="text" formControlName="lastName" class="form-control" id="lastName">
+  </div>
+  <div class="form-group">
+    <label for="age">Вікl</label>
+    <input type="number" formControlName="age" class="form-control" id="age">
+  </div>
+  <div class="form-group">
+    <label for="userName">Нікнейм</label>
+    <input type="text" formControlName="userName" class="form-control" id="userName">
+  </div>
+  <div class="form-group">
+    <label for="phoneNumber">Номер телефону</label>
+    <input type="tel" formControlName="phoneNumber" class="form-control" id="phoneNumber">
+  </div>
+  <div class="form-group ">
+    <mat-form-field appearance="fill" class="formElement">
+      <mat-label>Роль</mat-label>
+      <mat-select [(value)]="selectedRole">
+        <mat-option *ngFor="let r of roles" [value]="r">
+          {{r}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="form-group" >
+    <mat-form-field appearance="fill" class="formElement">
+      <mat-label>Відділ</mat-label>
+      <mat-select [(value)]="selectedDep" [disabled]="selectedRole!='Doctor'">
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let d of departments" [value]="d">
+          {{d.departmentName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="form-group buttons-group">
+    <button type="button" class="btn btn-dark form-button close-btn" (click)="close(false)">
+      Відміна
+    </button>
+    <button type="submit" class="btn btn-success form-button save-btn">
+      Створити
+    </button>
+  </div>
+</form>

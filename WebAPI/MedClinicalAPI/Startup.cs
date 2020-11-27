@@ -10,15 +10,18 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace MedClinicalAPI
@@ -40,7 +43,8 @@ namespace MedClinicalAPI
             if (mName == "DESKTOP-QRMC7LQ")
                 connectionString = Configuration.GetConnectionString("IgorLocalDb");
             else if (mName == "DESKTOP-V1GMI6E")
-                connectionString = Configuration.GetConnectionString("VasylLocalDb");
+                //connectionString = Configuration.GetConnectionString("VasylLocalDb");
+                connectionString = Configuration.GetConnectionString("RemoteDb");
             else if (mName == "DESKTOP-QFMO96R")
                 connectionString = Configuration.GetConnectionString("MishaLocalDb");
             var dbConnectionStr = Environment.GetEnvironmentVariable("Database");
@@ -102,7 +106,12 @@ namespace MedClinicalAPI
                 options.RequireHttpsMetadata = true;
             });
             services.AddSingleton(tokenParameters);
-
+            services.Configure<FormOptions>(o =>
+            {
+                o.ValueLengthLimit = int.MaxValue;
+                o.MultipartBodyLengthLimit = int.MaxValue;
+                o.MemoryBufferThreshold = int.MaxValue;
+            });
             services.AddControllers();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IDoctorService, DoctorService>();
@@ -168,6 +177,12 @@ namespace MedClinicalAPI
                 Secure = CookieSecurePolicy.Always
             });
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
+                RequestPath = new PathString("/Resources")
+            });
             app.UseRouting();
             app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowCredentials().AllowAnyMethod().AllowAnyHeader());
 

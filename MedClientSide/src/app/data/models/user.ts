@@ -10,6 +10,7 @@ export class User {
   public phoneNumber: string;
   public age: number;
   public departmentId: number;
+  public role: string;
   public department: Department;
   public records: Record[];
 }

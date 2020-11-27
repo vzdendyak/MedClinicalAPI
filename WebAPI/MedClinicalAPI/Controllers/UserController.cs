@@ -1,11 +1,17 @@
 ﻿using MedClinical.API.Data.DTOs;
+using MedClinical.API.Features.Commands.UserCRUD;
 using MedClinical.API.Features.Commands.UserCRUD.ChangeUserPassword;
+using MedClinical.API.Features.Commands.UserCRUD.DeleteUser;
 using MedClinical.API.Features.Commands.UserCRUD.UpdateUserWithoutPassword;
 using MedClinical.API.Features.Queries.UserCRUD.GetShortUserById;
 using MedClinical.API.Features.Queries.UserCRUD.GetUserById;
+using MedClinicalAPI.Features.Queries.UserCRUD;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+
+using MedClinicalAPI.Features.Queries.UserCRUD;
+using MedClinical.API.Features.Commands.UserCRUD;
 
 namespace MedClinical.API.Controllers
 {
@@ -28,11 +34,27 @@ namespace MedClinical.API.Controllers
             return Ok(res);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAllAsync()
+        {
+            var getQuery = new GetAllUsers.Query();
+            var res = await _mediator.Send(getQuery);
+            return Ok(res);
+        }
+
         [HttpGet("{id}/short")]
         public async Task<IActionResult> GetShortAsync(string id)
         {
             var getQuery = new GetShortUserById.Query(id);
             var res = await _mediator.Send(getQuery);
+            return Ok(res);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateAsync(UserDto model)
+        {
+            var updCommand = new CreateUser.Command(model);
+            var res = await _mediator.Send(updCommand);
             return Ok(res);
         }
 
@@ -49,6 +71,14 @@ namespace MedClinical.API.Controllers
         {
             var changePassword = new ChangeUserPassword.Command(model);
             var res = await _mediator.Send(changePassword);
+            return Ok(res);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAsync(string Id)
+        {
+            var delCommand = new DeleteUser.Command(Id);
+            var res = await _mediator.Send(delCommand);
             return Ok(res);
         }
     }

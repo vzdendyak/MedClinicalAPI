@@ -2,7 +2,6 @@
   <div class="container">
     <div class="header-body" [ngClass]="{'active' : burgerActive}">
       <a href="#" class="logo-text">
-        <img src="../../../assets/logo3.png" class="logo-image" alt="">
       </a>
       <div class="header-burger" [ngClass]="{'active': burgerActive}" (click)="burgerClick()">
         <span></span>
@@ -14,19 +13,16 @@
             <a [routerLink]="['/main']" class="header-link">Головна</a>
           </li>
           <li>
-            <a [routerLink]="['/department/1']" class="header-link">Відділ тест</a>
-          </li>
-          <li>
-            <a href="#" class="header-link">Ціни</a>
-          </li>
-          <li>
             <a [routerLink]="['/departments']" class="header-link">Відділи</a>
           </li>
           <li>
-            <a [routerLink]="['/account/cabinet']" class="header-link">Мій кабінет</a>
+            <a [routerLink]="['/doctors']" class="header-link">Лікарі</a>
           </li>
           <li>
-            <a href="#" class="header-link">Про нас</a>
+            <a href="#" class="header-link">Про клініку</a>
+          </li>
+          <li>
+            <a [routerLink]="['/account/cabinet']" class="header-link">Мій кабінет</a>
           </li>
           <div class="login-buttons" *ngIf="!isUserAuthenticated">
             <li class="login-divider">
@@ -39,7 +35,7 @@
 
           <div class="login-buttons" *ngIf="isUserAuthenticated">
             <li>
-              <a (click)="logOut()" class="header-link logout">Вихід</a>
+              <a (click)="logOut()" [routerLink]="['/']" class="header-link logout">Вихід</a>
             </li>
           </div>
 
