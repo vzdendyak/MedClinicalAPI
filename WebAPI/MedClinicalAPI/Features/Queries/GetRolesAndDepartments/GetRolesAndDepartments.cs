@@ -34,7 +34,6 @@ namespace MedClinical.API.Features.Queries.GetRolesAndDepartments
                 rolesAndDepartments.Roles = await _context.Roles
                     .Select(rol => new RolesDto
                     {
-                        Id = rol.Id,
                         Name = rol.Name
                     }).ToListAsync();
 

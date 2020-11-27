@@ -49,7 +49,7 @@ export class CabinetComponent implements OnInit {
 
   public uploadFinished = (event) => {
     this.setLinkPicture(this.photoPath);
-  };
+  }
 
 
 }

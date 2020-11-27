@@ -32,6 +32,8 @@ import {ChangePasswordFormComponent} from './account/change-password-form/change
 import {ListDoctorsComponent} from './doctors/list-doctors/list-doctors.component';
 import {AdminPanelComponent} from './account/admin-panel/admin-panel.component';
 import {CreateUserFormComponent} from './account/forms/create-user-form/create-user-form.component';
+import {CreateDepartmentFormComponent} from './account/forms/create-department-form/create-department-form.component';
+import {CreateServiceFormComponent} from './account/forms/create-service-form/create-service-form.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -55,7 +57,7 @@ export const MY_DATE_FORMATS = {
     MainPageComponent,
     ListDoctorsComponent
   ],
-  entryComponents: [AddRecordFormComponent, ChangePasswordFormComponent, CreateUserFormComponent],
+  entryComponents: [AddRecordFormComponent, ChangePasswordFormComponent, CreateUserFormComponent, CreateDepartmentFormComponent, CreateServiceFormComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

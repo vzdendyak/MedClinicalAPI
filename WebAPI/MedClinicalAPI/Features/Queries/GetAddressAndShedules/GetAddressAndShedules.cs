@@ -48,7 +48,12 @@ namespace MedClinical.API.Features.Queries.GetAddressAndShedules
                         EndHour = sch.EndHour,
                         IsSaturdayWork = sch.IsSaturdayWork
                     }).ToListAsync();
-
+                addressesAndShedules.Services = await _context.Services
+                    .Select(serv => new Service
+                    {
+                        Id = serv.Id,
+                        Name = serv.Name
+                    }).ToListAsync();
                 return addressesAndShedules;
             }
         }

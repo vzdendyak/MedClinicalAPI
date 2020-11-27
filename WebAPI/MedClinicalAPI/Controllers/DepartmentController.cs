@@ -1,5 +1,7 @@
-﻿using MedClinical.API.Features.Commands.DepartmentCRUD.DeleteDepartment;
+﻿using MedClinical.API.Features.Commands.AddServiceToDepartment;
+using MedClinical.API.Features.Commands.DepartmentCRUD.DeleteDepartment;
 using MedClinical.API.Features.Commands.DepartmentCRUD.UpdateDepartment;
+using MedClinical.API.Features.Commands.UploadDepartmentPhoto;
 using MedClinical.API.Features.Queries.GetAddressAndShedules;
 using MedClinical.API.Features.Queries.GetDepartmentPhoto;
 using MedClinicalAPI.Data.Models;
@@ -50,6 +52,14 @@ namespace MedClinicalAPI.Controllers
             return Ok(res);
         }
 
+        [HttpPost("services")]
+        public async Task<IActionResult> AddServiceAsync([FromBody] DepartmentService model)
+        {
+            var createCommand = new AddServiceToDepartment.Command(model.DepartmentId, model.ServiceId);
+            var res = await _mediator.Send(createCommand);
+            return Ok(res);
+        }
+
         [HttpPut]
         public async Task<IActionResult> UpdateAsync([FromBody] Department department)
         {
@@ -83,6 +93,16 @@ namespace MedClinicalAPI.Controllers
             var res = await _mediator.Send(query);
 
             return new FileStreamResult(new FileStream(res, FileMode.Open), "image/jpeg");
+        }
+
+        [HttpPost("avatar"), DisableRequestSizeLimit]
+        public async Task<IActionResult> UploadImage()
+        {
+            var file = Request.Form.Files[0];
+            var depId = Request.Form["department"];
+            var command = new UploadDepartmentPhoto.Command(file, int.Parse(depId.ToString()));
+            var res = await _mediator.Send(command);
+            return Ok(res);
         }
     }
 }

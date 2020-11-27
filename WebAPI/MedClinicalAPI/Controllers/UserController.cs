@@ -10,6 +10,9 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
+using MedClinicalAPI.Features.Queries.UserCRUD;
+using MedClinical.API.Features.Commands.UserCRUD;
+
 namespace MedClinical.API.Controllers
 {
     [Route("api/users")]
@@ -71,7 +74,7 @@ namespace MedClinical.API.Controllers
             return Ok(res);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(string Id)
         {
             var delCommand = new DeleteUser.Command(Id);
