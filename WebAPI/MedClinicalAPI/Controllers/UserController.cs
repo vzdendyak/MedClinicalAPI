@@ -1,8 +1,11 @@
 ﻿using MedClinical.API.Data.DTOs;
+using MedClinical.API.Features.Commands.UserCRUD;
 using MedClinical.API.Features.Commands.UserCRUD.ChangeUserPassword;
+using MedClinical.API.Features.Commands.UserCRUD.DeleteUser;
 using MedClinical.API.Features.Commands.UserCRUD.UpdateUserWithoutPassword;
 using MedClinical.API.Features.Queries.UserCRUD.GetShortUserById;
 using MedClinical.API.Features.Queries.UserCRUD.GetUserById;
+using MedClinicalAPI.Features.Queries.UserCRUD;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -67,6 +70,14 @@ namespace MedClinical.API.Controllers
         {
             var changePassword = new ChangeUserPassword.Command(model);
             var res = await _mediator.Send(changePassword);
+            return Ok(res);
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteAsync(string Id)
+        {
+            var delCommand = new DeleteUser.Command(Id);
+            var res = await _mediator.Send(delCommand);
             return Ok(res);
         }
     }
