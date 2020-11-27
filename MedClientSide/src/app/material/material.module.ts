@@ -14,6 +14,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDrawerContainer, MatSidenavModule} from '@angular/material/sidenav';
 import {MatTableModule} from '@angular/material/table';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {MatTableModule} from '@angular/material/table';
     MatProgressBarModule,
     MatSnackBarModule,
     MatSidenavModule,
-    MatTableModule
+    MatTableModule,
+    MatTabsModule
   ],
   exports: [
     HeaderComponent,
@@ -49,7 +51,8 @@ import {MatTableModule} from '@angular/material/table';
     MatProgressBarModule,
     MatSnackBarModule,
     MatSidenavModule,
-    MatTableModule
+    MatTableModule,
+    MatTabsModule
   ]
 })
 export class MaterialModule {
