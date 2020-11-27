@@ -7,6 +7,7 @@ import {Service} from '../../data/models/service';
 import {User} from '../../data/models/user';
 import {Address} from '../../data/models/address';
 import {Schedule} from '../../data/models/schedule';
+import {CreateDepartmentFormData} from '../../data/models/forms/create-department-form-data';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,11 @@ export class AdminService {
   url: string = environment.apiUrl;
 
   constructor(private http: HttpClient) {
+  }
+
+
+  getDepartmentFormData(): Observable<CreateDepartmentFormData> {
+    return this.http.get<CreateDepartmentFormData>(`${this.url}/createForm/addressAndShedules`);
   }
 
   getAddresses(): Observable<Address[]> {
@@ -29,8 +35,8 @@ export class AdminService {
     return this.http.get<Department[]>(`${this.url}/departments`);
   }
 
-  createDepartment(dep: Department) {
-    return this.http.post(`${this.url}/departments`, dep);
+  createDepartment(dep: Department) : Observable<number>{
+    return this.http.post<number>(`${this.url}/departments`, dep);
   }
 
   deleteDepartment(id: number) {

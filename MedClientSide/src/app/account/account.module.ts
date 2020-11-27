@@ -27,8 +27,7 @@ import { CreateUserFormComponent } from './forms/create-user-form/create-user-fo
     UploadHelperComponent,
     AdminPanelComponent,
     CreateDepartmentFormComponent,
-    CreateUserFormComponent
-  ],
+    CreateUserFormComponent],
   imports: [
     CommonModule, MaterialModule, FormsModule, ReactiveFormsModule
   ]

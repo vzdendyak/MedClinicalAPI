@@ -3,6 +3,7 @@ using MedClinicalAPI.Data.Models;
 using MedClinicalAPI.Helpers;
 using MediatR;
 using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,7 +11,7 @@ namespace MedClinicalAPI.Features.Commands.DepartmentCRUD.CreateDepartment
 {
     public class CreateDepartment
     {
-        public class Command : IRequest<bool>
+        public class Command : IRequest<int>
         {
             public Department Department { get; set; }
 
@@ -20,7 +21,7 @@ namespace MedClinicalAPI.Features.Commands.DepartmentCRUD.CreateDepartment
             }
         }
 
-        public class Handler : IRequestHandler<CreateDepartment.Command, bool>
+        public class Handler : IRequestHandler<CreateDepartment.Command, int>
         {
             private readonly AppDbContext _context;
 
@@ -29,21 +30,18 @@ namespace MedClinicalAPI.Features.Commands.DepartmentCRUD.CreateDepartment
                 _context = context;
             }
 
-            public async Task<bool> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<int> Handle(Command request, CancellationToken cancellationToken)
             {
                 ValidationHelper.IsDepartmentExist(request.Department, _context);
-                try
+
+                await _context.Departments.AddAsync(request.Department);
+                await _context.SaveChangesAsync();
+                var dep = _context.Departments.Where(dep => dep.DepartmentName == request.Department.DepartmentName).FirstOrDefault();
+                if (dep == null)
                 {
-                    await _context.Departments.AddAsync(request.Department);
-                    await _context.SaveChangesAsync();
-                    return true;
+                    return 0;
                 }
-                catch (Exception ex)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine(ex.Message);
-                    return false;
-                }
+                return dep.Id;
             }
         }
     }

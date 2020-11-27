@@ -1,5 +1,6 @@
 ﻿using MedClinical.API.Features.Commands.DepartmentCRUD.DeleteDepartment;
 using MedClinical.API.Features.Commands.DepartmentCRUD.UpdateDepartment;
+using MedClinical.API.Features.Commands.UploadDepartmentPhoto;
 using MedClinical.API.Features.Queries.GetAddressAndShedules;
 using MedClinical.API.Features.Queries.GetDepartmentPhoto;
 using MedClinicalAPI.Data.Models;
@@ -83,6 +84,16 @@ namespace MedClinicalAPI.Controllers
             var res = await _mediator.Send(query);
 
             return new FileStreamResult(new FileStream(res, FileMode.Open), "image/jpeg");
+        }
+
+        [HttpPost("avatar"), DisableRequestSizeLimit]
+        public async Task<IActionResult> UploadImage()
+        {
+            var file = Request.Form.Files[0];
+            var depId = Request.Form["department"];
+            var command = new UploadDepartmentPhoto.Command(file, int.Parse(depId.ToString()));
+            var res = await _mediator.Send(command);
+            return Ok(res);
         }
     }
 }

@@ -19,7 +19,8 @@
       <mat-tab-group>
         <mat-tab label="Відділи">
           <ng-template matTabContent>
-            <button mat-stroked-button color="primary" (click)="refreshTable(1)">Refresh</button>
+            <button  class="btn btn-primary" (click)="addDepartmentFormOpen()">Створити відділ</button>
+            <button class="btn btn-dark" [ngClass]="{'clear-button' : needsUpdate[0]}" (click)="refreshTable(1)">Refresh</button>
             <div class="my-table" *ngIf="departments">
               <table mat-table [dataSource]="departments" class="mat-elevation-z8" #TableOne
                      style="width: 100%;">
@@ -50,8 +51,8 @@
         </mat-tab>
         <mat-tab label="Користувачі">
           <ng-template matTabContent>
-            <button mat-raised-button (click)="addUserFormOpen()" color="accent">Створити користувача</button>
-            <button mat-stroked-button color="primary" (click)="refreshTable(2)">Refresh</button>
+            <button class="btn btn-primary" (click)="addUserFormOpen()" >Створити користувача</button>
+            <button class="btn btn-dark" [ngClass]="{'clear-button' : needsUpdate[1]}" (click)="refreshTable(2)">Refresh</button>
 
             <div *ngIf="users">
               <table mat-table [dataSource]="users" class="mat-elevation-z8" #TableOne
@@ -114,7 +115,7 @@
         </mat-tab>
         <mat-tab label="Послуги">
           <ng-template matTabContent>
-            <button mat-stroked-button color="primary" (click)="refreshTable(3)">Refresh</button>
+            <button class="btn btn-dark" [ngClass]="{'clear-button' : needsUpdate[2]}" (click)="refreshTable(3)">Refresh</button>
 
             <div class="my-table" *ngIf="services">
               <table mat-table [dataSource]="services" class="mat-elevation-z8" #TableOne
