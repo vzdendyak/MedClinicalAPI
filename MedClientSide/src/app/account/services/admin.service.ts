@@ -5,6 +5,8 @@ import {Observable} from 'rxjs';
 import {Department} from '../../data/models/department';
 import {Service} from '../../data/models/service';
 import {User} from '../../data/models/user';
+import {Address} from '../../data/models/address';
+import {Schedule} from '../../data/models/schedule';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +15,14 @@ export class AdminService {
   url: string = environment.apiUrl;
 
   constructor(private http: HttpClient) {
+  }
+
+  getAddresses(): Observable<Address[]> {
+    return this.http.get<Address[]>(`${this.url}/addresses`);
+  }
+
+  getSchedules(): Observable<Schedule[]> {
+    return this.http.get<Schedule[]>(`${this.url}/schedules`);
   }
 
   getDepartments(): Observable<Department[]> {
