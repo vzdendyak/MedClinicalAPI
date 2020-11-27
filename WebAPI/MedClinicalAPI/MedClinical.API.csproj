@@ -33,6 +33,4 @@
   <ItemGroup>
     <Folder Include="Resources\Images\Departments\" />
   </ItemGroup>
-
-
 </Project>

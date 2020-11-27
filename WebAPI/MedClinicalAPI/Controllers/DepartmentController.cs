@@ -1,4 +1,5 @@
-﻿using MedClinical.API.Features.Commands.DepartmentCRUD.DeleteDepartment;
+﻿using MedClinical.API.Features.Commands.AddServiceToDepartment;
+using MedClinical.API.Features.Commands.DepartmentCRUD.DeleteDepartment;
 using MedClinical.API.Features.Commands.DepartmentCRUD.UpdateDepartment;
 using MedClinical.API.Features.Commands.UploadDepartmentPhoto;
 using MedClinical.API.Features.Queries.GetAddressAndShedules;
@@ -47,6 +48,14 @@ namespace MedClinicalAPI.Controllers
         public async Task<IActionResult> CreateAsync([FromBody] Department department)
         {
             var createCommand = new CreateDepartment.Command(department);
+            var res = await _mediator.Send(createCommand);
+            return Ok(res);
+        }
+
+        [HttpPost("services")]
+        public async Task<IActionResult> AddServiceAsync([FromBody] DepartmentService model)
+        {
+            var createCommand = new AddServiceToDepartment.Command(model.DepartmentId, model.ServiceId);
             var res = await _mediator.Send(createCommand);
             return Ok(res);
         }

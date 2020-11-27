@@ -8,6 +8,7 @@ import {User} from '../../data/models/user';
 import {Address} from '../../data/models/address';
 import {Schedule} from '../../data/models/schedule';
 import {CreateDepartmentFormData} from '../../data/models/forms/create-department-form-data';
+import {DepartmentService} from '../../data/models/department-service';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +36,12 @@ export class AdminService {
     return this.http.get<Department[]>(`${this.url}/departments`);
   }
 
-  createDepartment(dep: Department) : Observable<number>{
+  addServiceToDepartment(model: DepartmentService): Observable<boolean> {
+    return this.http.post<boolean>(`${this.url}/departments/services`, model);
+
+  }
+
+  createDepartment(dep: Department): Observable<number> {
     return this.http.post<number>(`${this.url}/departments`, dep);
   }
 

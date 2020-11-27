@@ -8,6 +8,9 @@ import {Schedule} from '../../../data/models/schedule';
 import {Address} from '../../../data/models/address';
 import {HttpClient, HttpEventType, HttpSentEvent} from '@angular/common/http';
 import {log} from 'util';
+import {Service} from '../../../data/models/service';
+import {MatSelectChange} from '@angular/material/select';
+import {DepartmentService} from '../../../data/models/department-service';
 
 @Component({
   selector: 'app-create-department-form',
@@ -22,6 +25,9 @@ export class CreateDepartmentFormComponent implements OnInit {
   schedules: Schedule[];
   selSchedule: Schedule;
 
+  services: Service[];
+  selectedServices: Service[];
+
   formData: FormData;
 
   constructor(private fb: FormBuilder,
@@ -32,6 +38,7 @@ export class CreateDepartmentFormComponent implements OnInit {
     this.adminService.getDepartmentFormData().subscribe(value => {
       this.addresses = value.addresses;
       this.schedules = value.schedules;
+      this.services = value.services;
     });
   }
 
@@ -62,15 +69,30 @@ export class CreateDepartmentFormComponent implements OnInit {
     };
     this.adminService.createDepartment(model).subscribe(value => {
       console.log(value);
-      if (value && this.formData) {
-        this.formData.append('department', value.toString());
-        this.http.post('https://localhost:5001/api/departments/avatar', this.formData, {reportProgress: true, observe: 'events'})
-          .subscribe(event => {
-            if (event.type === HttpEventType.UploadProgress) {
-            } else if (event.type === HttpEventType.Response) {
-              console.log('uploaded');
-            }
+      if (value) {
+        if (this.formData) {
+          this.formData.append('department', value.toString());
+          this.http.post('https://localhost:5001/api/departments/avatar', this.formData, {reportProgress: true, observe: 'events'})
+            .subscribe(event => {
+              if (event.type === HttpEventType.UploadProgress) {
+              } else if (event.type === HttpEventType.Response) {
+                console.log('uploaded');
+              }
+            });
+        }
+        for (const selectedService of this.selectedServices) {
+          console.log('adding + ' + selectedService.name);
+          const model: DepartmentService = {
+            departmentId: value,
+            serviceId: selectedService.id,
+            service: null,
+            department: null
+          };
+          this.adminService.addServiceToDepartment(model).subscribe(value1 => {
+            console.log(value1);
           });
+        }
+
       }
       this.dialogRef.close(true);
     });
@@ -90,5 +112,9 @@ export class CreateDepartmentFormComponent implements OnInit {
 
   close(b: boolean) {
     this.dialogRef.close(true);
+  }
+
+  changed(event: MatSelectChange) {
+    this.selectedServices = event.value;
   }
 }
