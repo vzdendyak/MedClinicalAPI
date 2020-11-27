@@ -1,5 +1,6 @@
 ﻿using MedClinical.API.Features.Commands.DepartmentCRUD.DeleteDepartment;
 using MedClinical.API.Features.Commands.DepartmentCRUD.UpdateDepartment;
+using MedClinical.API.Features.Queries.GetAddressAndShedules;
 using MedClinical.API.Features.Queries.GetDepartmentPhoto;
 using MedClinicalAPI.Data.Models;
 using MedClinicalAPI.Features.Commands.DepartmentCRUD.CreateDepartment;
@@ -82,6 +83,14 @@ namespace MedClinicalAPI.Controllers
             var res = await _mediator.Send(query);
 
             return new FileStreamResult(new FileStream(res, FileMode.Open), "image/jpeg");
+        }
+
+        [HttpGet("createForm")]
+        public async Task<IActionResult> GetAddressAndShedulesAsync()
+        {
+            var getQuery = new GetAddressAndShedules.Query();
+            var res = await _mediator.Send(getQuery);
+            return Ok(res);
         }
     }
 }
