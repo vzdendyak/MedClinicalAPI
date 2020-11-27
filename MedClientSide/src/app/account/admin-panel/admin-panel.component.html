@@ -19,8 +19,13 @@
       <mat-tab-group>
         <mat-tab label="Відділи">
           <ng-template matTabContent>
-            <button  class="btn btn-primary" (click)="addDepartmentFormOpen()">Створити відділ</button>
-            <button class="btn btn-dark" [ngClass]="{'clear-button' : needsUpdate[0]}" (click)="refreshTable(1)">Refresh</button>
+            <div class="page-buttons">
+
+              <button class="btn btn-primary" (click)="addDepartmentFormOpen()">Створити відділ</button>
+              <button class="btn btn-dark" [ngClass]="{'clear-button' : needsUpdate[0]}" (click)="refreshTable(1)">
+                Refresh
+              </button>
+            </div>
             <div class="my-table" *ngIf="departments">
               <table mat-table [dataSource]="departments" class="mat-elevation-z8" #TableOne
                      style="width: 100%;">
@@ -47,14 +52,19 @@
                 <tr mat-row *matRowDef="let row; columns: depTableColumns;"></tr>
               </table>
             </div>
+            <mat-progress-bar mode="indeterminate" *ngIf="isLoading" style="margin-top: 30px; height: 6px"></mat-progress-bar>
           </ng-template>
         </mat-tab>
         <mat-tab label="Користувачі">
           <ng-template matTabContent>
-            <button class="btn btn-primary" (click)="addUserFormOpen()" >Створити користувача</button>
-            <button class="btn btn-dark" [ngClass]="{'clear-button' : needsUpdate[1]}" (click)="refreshTable(2)">Refresh</button>
+            <div class="page-buttons">
 
-            <div *ngIf="users">
+              <button class="btn btn-primary" (click)="addUserFormOpen()">Створити користувача</button>
+              <button class="btn btn-dark" [ngClass]="{'clear-button' : needsUpdate[1]}" (click)="refreshTable(2)">
+                Refresh
+              </button>
+            </div>
+            <div class="my-table" *ngIf="users">
               <table mat-table [dataSource]="users" class="mat-elevation-z8" #TableOne
                      style="width: 100%;">
 
@@ -111,11 +121,18 @@
                 <tr mat-row *matRowDef="let row; columns: userTableColumns;"></tr>
               </table>
             </div>
+            <mat-progress-bar mode="indeterminate" *ngIf="isLoading" style="margin-top: 30px; height: 6px"></mat-progress-bar>
           </ng-template>
         </mat-tab>
         <mat-tab label="Послуги">
           <ng-template matTabContent>
-            <button class="btn btn-dark" [ngClass]="{'clear-button' : needsUpdate[2]}" (click)="refreshTable(3)">Refresh</button>
+            <div class="page-buttons">
+              <button class="btn btn-primary" (click)="addServiceFormOpen()">Створити послугу</button>
+              <button class="btn btn-dark" [ngClass]="{'clear-button' : needsUpdate[2]}" (click)="refreshTable(3)">
+                Refresh
+              </button>
+            </div>
+
 
             <div class="my-table" *ngIf="services">
               <table mat-table [dataSource]="services" class="mat-elevation-z8" #TableOne
@@ -149,6 +166,8 @@
                 <tr mat-row *matRowDef="let row; columns: serviceTableColumns;"></tr>
               </table>
             </div>
+            <mat-progress-bar mode="indeterminate" *ngIf="isLoading" style="margin-top: 30px; height: 6px"></mat-progress-bar>
+
           </ng-template>
         </mat-tab>
       </mat-tab-group>

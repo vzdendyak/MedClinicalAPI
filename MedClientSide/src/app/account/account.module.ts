@@ -13,6 +13,7 @@ import { UploadHelperComponent } from './extensions/upload-helper/upload-helper.
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { CreateDepartmentFormComponent } from './forms/create-department-form/create-department-form.component';
 import { CreateUserFormComponent } from './forms/create-user-form/create-user-form.component';
+import { CreateServiceFormComponent } from './forms/create-service-form/create-service-form.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { CreateUserFormComponent } from './forms/create-user-form/create-user-fo
     UploadHelperComponent,
     AdminPanelComponent,
     CreateDepartmentFormComponent,
-    CreateUserFormComponent],
+    CreateUserFormComponent,
+    CreateServiceFormComponent],
   imports: [
     CommonModule, MaterialModule, FormsModule, ReactiveFormsModule
   ]

@@ -71,8 +71,8 @@ export class CreateDepartmentFormComponent implements OnInit {
               console.log('uploaded');
             }
           });
-        this.dialogRef.close(true);
       }
+      this.dialogRef.close(true);
     });
     console.log(model);
   }

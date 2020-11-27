@@ -10,6 +10,7 @@ import {AddRecordFormComponent} from '../../department-functionality/forms/add-r
 import {CreateUserFormComponent} from '../forms/create-user-form/create-user-form.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {CreateDepartmentFormComponent} from '../forms/create-department-form/create-department-form.component';
+import {CreateServiceFormComponent} from '../forms/create-service-form/create-service-form.component';
 
 @Component({
   selector: 'app-admin-panel',
@@ -26,6 +27,7 @@ export class AdminPanelComponent implements OnInit {
   serviceTableColumns: string[] = ['id', 'name', 'price', 'edit'];
   needsUpdate: boolean[] = [false, false, false];
   refresh;
+  isLoading = false;
 
   constructor(private adminService: AdminService, public dialog: MatDialog, private snackBar: MatSnackBar) {
     this.loadDepartments();
@@ -40,18 +42,21 @@ export class AdminPanelComponent implements OnInit {
   loadDepartments() {
     this.adminService.getDepartments().subscribe(value => {
       this.departments = value;
+      this.clearButton(0);
     });
   }
 
   loadUsers() {
     this.adminService.getUsers().subscribe(value => {
       this.users = value;
+      this.clearButton(1);
     });
   }
 
   loadServices() {
     this.adminService.getServices().subscribe(value => {
       this.services = value;
+      this.clearButton(2);
     });
   }
 
@@ -97,8 +102,29 @@ export class AdminPanelComponent implements OnInit {
     });
   }
 
+  addServiceFormOpen() {
+    let dialogRef;
+    dialogRef = this.dialog.open(CreateServiceFormComponent, {
+      width: '450px',
+      panelClass: 'my-dialog-window'
+    });
+    dialogRef.afterClosed().subscribe((value) => {
+      if (value.success) {
+        this.snackBar.open('Запис створено', 'OK', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+          panelClass: ['my-snack'],
+          politeness: 'assertive'
+        });
+      }
+      this.dirtyButton(2);
+
+    });
+  }
+
   refreshTable(id: number) {
-    this.clearButton(id - 1);
+    this.isLoading = true;
     switch (id) {
       case 1:
         this.loadDepartments();
@@ -113,6 +139,7 @@ export class AdminPanelComponent implements OnInit {
   }
 
   deleteItem(tableId: number, itemId: number) {
+    this.isLoading = true;
     switch (tableId) {
       case 1:
         console.log('dep delete...' + itemId);
@@ -141,14 +168,17 @@ export class AdminPanelComponent implements OnInit {
   }
 
   dirtyButton(id: number) {
+    this.isLoading = false;
     this.refresh = setInterval(() => {
       this.needsUpdate[id] = !this.needsUpdate[id];
-    }, 1000);
+    }, 800);
   }
 
   clearButton(id: number) {
     clearInterval(this.refresh);
     this.needsUpdate[0] = false;
+    this.isLoading = false;
+
   }
 
 }
