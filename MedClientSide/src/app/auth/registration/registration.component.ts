@@ -48,7 +48,7 @@ export class RegistrationComponent implements OnInit {
       username: this.registerForm.get('username').value,
       firstName: this.registerForm.get('firstName').value,
       lastName: this.registerForm.get('lastName').value,
-      age: this.registerForm.get('age').value,
+      age: Number(this.registerForm.get('age').value),
       confirmedPassword: this.registerForm.get('confirmedPassword').value
     };
     this.authService.register(model).subscribe(value => {
