@@ -35,34 +35,28 @@
             </div>
             <form>
               <div class="form-group">
-                <label for="exampleFormControlInput1">Ваша електронна адреса</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-              </div>
-              <div class="form-group">
-                <label for="exampleFormControlSelect1">Виберіть одну з причин фидбеку</label>
+                <label for="exampleFormControlSelect1">Виберіть причину</label>
                 <select class="form-control" id="exampleFormControlSelect1">
                   <option>1.</option>
                   <option>2.</option>
                   <option>3.</option>
                   <option>4.</option>
-                  <option>5.</option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="exampleFormControlSelect2">Причини вашої проблеми</label>
-                <select multiple class="form-control" id="exampleFormControlSelect2">
-                  <option>1.блаблабла</option>
-                  <option>2.мені в падлу більше писати</option>
-                  <option>3.потім подумаєм</option>
-                  <option>4.а то голова не варить</option>
-                  <option>5.скр скр скр</option>
+                <select multiple class="form-control" id="exampleFormControlSelect2" disabled="true">
+                  <option>1.Робота з відділами</option>
+                  <option>2.Робота з лікарями</option>
+                  <option>3.Функціонал кабінету</option>
+                  <option>4.Інше</option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="exampleFormControlTextarea1">Текст</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" [textContent]="text" rows="3"></textarea>
               </div>
-              <button type="button" class="btn btn-primary">Відправити</button>
+              <button type="button" (click)="click()" class="btn btn-primary">Відправити</button>
             </form>
           </main>
         </div>

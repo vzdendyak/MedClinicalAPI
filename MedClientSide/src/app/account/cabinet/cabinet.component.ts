@@ -12,6 +12,7 @@ export class CabinetComponent implements OnInit {
   user: User;
   pageForm: FormGroup;
   photoPath: string;
+  depPhotoParh: string;
   public response: { dbPath: '' };
   timeStamp: number;
 
@@ -22,6 +23,7 @@ export class CabinetComponent implements OnInit {
       console.log('user got');
       this.user = value;
       this.photoPath = `https://localhost:5001/api/account/avatar/${this.user.id}`;
+      this.depPhotoParh = `https://localhost:5001/api/departments/image/${this.user.departmentId}`;
     });
   }
 
@@ -40,6 +42,13 @@ export class CabinetComponent implements OnInit {
       return this.photoPath + '?' + this.timeStamp;
     }
     return this.photoPath;
+  }
+
+  public getDepartmentLinkPicture() {
+    if (this.timeStamp) {
+      return this.photoPath + '?' + this.timeStamp;
+    }
+    return this.depPhotoParh;
   }
 
   public setLinkPicture(url: string) {

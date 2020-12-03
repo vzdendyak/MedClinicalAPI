@@ -16,10 +16,11 @@
           <div class="row" *ngIf="user">
             <div class="col-lg-4">
               <div class="photo-block">
-              <img [src]="getLinkPicture()"  id="user-photo" class="user-picture">
+                <img [src]="getLinkPicture()" id="user-photo" class="user-picture">
               </div>
-              <h2>{{user.firstName}} {{user.lastName}}</h2>
-              <p *ngIf="user.department">{{user.department.departmentName}} </p>
+              <h2 style="margin-bottom: 0px;
+               margin-top: 10px;">{{user.firstName}} {{user.lastName}}</h2>
+              <p *ngIf="user.department">Лікар-{{user.department.departmentName.slice(0, -2)}} </p>
               <div class="upload-button-block">
                 <app-upload-helper (uploadFinished)="uploadFinished($event)"></app-upload-helper>
               </div>
@@ -30,10 +31,26 @@
                 <div class="col-lg-6">
                   <div class="profile-info">
                     <h2 class="profile-info-title">
-                      Email
+                      Імя
                     </h2>
                     <p>
-                      test@gmail.com
+                      {{user.firstName}}
+                    </p>
+                  </div>
+                  <div class="profile-info">
+                    <h2 class="profile-info-title">
+                      Прізвище
+                    </h2>
+                    <p>
+                      {{user.lastName}}
+                    </p>
+                  </div>
+                  <div class="profile-info">
+                    <h2 class="profile-info-title">
+                      Нікнейм
+                    </h2>
+                    <p>
+                      {{user.userName}}
                     </p>
                   </div>
                   <div class="profile-info">
@@ -41,23 +58,7 @@
                       Email
                     </h2>
                     <p>
-                      test@gmail.com
-                    </p>
-                  </div>
-                  <div class="profile-info">
-                    <h2 class="profile-info-title">
-                      Email
-                    </h2>
-                    <p>
-                      test@gmail.com
-                    </p>
-                  </div>
-                  <div class="profile-info">
-                    <h2 class="profile-info-title">
-                      Email
-                    </h2>
-                    <p>
-                      test@gmail.com
+                      {{user.email}}
                     </p>
                   </div>
                 </div>
@@ -65,86 +66,37 @@
                 <div class="col-lg-6">
                   <div class="profile-info">
                     <h2 class="profile-info-title">
-                      Email
+                      Номер телефону
                     </h2>
                     <p>
-                      test@gmail.com
+                      {{user.phoneNumber}}
                     </p>
                   </div>
                   <div class="profile-info">
                     <h2 class="profile-info-title">
-                      Email
+                      Вік
                     </h2>
                     <p>
-                      test@gmail.com
+                      {{user.age}}
                     </p>
                   </div>
-                  <div class="profile-info">
-                    <h2 class="profile-info-title">
-                      Email
-                    </h2>
-                    <p>
-                      test@gmail.com
-                    </p>
-                  </div>
-                  <div class="profile-info">
-                    <h2 class="profile-info-title">
-                      Email
-                    </h2>
-                    <p>
-                      test@gmail.com
-                    </p>
-                  </div>
+
                 </div>
               </div>
             </div>
 
 
             <div class="col-lg-4">
-              <svg class="bd-placeholder-img rounded-circle" width="150" height="150"
-                   xmlns="http://www.w3.org/2000/svg"
-                   preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
-                   aria-label="Placeholder: 140x140">
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#777"></rect>
-                <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
-              </svg>
-              <h2>Міша Дубровський</h2>
-              <p>Опис якийсь я хуй зна який </p>
-              <p><a class="btn btn-secondary" href="#" role="button">View details »</a>
-                <a class="btn btn-primary" href="#" role="button">View details »</a>
+              <h2 class="profile-info-title">Відділ</h2>
+              <p>{{user.department.departmentName}}</p>
+              <img [src]="getDepartmentLinkPicture()" class="dep-picture">
+              <p>
+                <a class="btn btn-primary" [routerLink]="['/department/' + user.departmentId]" role="button">Детальніше
+                  »</a>
               </p>
             </div>
           </div>
 
-
-          <!--<div class="chartjs-size-monitor"
-               style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-            <div class="chartjs-size-monitor-expand"
-                 style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-              <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0;"></div>
-            </div>
-            <div class="chartjs-size-monitor-shrink"
-                 style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-              <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-            </div>
-          </div>-->
-          <!--  <form [formGroup]="pageForm">-->
-          <!--              <div class="form-group">-->
-          <!--                <label for="name">Імя</label>-->
-          <!--                <input type="text" class="form-control" id="name">-->
-          <!--              </div>-->
-          <!--              <div class="form-group">-->
-          <!--                <label for="surname">Прізвище</label>-->
-          <!--                <input type="text" class="form-control" id="surname">-->
-          <!--              </div>-->
-          <!--              <div class="form-row">-->
-          <!--                <div class="form-group col-md-6">-->
-          <!--                  <label for="inputCity">Місто</label>-->
-          <!--                  <input type="text" class="form-control" id="inputCity">-->
-          <!--                </div>-->
-          <!--              </div>-->
-          <!--            </form>-->
         </main>
       </div>
     </mat-drawer-content>

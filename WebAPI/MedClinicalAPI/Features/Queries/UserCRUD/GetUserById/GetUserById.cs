@@ -26,11 +26,13 @@ namespace MedClinical.API.Features.Queries.UserCRUD.GetUserById
         {
             private readonly UserManager<User> _userManager;
             private readonly IUserService _userService;
+            private readonly AppDbContext _context;
 
-            public Handler(UserManager<User> userManager, IUserService userService)
+            public Handler(UserManager<User> userManager, IUserService userService, AppDbContext context)
             {
                 _userManager = userManager;
                 _userService = userService;
+                _context = context;
             }
 
             public async Task<UserDto> Handle(Query request, CancellationToken cancellationToken)
@@ -49,6 +51,17 @@ namespace MedClinical.API.Features.Queries.UserCRUD.GetUserById
                     Department = user.Department
                 };
                 model.Records = await _userService.GetUserRecords(user);
+
+                var department = _context.Departments.Where(d => d.Id == model.DepartmentId).FirstOrDefault();
+                if (department == null)
+                {
+                    return model;
+                }
+                model.Department = new Department
+                {
+                    Id = department.Id,
+                    DepartmentName = department.DepartmentName
+                };
 
                 return model;
             }

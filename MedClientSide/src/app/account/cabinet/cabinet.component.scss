@@ -53,26 +53,42 @@ a {
 .main-comp {
   margin: 10px 30px;
 }
-.col-lg-4{
+
+.col-lg-4 {
   text-align: center;
 }
-.profile-img{
+
+.profile-img {
   width: 160px;
   border-radius: 50%;
 }
-.user-picture{
+
+.user-picture {
   height: 100%;
   width: 100%;
   border-radius: 5%;
   border: 3px solid #bcbcbc;
 }
-.photo-block{
+
+.photo-block {
   height: 280px;
   width: 280px;
   padding: 5px;
   margin: auto;
 }
-.upload-button-block{
+
+.upload-button-block {
   display: flex;
   justify-content: center;
+}
+
+.profile-info-title {
+  margin-bottom: 5px;
+}
+
+.dep-picture {
+  width: 300px;
+  height: 160px;
+  border-radius: 5%;
+  border: 2px solid #afafaf;
 }
