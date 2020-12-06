@@ -25,7 +25,6 @@ export class ListDoctorsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   TitleMed(): void {
     let doctorsBlock = document.getElementById('doctors_block');
     let arrow = document.getElementById('arrow');
@@ -43,7 +42,6 @@ export class ListDoctorsComponent implements OnInit {
     console.log('debug');
     var depp = this.departments.find(dp => dp.id == dep.id);
     depp.isVisible = !depp.isVisible;
-
   }
 
   openDialog(dep: Department) {

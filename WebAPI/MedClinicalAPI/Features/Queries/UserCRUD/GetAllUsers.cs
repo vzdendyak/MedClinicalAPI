@@ -45,9 +45,12 @@ namespace MedClinicalAPI.Features.Queries.UserCRUD
                         Email = user.Email,
                         PhoneNumber = user.PhoneNumber,
                         Age = user.Age,
-                        DepartmentId = user.DepartmentId,
-                        Role = role[0]
+                        DepartmentId = user.DepartmentId
                     };
+                    if (role != null && role.Count > 0)
+                    {
+                        userDto.Role = role[0];
+                    }
                     if (user.Department != null)
                     {
                         userDto.Department = new Department
