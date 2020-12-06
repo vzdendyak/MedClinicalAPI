@@ -14,7 +14,7 @@
             </div>
           </div>
           <div class="row" *ngIf="user">
-            <div class="col-lg-4">
+            <div class="col-xl-4 col-md-12 col-sm-12">
               <div class="photo-block">
                 <img [src]="getLinkPicture()" id="user-photo" class="user-picture">
               </div>
@@ -26,7 +26,7 @@
               </div>
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-xl-4 col-md-12 col-sm-12">
               <div class="row">
                 <div class="col-lg-6">
                   <div class="profile-info">
@@ -63,7 +63,7 @@
                   </div>
                 </div>
 
-                <div class="col-lg-6">
+                <div class="col-xl-6">
                   <div class="profile-info">
                     <h2 class="profile-info-title">
                       Номер телефону
@@ -86,7 +86,7 @@
             </div>
 
 
-            <div class="col-lg-4">
+            <div class="col-xl-4 col-md-12 col-sm-12">
               <h2 class="profile-info-title">Відділ</h2>
               <p>{{user.department.departmentName}}</p>
               <img [src]="getDepartmentLinkPicture()" class="dep-picture">

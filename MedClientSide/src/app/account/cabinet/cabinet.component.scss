@@ -92,3 +92,15 @@ a {
   border-radius: 5%;
   border: 2px solid #afafaf;
 }
+
+@media (max-width: 578px) {
+  .user-picture {
+    width: 80%;
+  }
+  .dep-picture {
+    width: 80%;
+  }
+  .photo-block{
+    width: 100%;
+  }
+}
