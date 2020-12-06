@@ -140,4 +140,29 @@ hr {
   margin-bottom: 250px;
 }
 
+@media (max-width: 1439px) {
+  .container{
+    max-width:1024px;
+  }
+  .services__item {
+    width: 320px;
 
+  }
+  .services {
+    margin:auto;
+    justify-content: center;
+  }
+}
+/*
+@media (max-width: 1023px) {
+  .container{
+    max-width: 768px;
+  }
+  .services__item {
+
+  }
+  .services {
+
+  }
+}
+*/
