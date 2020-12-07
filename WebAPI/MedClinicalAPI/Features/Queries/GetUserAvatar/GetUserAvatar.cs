@@ -1,11 +1,7 @@
-﻿using MedClinical.API.Data.DTOs;
-using MedClinical.API.Services.Interfaces;
-using MedClinicalAPI.Data;
-using MedClinicalAPI.Data.Models;
+﻿using MedClinicalAPI.Data.Models;
 using MedClinicalAPI.Exceptions;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 

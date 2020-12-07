@@ -54,7 +54,8 @@
           <button type="button" class="btn btn-dark form-button close-btn" (click)="close(false)">
             Відміна
           </button>
-          <button type="submit" class="btn btn-success form-button save-btn" [disabled]="!selectedHour || !selectedDoctor || !selectedService" >
+          <button type="submit" class="btn btn-success form-button save-btn"
+                  [disabled]="!selectedHour || !selectedDoctor || !selectedService">
             Створити
           </button>
         </div>

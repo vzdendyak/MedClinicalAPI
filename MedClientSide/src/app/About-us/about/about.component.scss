@@ -12,42 +12,52 @@ div {
   border: 10px;
   margin: 0 auto;
 }
+
 .title {
-margin-top: 110px;
+  margin-top: 110px;
   text-align: center;
-margin-bottom: 100px;
+  margin-bottom: 100px;
 }
-.jumbotron{
+
+.jumbotron {
 
   text-align: center;
   background: #000000;
   color: white;
 }
-.lead-footer{
+
+.lead-footer {
   font-size: 24px;
 }
-.row{
+
+.row {
   position: relative;
   //text-align: center;
   height: 500px;
 }
-#first{
-  color:blue;
+
+#first {
+  color: blue;
 }
-#second{
-  color:green;
+
+#second {
+  color: green;
 }
-.info{
+
+.info {
   line-height: 1.25em;
   padding: 0;
   margin-bottom: 5px;
 }
-.row p{
+
+.row p {
   text-align: left;
 }
-.text-p{
+
+.text-p {
   margin-bottom: 42px;
 }
-.img-doctor{
+
+.img-doctor {
   width: 500px;
 }

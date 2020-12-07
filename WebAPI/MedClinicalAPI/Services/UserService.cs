@@ -3,7 +3,6 @@ using MedClinical.API.Services.Interfaces;
 using MedClinicalAPI.Data;
 using MedClinicalAPI.Data.Models;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;

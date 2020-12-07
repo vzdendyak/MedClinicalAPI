@@ -7,7 +7,6 @@ using MedClinicalAPI.Features.Queries.AddressCRUD.GetAllAddresses;
 using MediatR;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Threading.Tasks;
 
 namespace MedClinicalAPI.Controllers

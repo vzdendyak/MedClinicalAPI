@@ -2,7 +2,6 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {User} from '../../../data/models/user';
-import {DepartmentService} from '../../../data/models/department-service';
 import {Department} from '../../../data/models/department';
 import {AdminService} from '../../services/admin.service';
 
@@ -57,9 +56,9 @@ export class CreateUserFormComponent implements OnInit {
       role: this.selectedRole
     };
     this.selectedDep && this.selectedRole == 'Doctor' ? model.departmentId = this.selectedDep.id : model.department = null;
-    console.log(model);
+
     this.adminService.createUser(model).subscribe(value => {
-      console.log(value);
+
     });
   }
 

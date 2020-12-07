@@ -5,7 +5,6 @@ using MedClinical.API.Features.Queries.GetUserAvatar;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace MedClinical.API.Controllers

@@ -1,4 +1,4 @@
-import {AfterViewChecked, AfterViewInit, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {DepartmentService} from '../services/department.service';
 import {Department} from '../../data/models/department';
@@ -24,12 +24,12 @@ export class DepartmentComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('NgOnInit');
+    ('NgOnInit');
     this.route.params.subscribe(params => {
       if (params.id) {
         this.departmentId = params.id;
         this.departmentService.getDepartment(this.departmentId).subscribe(dep => {
-          console.log('GOT ' + dep + dep.departmentName);
+          ('GOT ' + dep + dep.departmentName);
           this.department = dep;
           this.getSchedule();
 
@@ -47,11 +47,11 @@ export class DepartmentComponent implements OnInit {
     });
     dialogRef.afterOpened().subscribe(res => {
       this.isDialogOpen = true;
-      console.log('dialog - ' + this.isDialogOpen);
+
     });
     dialogRef.afterClosed().subscribe((value) => {
       this.isDialogOpen = false;
-      console.log('dialog - ' + this.isDialogOpen);
+
       if (value.success) {
         this.snackBar.open('Запис створено', 'OK', {
           duration: 3000,

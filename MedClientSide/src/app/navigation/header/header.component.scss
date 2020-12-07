@@ -22,6 +22,7 @@ html, body {
   background-color: #ccefff;
   border-color: #a5c4d2;
 }
+
 .header-body {
   position: relative;
   display: flex;
@@ -56,6 +57,7 @@ html, body {
   font-size: 18px;
   color: black;
   background-color: transparent;
+
   &:hover {
     color: #ffbc00;
   }
@@ -261,7 +263,8 @@ html, body {
     height: 30px;
   }
 }
-.login-buttons{
+
+.login-buttons {
   display: flex;
   border: 3px solid white;
   padding: 8px 0px;
@@ -269,14 +272,17 @@ html, body {
   background-color: #94c0d4;
   color: white;
   transition-duration: 0.4s;
-  &:hover{
+
+  &:hover {
     background-color: #5eb3da;
     border-color: transparent;
   }
 }
-.login-divider{
- border-right: 2px solid white;
+
+.login-divider {
+  border-right: 2px solid white;
 }
-.logout{
+
+.logout {
   cursor: pointer;
 }

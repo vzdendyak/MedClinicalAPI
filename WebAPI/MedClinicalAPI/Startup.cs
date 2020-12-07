@@ -105,6 +105,11 @@ namespace MedClinicalAPI
                 options.TokenValidationParameters = tokenParameters;
                 options.RequireHttpsMetadata = true;
             });
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("RequireAdministratorRole",
+                     policy => policy.RequireRole("Admin"));
+            });
             services.AddSingleton(tokenParameters);
             services.Configure<FormOptions>(o =>
             {

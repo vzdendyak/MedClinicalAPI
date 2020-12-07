@@ -8,12 +8,12 @@ import {CabinetNavComponent} from '../navigation/cabinet-nav/cabinet-nav.compone
 import {MaterialModule} from '../material/material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ChangePasswordFormComponent} from './change-password-form/change-password-form.component';
-import { CabinetHeaderComponent } from './cabinet-header/cabinet-header.component';
-import { UploadHelperComponent } from './extensions/upload-helper/upload-helper.component';
-import { AdminPanelComponent } from './admin-panel/admin-panel.component';
-import { CreateDepartmentFormComponent } from './forms/create-department-form/create-department-form.component';
-import { CreateUserFormComponent } from './forms/create-user-form/create-user-form.component';
-import { CreateServiceFormComponent } from './forms/create-service-form/create-service-form.component';
+import {CabinetHeaderComponent} from './cabinet-header/cabinet-header.component';
+import {UploadHelperComponent} from './extensions/upload-helper/upload-helper.component';
+import {AdminPanelComponent} from './admin-panel/admin-panel.component';
+import {CreateDepartmentFormComponent} from './forms/create-department-form/create-department-form.component';
+import {CreateUserFormComponent} from './forms/create-user-form/create-user-form.component';
+import {CreateServiceFormComponent} from './forms/create-service-form/create-service-form.component';
 
 
 @NgModule({

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../auth.service';
-import { RegistrationRequest } from '../../data/models/auth/registration-request';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../auth.service';
+import {RegistrationRequest} from '../../data/models/auth/registration-request';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -54,7 +54,7 @@ export class RegistrationComponent implements OnInit {
     this.authService.register(model).subscribe(value => {
       this.router.navigateByUrl('/auth/login');
     }, error => {
-      console.log(error);
+
     });
   }
 }

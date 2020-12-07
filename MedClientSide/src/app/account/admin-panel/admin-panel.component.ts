@@ -2,11 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Department} from '../../data/models/department';
 import {User} from '../../data/models/user';
 import {Service} from '../../data/models/service';
-import {DepartmentService} from '../../department-functionality/services/department.service';
-import {AccountService} from '../services/account.service';
 import {AdminService} from '../services/admin.service';
 import {MatDialog} from '@angular/material/dialog';
-import {AddRecordFormComponent} from '../../department-functionality/forms/add-record-form/add-record-form.component';
 import {CreateUserFormComponent} from '../forms/create-user-form/create-user-form.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {CreateDepartmentFormComponent} from '../forms/create-department-form/create-department-form.component';
@@ -142,25 +139,18 @@ export class AdminPanelComponent implements OnInit {
     this.isLoading = true;
     switch (tableId) {
       case 1:
-        console.log('dep delete...' + itemId);
         this.adminService.deleteDepartment(itemId).subscribe(value => {
-          console.log(value);
           this.dirtyButton(0);
         });
         break;
       case 2:
-        console.log('user delete...' + itemId);
 
         this.adminService.deleteUser(itemId.toString()).subscribe(value => {
-          console.log(value);
           this.dirtyButton(1);
         });
         break;
       case 3:
-        console.log('service delete...' + itemId);
-
         this.adminService.deleteService(itemId).subscribe(value => {
-          console.log(value);
           this.dirtyButton(2);
         });
         break;

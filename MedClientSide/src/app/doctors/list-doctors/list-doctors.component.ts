@@ -18,7 +18,7 @@ export class ListDoctorsComponent implements OnInit {
   constructor(private departmentService: DepartmentService, public dialog: MatDialog, private snackBar: MatSnackBar) {
     this.departmentService.getDepartments().subscribe(value => {
       this.departments = value;
-      console.log(this.departments);
+
     });
   }
 
@@ -35,11 +35,11 @@ export class ListDoctorsComponent implements OnInit {
       doctorsBlock.style.height = '0px';
       arrow.style.transform = 'rotate(0deg)';
     }
-    console.log(doctorsBlock);
+
   }
 
   toogleBlock(dep: Department) {
-    console.log('debug');
+
     var depp = this.departments.find(dp => dp.id == dep.id);
     depp.isVisible = !depp.isVisible;
   }
@@ -53,11 +53,11 @@ export class ListDoctorsComponent implements OnInit {
     });
     dialogRef.afterOpened().subscribe(res => {
       this.isDialogOpen = true;
-      console.log('dialog - ' + this.isDialogOpen);
+
     });
     dialogRef.afterClosed().subscribe((value) => {
       this.isDialogOpen = false;
-      console.log('dialog - ' + this.isDialogOpen);
+
       if (value.success) {
         this.snackBar.open('Запис створено', 'OK', {
           duration: 3000,
@@ -71,6 +71,6 @@ export class ListDoctorsComponent implements OnInit {
   }
 
   public getLinkPicture(id: string) {
-   return `https://localhost:5001/api/account/avatar/${id}`;
+    return `https://localhost:5001/api/account/avatar/${id}`;
   }
 }

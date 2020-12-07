@@ -1,12 +1,9 @@
-﻿using MedClinical.API.Data.DTOs;
-using MedClinicalAPI.Data.Models;
-using MedClinicalAPI.Exceptions;
+﻿using MedClinicalAPI.Data.Models;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using System.IO;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 

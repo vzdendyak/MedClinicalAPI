@@ -14,10 +14,12 @@ div {
   padding-right: 0;
   padding-left: 0;
 }
-.main-content{
+
+.main-content {
   margin-bottom: 100px;
   min-height: calc(100vh - 70px);
 }
+
 .container {
   width: 1200px;
   border: 10px;
@@ -237,7 +239,7 @@ h5 {
   text-align: center;
   border-radius: 7px;
   border: 1px solid #dadada;
- }
+}
 
 .sppb-panel-title {
   margin: auto;
@@ -249,9 +251,11 @@ h5 {
     cursor: pointer;
   }
 }
-.price-block-content{
+
+.price-block-content {
   margin: 70px 0px;
 }
+
 .services-block {
   width: fit-content;
   margin: auto;
@@ -261,12 +265,14 @@ h5 {
   background-color: #ccefff;
   transition-duration: 0.5s;
 }
-.record-button{
+
+.record-button {
   font-size: 16pt;
   padding: 10px 30px;
   border-radius: 7px;
   width: 300px;
 }
-.record-block{
+
+.record-block {
   text-align: center;
 }

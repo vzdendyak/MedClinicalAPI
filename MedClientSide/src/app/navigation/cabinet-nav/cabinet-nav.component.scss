@@ -9,9 +9,11 @@ element.style {
   visibility: hidden;
   z-index: -1;
 }
+
 .p-0 {
-  padding: 11px!important;
+  padding: 11px !important;
 }
+
 .container-fluid {
   width: 100%;
   padding-right: 15px;
@@ -19,31 +21,39 @@ element.style {
   margin-right: auto;
   margin-left: auto;
 }
+
 .sidebar .nav-link {
   font-weight: 500;
   color: #333;
 }
+
 li {
   display: list-item;
   text-align: -webkit-match-parent;
 }
+
 a {
   text-decoration: none;
   background-color: transparent;
 }
+
 .sidebar .nav-link:hover {
   color: #007bff;
 }
-.form-group{
+
+.form-group {
   width: 33%;
 }
-.form-row{
+
+.form-row {
   width: 33.5%;
 }
-.sidebar-list{
+
+.sidebar-list {
   width: 180px;
 }
-.user-name-item{
+
+.user-name-item {
   text-align: center;
   border: 1px solid white;
   border-radius: 5px;
@@ -53,18 +63,21 @@ a {
   background-color: #343a40;
   color: white;
   transition-duration: 0.3s;
-  &:hover{
+
+  &:hover {
     cursor: pointer;
     background: #eeeeee;
     color: black;
     border-color: #bababa;
   }
 }
-#name-span{
+
+#name-span {
   font-size: 23px;
 }
-#username-span{
-   font-size: 14px;
+
+#username-span {
+  font-size: 14px;
   width: max-content;
   padding: 0px 25px;
   margin: auto;
@@ -73,7 +86,8 @@ a {
   top: 3px;
 
 }
-.role-span{
+
+.role-span {
   width: 80px;
   margin: auto;
   border-radius: 4px;
@@ -82,9 +96,11 @@ a {
   top: 4px;
   font-size: 15px;
 }
-.user-doctor{
+
+.user-doctor {
   background: #51ae1b;
 }
-.user-patient{
+
+.user-patient {
   background: #ae1b1b;
 }
