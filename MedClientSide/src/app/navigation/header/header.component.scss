@@ -27,7 +27,7 @@ html, body {
   position: relative;
   display: flex;
   justify-content: space-between;
-  height: 80px;
+  height: 90px;
   align-items: center;
 }
 
@@ -64,17 +64,18 @@ html, body {
 }
 
 .logo-text {
-  //font-size: 40px;
-  //color: #dd7272;
   max-width: 100%;
   z-index: 3;
-  flex: 0 0 200px;
-  //font-family: 'Kaushan Script', cursive;
-  overflow: hidden
+  flex: 0 0 205px;
+  height: 100%;
+  margin-left: 23px;
+  margin-top: 9px;
+  overflow: hidden;
 }
 
 .logo-text img {
-  width: 100%;
+  //width: 100%;
+  //height: 100%;
   border-radius: 8%;
 }
 
