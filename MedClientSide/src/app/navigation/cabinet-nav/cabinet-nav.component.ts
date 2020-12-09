@@ -14,7 +14,7 @@ export class CabinetNavComponent implements OnInit {
     const id = localStorage.getItem('uId');
     this.accountService.getShortUser(id).subscribe(value => {
       this.user = value;
-      console.log(this.user);
+
     });
   }
 

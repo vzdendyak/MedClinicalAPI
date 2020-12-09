@@ -1,6 +1,5 @@
-import {Component, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {HttpClient, HttpEventType} from '@angular/common/http';
-import {EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-upload-helper',
@@ -36,7 +35,7 @@ export class UploadHelperComponent implements OnInit {
         if (event.type === HttpEventType.UploadProgress) {
           this.progress = Math.round(100 * event.loaded / event.total);
         } else if (event.type === HttpEventType.Response) {
-          console.log('uploaded');
+
           this.uploadFinished.emit(event.body);
           this.isVisible = true;
           this.isLoading = false;

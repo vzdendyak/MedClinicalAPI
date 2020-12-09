@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Environment} from '@angular/compiler-cli/src/ngtsc/typecheck/src/environment';
 import {environment} from '../../environments/environment';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {AuthResponse} from '../data/models/auth/auth-response';
 import {RegistrationRequest} from '../data/models/auth/registration-request';

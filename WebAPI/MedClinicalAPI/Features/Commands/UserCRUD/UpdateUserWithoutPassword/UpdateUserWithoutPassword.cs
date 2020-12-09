@@ -1,4 +1,5 @@
 ﻿using MedClinical.API.Data.DTOs;
+using MedClinical.API.Helpers;
 using MedClinicalAPI.Data.Models;
 using MedClinicalAPI.Exceptions;
 using MediatR;
@@ -35,6 +36,9 @@ namespace MedClinical.API.Features.Commands.UserCRUD.UpdateUserWithoutPassword
                 User user = await _userManager.FindByIdAsync(command.User.Id);
                 if (user == null)
                     return false;
+
+                if (!(await user.IsUserAdmin(_userManager)))
+                    throw new ForbiddenException("You don't have enought permissions to do this action. Please contact administrator.");
 
                 user.UserName = command.User.UserName;
                 user.FirstName = command.User.FirstName;

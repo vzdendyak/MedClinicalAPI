@@ -4,7 +4,6 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {User} from '../../../data/models/user';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import {DoctorService} from '../../services/doctor.service';
-import {DatePipe, formatDate} from '@angular/common';
 import {RecordService} from '../../services/record.service';
 import {Record} from '../../../data/models/record';
 import {DepartmentService} from '../../../data/models/department-service';
@@ -35,7 +34,7 @@ export class AddRecordFormComponent implements OnInit {
       this.doctors = data.doctors;
     }
     if (data.depServices) {
-      console.log('got services - ' + data.depServices);
+
       this.depServices = data.depServices;
     }
     this.freeHours = null;
@@ -55,18 +54,18 @@ export class AddRecordFormComponent implements OnInit {
   }
 
   addEvent(event: MatDatepickerInputEvent<Date>): void {
-    console.log(event);
+
     const date = event.value;
     const yourTicks = 621355968000000000 + (date.getTime() * 10000);
 
     this.freeHours = null;
     this.isLoading = true;
     this.doctorService.getHours(this.selectedDoctor.id, yourTicks).subscribe(rec => {
-      console.log(rec);
+
       this.freeHours = rec;
       this.isLoading = false;
     });
-    console.log(date);
+
   }
 
   close(result: boolean): void {
@@ -89,14 +88,14 @@ export class AddRecordFormComponent implements OnInit {
     };
     this.isLoading = true;
     this.recordService.addRecord(record).subscribe(value => {
-      console.log(value);
+
       this.isLoading = false;
       this.close(true);
     });
   }
 
   changedDoctor($event: MatSelectChange) {
-    console.log(this.selectedDoctor);
+
   }
 }
 

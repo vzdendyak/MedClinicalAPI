@@ -22,11 +22,11 @@ export class MyRecordsComponent implements OnInit {
     this.accountService.getUser(uId).subscribe(value => {
       this.user = value;
       this.records = value.records;
-      console.log(this.records);
+
       this.expiredRecords = this.records.filter(rec => this.isDateExpired(rec.dateOfMeeting));
       this.records = this.records.filter(rec => !this.isDateExpired(rec.dateOfMeeting));
-      console.log('filtered. Expired = ', this.expiredRecords);
-      console.log(this.records);
+
+
     });
   }
 

@@ -20,7 +20,7 @@ export class CabinetComponent implements OnInit {
               private accountService: AccountService) {
     const uId = localStorage.getItem('uId');
     this.accountService.getUser(uId).subscribe(value => {
-      console.log('user got');
+
       this.user = value;
       this.photoPath = `https://localhost:5001/api/account/avatar/${this.user.id}`;
       this.depPhotoParh = `https://localhost:5001/api/departments/image/${this.user.departmentId}`;
@@ -58,7 +58,7 @@ export class CabinetComponent implements OnInit {
 
   public uploadFinished = (event) => {
     this.setLinkPicture(this.photoPath);
-  }
+  };
 
 
 }

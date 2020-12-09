@@ -141,18 +141,19 @@ hr {
 }
 
 @media (max-width: 1439px) {
-  .container{
-    max-width:1024px;
+  .container {
+    max-width: 1024px;
   }
   .services__item {
     width: 320px;
 
   }
   .services {
-    margin:auto;
+    margin: auto;
     justify-content: center;
   }
 }
+
 /*
 @media (max-width: 1023px) {
   .container{

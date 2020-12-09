@@ -21,6 +21,10 @@ export class HeaderComponent implements OnInit {
 
   }
 
+  redirectTo(uri: string) {
+    this.router.navigateByUrl('/account/cabinet', {skipLocationChange: true}).then(() =>
+      this.router.navigate([uri]));
+  }
 
   burgerClick(): void {
     this.burgerActive = !this.burgerActive;
@@ -34,5 +38,7 @@ export class HeaderComponent implements OnInit {
 
   logOut() {
     this.authService.logOut();
+    window.location.reload();
+
   }
 }

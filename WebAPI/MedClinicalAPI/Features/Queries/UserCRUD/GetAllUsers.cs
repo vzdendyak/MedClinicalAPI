@@ -1,14 +1,12 @@
-﻿using System.Collections.Generic;
-using MedClinical.API.Data.DTOs;
+﻿using MedClinical.API.Data.DTOs;
 using MedClinical.API.Services.Interfaces;
-using MedClinicalAPI.Data;
 using MedClinicalAPI.Data.Models;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace MedClinicalAPI.Features.Queries.UserCRUD
 {

@@ -8,9 +8,11 @@ html, body {
   z-index: 50;
 
 }
-.footer-menu{
+
+.footer-menu {
   margin: 0 auto;
 }
+
 .footer:before {
   content: "";
   position: absolute;
@@ -22,6 +24,7 @@ html, body {
   border-color: #a5c4d2;
   z-index: 2;
 }
+
 .footer-body {
   position: relative;
   display: flex;
@@ -167,10 +170,12 @@ html, body {
     height: 30px;
   }
 }
-html{
+
+html {
   background-color: black;
 }
-#copyright-text{
+
+#copyright-text {
   text-align: center;
   color: #7a7a7a;
   font-size: 13px;

@@ -6,8 +6,7 @@ import {DialogData} from '../create-user-form/create-user-form.component';
 import {Department} from '../../../data/models/department';
 import {Schedule} from '../../../data/models/schedule';
 import {Address} from '../../../data/models/address';
-import {HttpClient, HttpEventType, HttpSentEvent} from '@angular/common/http';
-import {log} from 'util';
+import {HttpClient, HttpEventType} from '@angular/common/http';
 import {Service} from '../../../data/models/service';
 import {MatSelectChange} from '@angular/material/select';
 import {DepartmentService} from '../../../data/models/department-service';
@@ -68,7 +67,6 @@ export class CreateDepartmentFormComponent implements OnInit {
       schedule: null
     };
     this.adminService.createDepartment(model).subscribe(value => {
-      console.log(value);
       if (value) {
         if (this.formData) {
           this.formData.append('department', value.toString());
@@ -76,12 +74,10 @@ export class CreateDepartmentFormComponent implements OnInit {
             .subscribe(event => {
               if (event.type === HttpEventType.UploadProgress) {
               } else if (event.type === HttpEventType.Response) {
-                console.log('uploaded');
               }
             });
         }
         for (const selectedService of this.selectedServices) {
-          console.log('adding + ' + selectedService.name);
           const model: DepartmentService = {
             departmentId: value,
             serviceId: selectedService.id,
@@ -89,14 +85,12 @@ export class CreateDepartmentFormComponent implements OnInit {
             department: null
           };
           this.adminService.addServiceToDepartment(model).subscribe(value1 => {
-            console.log(value1);
           });
         }
 
       }
       this.dialogRef.close(true);
     });
-    console.log(model);
   }
 
   public uploadFile = (files) => {

@@ -4,7 +4,7 @@
   <div class="container" [ngClass]="{'is-blurred': isDialogOpen}">
     <div class="sppb-panel" *ngFor="let dep of departments">
       <button class="record-button" (click)="openDialog(dep)" mat-flat-button color="warn">Записатись</button>
-      <div class="title-Med" id="title-Med" (click)="toogleBlock(dep)" >
+      <div class="title-Med" id="title-Med" (click)="toogleBlock(dep)">
         <span class="sppb-panel-title dep-title" aria-label="Medhouse">{{dep.departmentName}}</span>
       </div>
 
@@ -13,7 +13,7 @@
           <div class="three-row">
             <div class="services__item" *ngFor="let u of dep.doctors">
               <div class="photo-block">
-                <img [src]="getLinkPicture(u.id)"  id="user-photo" class="user-picture">
+                <img [src]="getLinkPicture(u.id)" id="user-photo" class="user-picture">
                 <div class="imgeffect-desc">
                   {{u.firstName}} {{u.lastName}}<br>
                   Лікар-УЗД

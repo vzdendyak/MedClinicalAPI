@@ -1,9 +1,5 @@
-﻿using MedClinical.API.Features.Commands.AddressCRUD.DeleteAddress;
-using MedClinicalAPI.Data;
+﻿using MedClinicalAPI.Data;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 

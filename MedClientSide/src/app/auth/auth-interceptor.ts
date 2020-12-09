@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
-import {Observable, pipe} from 'rxjs';
+import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 
 @Injectable()
@@ -14,14 +14,17 @@ export class AuthInterceptor implements HttpInterceptor {
       tap(
         (event) => {
           if (event instanceof HttpResponse) {
-            console.log('Server response');
+
           }
         },
         (err) => {
           if (err instanceof HttpErrorResponse) {
             if (err.status == 401) {
               alert('Unauthorized');
-            }}
+            } else {
+
+            }
+          }
         })
     );
   }

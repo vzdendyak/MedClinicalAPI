@@ -2,7 +2,6 @@
 using MedClinical.API.Features.Commands.DepartmentCRUD.DeleteDepartment;
 using MedClinical.API.Features.Commands.DepartmentCRUD.UpdateDepartment;
 using MedClinical.API.Features.Commands.UploadDepartmentPhoto;
-using MedClinical.API.Features.Queries.GetAddressAndShedules;
 using MedClinical.API.Features.Queries.GetDepartmentPhoto;
 using MedClinicalAPI.Data.Models;
 using MedClinicalAPI.Features.Commands.DepartmentCRUD.CreateDepartment;
@@ -10,7 +9,6 @@ using MedClinicalAPI.Features.Queries.DepartmentCRUD;
 using MediatR;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.IO;
 using System.Threading.Tasks;
 

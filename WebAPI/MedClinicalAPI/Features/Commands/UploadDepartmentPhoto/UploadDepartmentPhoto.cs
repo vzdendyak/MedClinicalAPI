@@ -1,7 +1,5 @@
-﻿using MedClinical.API.Data.DTOs;
-using MedClinicalAPI.Data;
+﻿using MedClinicalAPI.Data;
 using MedClinicalAPI.Data.Models;
-using MedClinicalAPI.Exceptions;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -9,7 +7,6 @@ using Microsoft.EntityFrameworkCore;
 using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 

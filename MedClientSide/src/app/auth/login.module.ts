@@ -1,15 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {LoginComponent} from './login/login.component';
 import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from '../material/material.module';
-import { RegistrationComponent } from './registration/registration.component';
-
+import {RegistrationComponent} from './registration/registration.component';
 
 
 @NgModule({
-  declarations: [LoginComponent,  RegistrationComponent],
+  declarations: [LoginComponent, RegistrationComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -17,4 +16,5 @@ import { RegistrationComponent } from './registration/registration.component';
     ReactiveFormsModule
   ]
 })
-export class LoginModule { }
+export class LoginModule {
+}

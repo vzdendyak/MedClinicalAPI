@@ -1,9 +1,7 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {DialogData} from '../create-user-form/create-user-form.component';
+import {MatDialogRef} from '@angular/material/dialog';
 import {AdminService} from '../../services/admin.service';
-import {HttpClient} from '@angular/common/http';
 import {Service} from '../../../data/models/service';
 
 @Component({
@@ -44,7 +42,7 @@ export class CreateServiceFormComponent implements OnInit {
       description: this.pageForm.get('description').value
     };
     this.adminService.createService(model).subscribe(value => {
-      console.log(value);
+
     });
     this.dialogRef.close(true);
 

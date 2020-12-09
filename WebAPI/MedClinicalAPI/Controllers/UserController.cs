@@ -10,9 +10,6 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-using MedClinicalAPI.Features.Queries.UserCRUD;
-using MedClinical.API.Features.Commands.UserCRUD;
-
 namespace MedClinical.API.Controllers
 {
     [Route("api/users")]

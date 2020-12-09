@@ -1,5 +1,4 @@
 import {User} from './user';
-import {Service} from './service';
 import {DepartmentService} from './department-service';
 import {Schedule} from './schedule';
 
