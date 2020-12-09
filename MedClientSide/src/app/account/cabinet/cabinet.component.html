@@ -84,7 +84,7 @@
               </div>
             </div>
 
-            <div class="col-xl-4 col-md-12 col-sm-12">
+            <div class="col-xl-4 col-md-12 col-sm-12" *ngIf="user.department">
               <h2 class="profile-info-title">Відділ</h2>
               <p>{{user.department.departmentName}}</p>
               <img [src]="getDepartmentLinkPicture()" class="dep-picture">

@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {User} from '../../data/models/user';
-import {Record} from '../../data/models/record';
-import {AccountService} from '../services/account.service';
-import {RecordService} from '../../department-functionality/services/record.service';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { Component, OnInit } from '@angular/core';
+import { User } from '../../data/models/user';
+import { Record } from '../../data/models/record';
+import { AccountService } from '../services/account.service';
+import { RecordService } from '../../department-functionality/services/record.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-my-records',
@@ -55,5 +55,16 @@ export class MyRecordsComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  refresh() {
+    const uId = localStorage.getItem('uId');
+    this.accountService.getUser(uId).subscribe(value => {
+      this.user = value;
+      this.records = value.records;
+
+      this.expiredRecords = this.records.filter(rec => this.isDateExpired(rec.dateOfMeeting));
+      this.records = this.records.filter(rec => !this.isDateExpired(rec.dateOfMeeting));
+    });
   }
 }

@@ -46,13 +46,23 @@ namespace MedClinical.API.Features.Commands.Auth
                         ErrorMessages = new[] { "User with this email is already exist!" }
                     };
                 }
-                User user = new User { Email = command.Model.Email, UserName = command.Model.Username, FirstName = command.Model.FirstName, LastName = command.Model.LastName, Age = command.Model.Age };
+                User user = new User
+                {
+                    Email = command.Model.Email,
+                    UserName = command.Model.Username,
+                    FirstName = command.Model.FirstName,
+                    LastName = command.Model.LastName,
+                    Age = command.Model.Age,
+                    AvatarPath = @"Resources\Images\default.jpg"
+                };
                 var result = await _userManager.CreateAsync(user, command.Model.Password);
                 if (!result.Succeeded)
                     return new AuthResultDto()
                     {
                         ErrorMessages = result.Errors.Select(i => i.Description)
                     };
+                user = await _userManager.FindByEmailAsync(user.Email);
+                await _userManager.AddToRoleAsync(user, "patient");
                 return await _authService.GenerateAuthResultAsync(user);
             }
         }
