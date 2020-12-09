@@ -23,6 +23,7 @@ namespace MedClinical.API.Features.Queries.UserCRUD.GetShortUserById
         public class Handler : IRequestHandler<GetShortUserById.Query, UserDto>
         {
             private readonly UserManager<User> _userManager;
+            private readonly RoleManager<IdentityRole> _roleManager;
             private readonly IUserService _userService;
 
             public Handler(UserManager<User> userManager, IUserService userService)
@@ -34,13 +35,15 @@ namespace MedClinical.API.Features.Queries.UserCRUD.GetShortUserById
             public async Task<UserDto> Handle(Query request, CancellationToken cancellationToken)
             {
                 var user = await _userManager.FindByIdAsync(request.Id);
+                var roles = await _userManager.GetRolesAsync(user);
                 UserDto model = new UserDto
                 {
                     Id = user.Id,
                     UserName = user.UserName,
                     FirstName = user.FirstName,
                     LastName = user.LastName,
-                    DepartmentId = user.DepartmentId
+                    DepartmentId = user.DepartmentId,
+                    Role = roles[0]
                 };
                 return model;
             }

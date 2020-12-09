@@ -58,12 +58,12 @@ export class CreateUserFormComponent implements OnInit {
     this.selectedDep && this.selectedRole == 'Doctor' ? model.departmentId = this.selectedDep.id : model.department = null;
 
     this.adminService.createUser(model).subscribe(value => {
-
+        this.close(true);
     });
   }
 
   close(state: boolean): void {
-    this.dialogRef.close(state);
+    this.dialogRef.close({success: state});
   }
 }
 

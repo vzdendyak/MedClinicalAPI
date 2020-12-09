@@ -52,7 +52,7 @@ export class SettingsComponent implements OnInit {
       email: this.pageForm.get('email').value,
       firstName: this.pageForm.get('firstName').value,
       lastName: this.pageForm.get('lastName').value,
-      age: this.pageForm.get('age').value,
+      age: Number.parseInt(this.pageForm.get('age').value),
       userName: this.pageForm.get('userName').value,
       phoneNumber: this.pageForm.get('phoneNumber').value,
       id: this.user.id,

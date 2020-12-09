@@ -35,7 +35,7 @@
       <div class="title">
         <h4>{{this.department.departmentName}}</h4>
       </div>
-      <img src="../../../assets/gastroenterology.jpg" alt="gastroenterology.jpg" class="gastroenterology">
+      <img  [src]="getLinkPicture()"  width="840" height="450" class="gastroenterology">
       <div class="services">
         <div class="services__item bgred">
           <h3>Години роботи</h3>
@@ -93,11 +93,14 @@
             </div>
           </div>
         </div>
-        <div class="record-block">
+        <div class="record-block" *ngIf="this.authService.isUserAuthenticated(); else goReg">
           <button type="button" class="btn btn-primary record-button" (click)="addRecordDialogOpen()">Записатись на
             прийом
           </button>
         </div>
+        <ng-template #goReg>
+          <span class="record-button font-italic">Для запису на прийом зареєструйтесь або увійдіть в систему</span>
+        </ng-template>
 
 
       </div>

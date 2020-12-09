@@ -86,7 +86,7 @@ export class AdminPanelComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((value) => {
       if (value.success) {
-        this.snackBar.open('Запис створено', 'OK', {
+        this.snackBar.open('Користувача створено зі стандартним паролем User-1111', 'OK', {
           duration: 3000,
           horizontalPosition: 'center',
           verticalPosition: 'bottom',

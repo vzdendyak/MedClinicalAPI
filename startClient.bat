@@ -1,2 +1,2 @@
-cd WebAPI\MedClientSide
+cd MedClientSide
 npm start

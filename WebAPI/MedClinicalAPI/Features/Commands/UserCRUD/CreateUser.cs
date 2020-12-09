@@ -46,7 +46,8 @@ namespace MedClinical.API.Features.Commands.UserCRUD
                     Email = command.model.Email,
                     PhoneNumber = command.model.PhoneNumber,
                     Age = command.model.Age,
-                    DepartmentId = command.model.DepartmentId
+                    DepartmentId = command.model.DepartmentId,
+                    AvatarPath = @"Resources\Images\default.jpg"
                 }, "User-1111");
 
                 if (!res.Succeeded)

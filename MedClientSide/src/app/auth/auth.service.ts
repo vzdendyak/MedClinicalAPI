@@ -27,6 +27,10 @@ export class AuthService {
     return this.http.post<AuthResponse>(this.url + '/register', registerModel, this.requestOptions);
   }
 
+  isUserAdmin() {
+
+  }
+
   logOut(): void {
     this.clearStorage();
   }

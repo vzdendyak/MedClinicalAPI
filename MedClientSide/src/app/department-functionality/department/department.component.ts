@@ -5,6 +5,7 @@ import {Department} from '../../data/models/department';
 import {MatDialog} from '@angular/material/dialog';
 import {AddRecordFormComponent} from '../forms/add-record-form/add-record-form.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {AuthService} from '../../auth/auth.service';
 
 @Component({
   selector: 'app-department',
@@ -19,7 +20,7 @@ export class DepartmentComponent implements OnInit {
   saturdayShedule: string;
 
   constructor(private route: ActivatedRoute, private departmentService: DepartmentService,
-              public dialog: MatDialog, private snackBar: MatSnackBar
+              public dialog: MatDialog, private snackBar: MatSnackBar, public authService: AuthService
   ) {
   }
 
@@ -77,5 +78,8 @@ export class DepartmentComponent implements OnInit {
     }
   }
 
+  public getLinkPicture() {
+    return `https://localhost:5001/api/departments/image/${this.departmentId}`;
+  }
 
 }

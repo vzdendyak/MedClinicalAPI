@@ -39,8 +39,8 @@ namespace MedClinical.API.Features.Commands.UserCRUD.DeleteUser
                 if (user == null)
                     return false;
 
-                if (!(await user.IsUserAdmin(_userManager)))
-                    throw new ForbiddenException("You don't have enought permissions to do this action. Please contact administrator.");
+                //if (!(await user.IsUserAdmin(_userManager)))
+                //    throw new ForbiddenException("You don't have enought permissions to do this action. Please contact administrator.");
 
                 await _userManager.DeleteAsync(user);
                 return true;

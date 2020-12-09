@@ -16,7 +16,7 @@
                 <img [src]="getLinkPicture(u.id)" id="user-photo" class="user-picture">
                 <div class="imgeffect-desc">
                   {{u.firstName}} {{u.lastName}}<br>
-                  Лікар-УЗД
+                  Лікар-{{dep.departmentName.slice(0,-2)}}
                 </div>
               </div>
 

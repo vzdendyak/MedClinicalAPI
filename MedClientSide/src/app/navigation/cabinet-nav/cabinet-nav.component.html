@@ -4,10 +4,7 @@
       <li class="nav-item user-name-item" *ngIf="user">
         <span id="name-span">{{user.firstName}} {{user.lastName}}</span>
         <span id="username-span">{{user.userName}}</span>
-        <span class="role-span user-doctor" *ngIf="user.departmentId else patientBlock">Лікар</span>
-        <ng-template #patientBlock>
-          <span class="role-span user-patient">Пацієнт</span>
-        </ng-template>
+        <span class="role-span user-doctor" >{{user.role}}</span>
       </li>
 
       <li class="nav-item">
@@ -76,7 +73,7 @@
           Техпідтримка
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="user && user.role.toLowerCase()==='admin'">
         <a class="nav-link" [routerLink]="['/account/admin']">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
